@@ -1,12 +1,17 @@
 import React from 'react';
-import {View,Text} from 'react-native';
+import {ScrollView, View, Text, Image, TouchableOpacity} from 'react-native';
 
 import styles from '../style/style';
+import Header from '../components/header';
+import EstList from '../components/estimateList'
 
-const EstimateScreen = () => {
+function EstimateScreen ({navigation}) {
     return(
-        <View style={{flex:1, justifyContent: 'center',alignItems:'center',}}>
-            <Text>Estimate</Text>
+        <View style={{flex:1,backgroundColor:'#fff',}}>
+            <Header/>
+            <ScrollView style={{flex:1,paddingHorizontal:15,}}>
+                <EstList/>
+            </ScrollView>
         </View>
     )
 }

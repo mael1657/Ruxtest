@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dimensions} from 'react-native';
+import {View, Text, Dimensions} from 'react-native';
 
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
@@ -7,7 +7,11 @@ import TabNavigator, {BottomTabNavigator} from './TabNavigator';
 
 const Drawer = createDrawerNavigator();
 
-const DrawerNavigator = () => {
+
+
+
+
+function DrawerNavigator() {
     return(
         <Drawer.Navigator
         initialRouteName="Home"

@@ -13,11 +13,6 @@ export const MainStack = () => {
     return(
         <Stack.Navigator
               screenOptions={{
-                headerStyle: {
-                  backgroundColor: '#9AC4F8',
-                },
-                headerTintColor: 'white',
-                headerBackTitle: 'Back',
                 headerShown: false,
               }}>
             <Stack.Screen name="Main" component={MainScreen}/>
