@@ -15,7 +15,52 @@ const Stack = createStackNavigator();
 
 export const BottomTabNavigator = () => {
     return(
-        <Tab.Navigator>
+        <Tab.Navigator
+            tabBarOptions={{
+                activeTintColor:'#444',
+                inactiveTintColor:'#999',
+                labelStyle:{
+                    fontSize:13,
+                    fontWeight:'bold',
+                    paddingBottom:5,
+                    letterSpacing:-0.5,
+                },
+                style:{
+                    height:65,
+                    backgroundColor:'#fff',
+                    paddingTop:10,
+                }
+            }}
+            screenOptions={({route}) => ({
+                tabBarIcon: ({focused, color, size}) => {
+                     let iconName;
+
+                     if (route.name === 'Home') {
+                         iconName = focused
+                            ? require('../images/menu01_on.png')
+                            : require('../images/menu01.png');
+                     } else if (route.name === 'Estimate') {
+                         iconName = focused
+                            ? require('../images/menu02_on.png')
+                            : require('../images/menu02.png');
+                     } else if (route.name === 'Chat') {
+                         iconName = focused
+                            ? require('../images/menu03_on.png')
+                            : require('../images/menu03.png');
+                     } else if (route.name === 'Mypage') {
+                         iconName = focused
+                            ? require('../images/menu04_on.png')
+                            : require('../images/menu04.png');
+                     };
+                     return(
+                         <Image
+                             source={iconName}
+                             resizeMode="contain"
+                             style={{width:30,}}
+                         />
+                     )
+                }
+            })}>
             <Tab.Screen name="Home" component={MainStack} options={{tabBarLabel:'홈으로'}}/>
             <Tab.Screen name="Estimate" component={EstimateStack} options={{tabBarLabel:'내 견적'}}/>
             <Tab.Screen name="Chat" component={ChatStack} options={{tabBarLabel:'채팅'}}/>
