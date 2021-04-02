@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, View, Text, Image, TouchableOpacity} from 'react-native';
+import {ScrollView, View, Text, Image, TouchableOpacity, FlatList} from 'react-native';
 
 import styles from '../style/style';
 import Header from '../components/header';
@@ -9,9 +9,7 @@ function EstimateScreen ({navigation}) {
     return(
         <View style={{flex:1,backgroundColor:'#fff',}}>
             <Header/>
-            <ScrollView style={{flex:1,paddingHorizontal:15,}}>
-                <EstList/>
-            </ScrollView>
+            <EstList/>
         </View>
     )
 }
