@@ -1,23 +1,23 @@
 import React, {Component} from 'react';
-import {View,Text,StatusBar} from 'react-native';
+import {View, Text, StatusBar} from 'react-native';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { createStackNavigator } from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {createStackNavigator} from '@react-navigation/stack';
 import {useDispatch, useSelector} from 'react-redux';
 
 import DrawerNavigator from './src/navigation/DrawerNavigator';
-
+import {BottomTabNavigator} from './src/navigation/TabNavigator';
 
 const App = () => {
-    return(
+  return (
     <>
-        <StatusBar hidden={true} />
-        <NavigationContainer>
-            <DrawerNavigator />
-        </NavigationContainer>
+      <StatusBar hidden={false} />
+      <NavigationContainer>
+        <BottomTabNavigator />
+      </NavigationContainer>
     </>
-    );
+  );
 };
 
 export default App;

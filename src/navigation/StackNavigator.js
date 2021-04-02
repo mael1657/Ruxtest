@@ -2,6 +2,8 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 
+import DrawerNavigator from '../navigation/DrawerNavigator';
+
 import MainScreen from '../screen/main';
 import EstimateScreen from '../screen/estimate';
 import ChatScreen from '../screen/chat';
@@ -15,7 +17,7 @@ export const MainStack = () => {
               screenOptions={{
                 headerShown: false,
               }}>
-            <Stack.Screen name="Main" component={MainScreen}/>
+            <Stack.Screen name="Main" component={DrawerNavigator}/>
         </Stack.Navigator>
     );
 };

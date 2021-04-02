@@ -9,8 +9,7 @@ import {
 import styles from '../style/style';
 
 
-const Header = (props) => {
-  const navigation = props.navigation;
+const Header = () => {
 
   const [tab, setTab] = useState('buyer');
 
@@ -41,6 +40,7 @@ const Header = (props) => {
         </View>
         <View style={styles.header02}>
             <TouchableOpacity
+            accessibilityRole="button"
             style={{flexDirection:'row',alignItems:'center'}}>
                     <Image
                     style={{width:40,height:40,resizeMode:'contain',}}
@@ -66,5 +66,3 @@ const Header = (props) => {
 }
 
 export default Header;
-
-

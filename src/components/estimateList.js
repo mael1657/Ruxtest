@@ -15,7 +15,7 @@ function Est({item : items}) {
 
     return(
               <TouchableOpacity style={{width:Box,alignItems: 'center', margin : 10}}>
-                    <View style={{width:Box,height:Box,borderColor:'#e3e3e3',borderWidth:1,borderRadius:15,justifyContent:'center',alignItems:'center',}}>
+                    <View style={{width:Box,height:Box,borderColor:'#e3e3e3',borderWidth:1,borderRadius:15,justifyContent:'center',alignItems:'center',marginBottom:10}}>
                         <Image
                             style={{width:'80%',resizeMode:'contain'}}
                             source={items.image}
@@ -65,7 +65,35 @@ function EstList() {
                 image: require('../images/item04.jpg'),
                 price: "200.000",
                 date: "10",
-                }
+                },
+                {
+                id: 5 ,
+                name: 'MAISON MARGIELA',
+                image: require('../images/item01.jpg'),
+                price: "200.000",
+                date: "10",
+                },
+                {
+                id: 6 ,
+                name: 'MAISON MARGIELA',
+                image: require('../images/item02.jpg'),
+                price: "300.000",
+                date: "12",
+                },
+                {
+                id: 7 ,
+                name: 'MAISON MARGIELA',
+                image: require('../images/item03.jpg'),
+                price: "200.000",
+                date: "10",
+                },
+                {
+                id: 8 ,
+                name: 'MAISON MARGIELA',
+                image: require('../images/item04.jpg'),
+                price: "200.000",
+                date: "10",
+                },
        ];
 
 

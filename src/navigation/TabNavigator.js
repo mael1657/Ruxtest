@@ -72,7 +72,7 @@ export const BottomTabNavigator = () => {
 const TabNavigator = () => {
     return(
         <Stack.TabNavigator screenOptions={{headerShown: false}}>
-
+          
         </Stack.TabNavigator>
     );
 };

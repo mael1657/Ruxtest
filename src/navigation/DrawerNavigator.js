@@ -2,23 +2,25 @@ import React from 'react';
 import {View, Text, Dimensions} from 'react-native';
 
 import {createDrawerNavigator} from '@react-navigation/drawer';
-
+import {
+  DrawerContentScrollView,
+  DrawerItem
+} from '@react-navigation/drawer';
 import TabNavigator, {BottomTabNavigator} from './TabNavigator';
+
+
+import {DrawerCategory} from '../screen/DrawerCategory';
+import MainScreen from '../screen/main';
 
 const Drawer = createDrawerNavigator();
 
 
 
 
-
-function DrawerNavigator() {
+const DrawerNavigator = () => {
     return(
-        <Drawer.Navigator
-        initialRouteName="Home"
-        drawerPosition="left"
-        drawerType="front"
-        >
-            <Drawer.Screen name="Home" component={BottomTabNavigator}/>
+        <Drawer.Navigator drawerContent={props => <DrawerCategory {...props} />}>
+            <Drawer.Screen name="Home" component={MainScreen}/>
         </Drawer.Navigator>
     );
 };

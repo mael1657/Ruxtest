@@ -25,7 +25,7 @@ export default class MainSlide extends React.Component {
 
     _renderItem = ({item, index}) => {
         return(
-            <View style={styles.wrapper} showsPagination={false} autoplay={true}>
+            <View style={styles.wrapper}>
                   <View style={styles.slide}>
                         <Image
                         key={index}
