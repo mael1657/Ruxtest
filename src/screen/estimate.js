@@ -8,7 +8,6 @@ import EstList from '../components/estimateList'
 function EstimateScreen ({navigation}) {
     return(
         <View style={{flex:1,backgroundColor:'#fff',}}>
-            <Header/>
             <EstList/>
         </View>
     )

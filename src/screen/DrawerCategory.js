@@ -1,23 +1,26 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
 
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import {createStackNavigator} from '@react-navigation/stack';
 import {
     DrawerContentScrollView,
     DrawerItem,
+    DrawerItemList,
   } from '@react-navigation/drawer';
 
-const Drawer = createDrawerNavigator();
 
-export const DrawerCategory = ({props}) => {
+const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
+
+import PrdList from './PrdList';
+
+
+const DrawerCategory = ({props}) => {
     return(
-      <View style={{flex:1,}}>
         <DrawerContentScrollView {...props}>
-            <View>
-                <TouchableOpacity>
-                </TouchableOpacity>
-            </View>
+            <DrawerItemList {...props}/>
         </DrawerContentScrollView>
-      </View>
     );
 }
+
+export default DrawerCategory;

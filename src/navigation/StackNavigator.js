@@ -17,7 +17,7 @@ export const MainStack = () => {
               screenOptions={{
                 headerShown: false,
               }}>
-            <Stack.Screen name="Main" component={DrawerNavigator}/>
+            <Stack.Screen name="Main" component={MainScreen}/>
         </Stack.Navigator>
     );
 };

@@ -14,7 +14,7 @@ const App = () => {
     <>
       <StatusBar hidden={false} />
       <NavigationContainer>
-        <BottomTabNavigator />
+        <DrawerNavigator />
       </NavigationContainer>
     </>
   );

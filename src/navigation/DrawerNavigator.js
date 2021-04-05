@@ -9,8 +9,9 @@ import {
 import TabNavigator, {BottomTabNavigator} from './TabNavigator';
 
 
-import {DrawerCategory} from '../screen/DrawerCategory';
+// import {DrawerCategory} from '../screen/DrawerCategory';
 import MainScreen from '../screen/main';
+import PrdList from '../screen/PrdList';
 
 const Drawer = createDrawerNavigator();
 
@@ -18,9 +19,10 @@ const Drawer = createDrawerNavigator();
 
 
 const DrawerNavigator = () => {
-    return(
-        <Drawer.Navigator drawerContent={props => <DrawerCategory {...props} />}>
-            <Drawer.Screen name="Home" component={MainScreen}/>
+    return (
+        <Drawer.Navigator>
+            <Drawer.Screen name="Home" component={BottomTabNavigator}/>
+            <Drawer.Screen name="상품목록" component={PrdList}/>
         </Drawer.Navigator>
     );
 };

@@ -8,7 +8,6 @@ export default StyleSheet.create({
   },
   header:{
     backgroundColor: 'white',
-    height:140,
     width:'100%',
   },
   header01:{
@@ -82,6 +81,10 @@ export default StyleSheet.create({
     color:'#999',
   },
   bottomTabNav: {
+    position:'absolute',
+    bottom:0,
+    left:0,
+    width:'100%',
     flexDirection:'row',
     justifyContent:'space-around',
     alignItems:'center',
@@ -93,4 +96,3 @@ export default StyleSheet.create({
     backgroundColor:'#fff',
   },
 })
-
