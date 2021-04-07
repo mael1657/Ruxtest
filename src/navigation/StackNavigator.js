@@ -10,6 +10,8 @@ import ChatScreen from '../screen/chat';
 import MypageScreen from '../screen/mypage';
 import PrdList from '../screen/PrdList';
 import PrdDetail from '../screen/PrdDetail';
+import Bidding from '../screen/bidding';
+import BidFinish from '../screen/BidFinish';
 
 const Stack = createStackNavigator();
 
@@ -56,6 +58,8 @@ export const PrdStack = ({navigation}) => {
       >
         <Stack.Screen name="PrdList" component={PrdList}/>
         <Stack.Screen name="PrdDetail" component={PrdDetail} options={{title:'상품 정보'}}/>
+        <Stack.Screen name="Bidding" component={Bidding}/>
+        <Stack.Screen name="BidFinish" component={BidFinish}/>
       </Stack.Navigator>
     );
 };

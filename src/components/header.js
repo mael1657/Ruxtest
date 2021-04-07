@@ -8,7 +8,7 @@ import {
   TextInput,
 } from 'react-native';
 import styles from '../style/style';
-import HeadDropdown from './Select';
+import Selector from './Select';
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -88,7 +88,7 @@ export const HeaderA = () => {
             </View>
         </View>
         <View style={{flexDirection:'row', justifyContent: 'space-between',alignItems: 'center',paddingHorizontal: 15,paddingVertical: 10,}}>
-              <HeadDropdown/>
+              <Selector/>
             <View style={{flex:2, flexDirection: 'row',borderColor:'#eee',borderWidth:1,borderRadius:8,height:35,justifyContent:'space-between',alignItems: 'center',paddingHorizontal: 6,}}>
               <TextInput
                 placeholder="상품명을 입력하세요"
@@ -113,7 +113,7 @@ export const HeaderA = () => {
 export const DetailHead = () => {
   const navigation = useNavigation();
   return(
-    <View style={{flexDirection:'row',justifyContent: 'center', alignItems:'center',backgroundColor: '#fff',height:62,}}>
+    <View style={{flexDirection:'row',justifyContent: 'center', alignItems:'center',backgroundColor: '#fff',height:62,borderBottomWidth:1,borderBottomColor: '#eee',}}>
       <Text style={{fontSize:18,fontWeight:'bold',}}>타이틀 명</Text>
       <TouchableOpacity
         style={{position:'absolute',left:15,}}

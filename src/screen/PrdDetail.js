@@ -139,7 +139,9 @@ const PrdDetail = ({navigation}) => {
           <TouchableOpacity style={{width:Width,height:57,justifyContent: 'center',alignItems: 'center',borderRightWidth:1, borderRightColor:'#ddd'}}>
               <Text style={{fontSize:18,fontWeight:'bold'}}>즉시 구매</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{width:Width,height:57,justifyContent: 'center',alignItems: 'center',}}>
+          <TouchableOpacity
+              onPress={() => navigation.navigate('Bidding')}
+              style={{width:Width,height:57,justifyContent: 'center',alignItems: 'center',}}>
               <Text style={{fontSize:18,fontWeight:'bold'}}>입찰하기</Text>
           </TouchableOpacity>
       </View>

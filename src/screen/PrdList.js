@@ -99,6 +99,7 @@ function PrdItem({item: rendetItems}){
 
   const [fav ,setFav] = useState('off');
   const navigation = useNavigation();
+
   return(
     <TouchableOpacity
       style={{
