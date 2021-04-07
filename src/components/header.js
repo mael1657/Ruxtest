@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import styles from '../style/style';
 import HeadDropdown from './Select';
+import { useNavigation } from '@react-navigation/native';
 
 
 const Header = () => {
@@ -92,6 +93,7 @@ export const HeaderA = () => {
               <TextInput
                 placeholder="상품명을 입력하세요"
                 style={{height:35,alignItems: 'center',fontSize:12,lineHeight: 15,}}
+                placeholderTextColor={'#C9C9C9'}
               />
               <TouchableOpacity>
                   <Image
@@ -105,7 +107,21 @@ export const HeaderA = () => {
             </TouchableOpacity>
         </View>
     </View>
-  )
-}
+  );
+};
+
+export const DetailHead = () => {
+  const navigation = useNavigation();
+  return(
+    <View style={{flexDirection:'row',justifyContent: 'center', alignItems:'center',backgroundColor: '#fff',height:62,}}>
+      <Text style={{fontSize:18,fontWeight:'bold',}}>타이틀 명</Text>
+      <TouchableOpacity
+        style={{position:'absolute',left:15,}}
+        onPress={() => navigation.goBack()}>
+        <Image source={require('../images/head_arr.png')}/>
+      </TouchableOpacity>
+    </View>
+  );
+};
 
 export default Header;

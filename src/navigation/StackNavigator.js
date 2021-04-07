@@ -8,6 +8,8 @@ import MainScreen from '../screen/main';
 import EstimateScreen from '../screen/estimate';
 import ChatScreen from '../screen/chat';
 import MypageScreen from '../screen/mypage';
+import PrdList from '../screen/PrdList';
+import PrdDetail from '../screen/PrdDetail';
 
 const Stack = createStackNavigator();
 
@@ -46,8 +48,20 @@ export const MypageStack = () => {
     );
 };
 
+export const PrdStack = ({navigation}) => {
+    return(
+      <Stack.Navigator
+        initialRouteName="PrdList"
+        screenOptions={{headerShown: false,headerTitleAlign: 'center'}}
+      >
+        <Stack.Screen name="PrdList" component={PrdList}/>
+        <Stack.Screen name="PrdDetail" component={PrdDetail} options={{title:'상품 정보'}}/>
+      </Stack.Navigator>
+    );
+};
+
 const StackNavigation = () => {
-  return (
+  return(
     <View>
       <Text></Text>
     </View>

@@ -1,8 +1,10 @@
-import React,{useState} from 'react';
+import React,{Component, useState} from 'react';
 import {View, Text, ScrollView, Dimensions, TouchableOpacity, TouchableWithoutFeedback, FlatList, Image, StyleSheet} from 'react-native';
 
 import Footer from '../components/footer';
 import Header, {HeaderA} from '../components/header';
+
+import { useNavigation } from '@react-navigation/native';
 
 export const Width = Dimensions.get('window').width;
 export const Height = Dimensions.get('window').height;
@@ -10,7 +12,7 @@ const PADDING = 15;
 const Box = Width / 4;
 const HashWidth = (Width - Box) - (PADDING * 2) - 10;
 
-const PrdList = () => {
+const PrdList = ({navigation}) => {
     return(
       <View style={{flex:1,backgroundColor: '#fff'}}>
         <HeaderA/>
@@ -96,9 +98,21 @@ function PrdListItems() {
 function PrdItem({item: rendetItems}){
 
   const [fav ,setFav] = useState('off');
-
+  const navigation = useNavigation();
   return(
-    <TouchableOpacity style={{Width:Width,flexDirection: 'row',justifyContent:'space-between',alignItems: 'flex-start',borderBottomWidth: 1,borderBottomColor: '#eee',paddingBottom:10,paddingTop:15,}}>
+    <TouchableOpacity
+      style={{
+        Width:Width,
+        flexDirection: 'row',
+        justifyContent:'space-between',
+        alignItems: 'flex-start',
+        borderBottomWidth: 1,
+        borderBottomColor: '#eee',
+        paddingBottom:10,
+        paddingTop:15,
+      }}
+      onPress={() => navigation.navigate('PrdDetail')}
+      >
       <View style={{width:Box,height:Box,borderWidth: 1,borderColor: '#e3e3e3',borderRadius: 8,marginRight:10,}}>
         <Image
           style={{resizeMode:'center',flex:1,alignSelf: 'center'}}
