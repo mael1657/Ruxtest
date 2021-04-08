@@ -26,68 +26,68 @@ const PrdList = ({navigation}) => {
 
 
 function PrdListItems() {
-  const rendetItems = [
+  const renderItems = [
     {
     id: 1 ,
     name: 'MAISON MARGIELA',
     image: require('../images/item01.jpg'),
-    price: "200.000",
+    price: "200,000",
     date: "10",
     },
     {
     id: 2 ,
     name: 'MAISON MARGIELA',
     image: require('../images/item02.jpg'),
-    price: "300.000",
+    price: "300,000",
     date: "12",
     },
     {
     id: 3 ,
     name: 'MAISON MARGIELA',
     image: require('../images/item03.jpg'),
-    price: "200.000",
+    price: "200,000",
     date: "10",
     },
     {
     id: 4 ,
     name: 'MAISON MARGIELA',
     image: require('../images/item04.jpg'),
-    price: "200.000",
+    price: "200,000",
     date: "10",
     },
     {
     id: 5 ,
     name: 'MAISON MARGIELA',
     image: require('../images/item01.jpg'),
-    price: "200.000",
+    price: "200,000",
     date: "10",
     },
     {
     id: 6 ,
     name: 'MAISON MARGIELA',
     image: require('../images/item02.jpg'),
-    price: "300.000",
+    price: "300,000",
     date: "12",
     },
     {
     id: 7 ,
     name: 'MAISON MARGIELA',
     image: require('../images/item03.jpg'),
-    price: "200.000",
+    price: "200,000",
     date: "10",
     },
     {
     id: 8 ,
     name: 'MAISON MARGIELA',
     image: require('../images/item04.jpg'),
-    price: "200.000",
+    price: "200,000",
     date: "10",
     },
   ]
   return(
     <FlatList
         style={{flex:1,alignSelf : 'center'}}
-        data={rendetItems}
+        data={renderItems}
         renderItem={({item, index} ) => <PrdItem item={item}/>}
         keyExtractor={(item) => `${item.id}`}
         numColumns={1}
@@ -95,7 +95,7 @@ function PrdListItems() {
   );
 }
 
-function PrdItem({item: rendetItems}){
+function PrdItem({item: renderItems}){
 
   const [fav ,setFav] = useState('off');
   const navigation = useNavigation();
@@ -117,17 +117,17 @@ function PrdItem({item: rendetItems}){
       <View style={{width:Box,height:Box,borderWidth: 1,borderColor: '#e3e3e3',borderRadius: 8,marginRight:10,}}>
         <Image
           style={{resizeMode:'center',flex:1,alignSelf: 'center'}}
-          source={rendetItems.image}/>
+          source={renderItems.image}/>
       </View>
       <View style={{flexGrow:1,}}>
         <View style={{flexDirection: 'row',justifyContent: 'space-between',alignItems: 'center',marginBottom:10,}}>
-          <Text style={{fontSize:16,fontWeight: 'bold'}}>{rendetItems.name}</Text>
+          <Text style={{fontSize:16,fontWeight: 'bold'}}>{renderItems.name}</Text>
           <TouchableWithoutFeedback>
             <Image source={fav === 'off' ? require('../images/heart_no.png') : require('../images/heart.png') } />
           </TouchableWithoutFeedback>
         </View>
-        <Text style={{fontWeight:'bold',color:'#333'}}>즉시구매 <Text style={{fontWeight:'normal',color:'#555'}}>{rendetItems.price}</Text></Text>
-        <Text style={{fontWeight:'bold',color:'#333'}}>견적 마감 <Text style={{fontWeight:'normal',color:'#555'}}>{rendetItems.date}</Text></Text>
+        <Text style={{fontWeight:'bold',color:'#333'}}>즉시구매 <Text style={{fontWeight:'normal',color:'#555'}}>{renderItems.price}</Text></Text>
+        <Text style={{fontWeight:'bold',color:'#333'}}>견적 마감 <Text style={{fontWeight:'normal',color:'#555'}}>{renderItems.date}</Text></Text>
         <View style={{flexDirection: 'row',flexWrap:'wrap',marginTop:10,width:HashWidth}}>
             <Text style={styles.hashtag}>#메종마르지엘라</Text>
             <Text style={styles.hashtag}>#클러치</Text>

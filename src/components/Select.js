@@ -4,7 +4,7 @@ import {View,StyleSheet} from 'react-native';
 
 import {Picker} from '@react-native-picker/picker';
 import RNPickerSelect from 'react-native-picker-select';
-import {Ionicons} from 'react-native-vector-icons/Ionicons';
+import {Ionicons} from 'react-native-vector-icons';
 
 const Selector = () => {
 
@@ -50,6 +50,28 @@ export const DealType = () => {
   );
 };
 
+export const DealType2 = () => {
+  const placeholder = {
+    label: '거래방식 선택',
+    value: null,
+    color:'#7E7E7E',
+  }
+  return(
+      <View style={{flex:1, borderColor:"#eee",borderWidth:1,borderRadius:8,height:35,justifyContent: 'center',marginRight:5,}}>
+        <RNPickerSelect
+            itemStyle={{fontSize:10,}}
+            onValueChange={(value) => console.log(value)}
+            placeholder={placeholder}
+            items={[
+              { label: '카테고리1', value: '카테고리1' },
+              { label: '카테고리2', value: '카테고리2' },
+              { label: '카테고리3', value: '카테고리3' },
+            ]}
+        />
+      </View>
+  );
+};
+
 export const LocationSelect = () => {
   const placeholder = {
     label: '배송지 선택',
@@ -69,8 +91,31 @@ export const LocationSelect = () => {
           ]}
       />
     </View>
-  )
-}
+  );
+};
+
+export const PaymentType = () => {
+  const placeholder = {
+    label: '결제 수단 선택',
+    value: null,
+    color:'#555',
+  }
+  return(
+      <View style={{borderColor:"#eee",borderWidth:1,width:129,height:28,justifyContent: 'center'}}>
+        <RNPickerSelect
+            itemStyle={{fontSize:10,}}
+            onValueChange={(value) => console.log(value)}
+            placeholder={placeholder}
+            items={[
+              { label: '카테고리1', value: '카테고리1' },
+              { label: '카테고리2', value: '카테고리2' },
+              { label: '카테고리3', value: '카테고리3' },
+            ]}
+        />
+      </View>
+  );
+};
+
 
 const styles = StyleSheet.create({
   selectItem:{

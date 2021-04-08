@@ -10,7 +10,7 @@ export const PADDING = 20;
 const PrdDetail = ({navigation}) => {
   return(
     <View style={{flex:1,backgroundColor: '#fff'}}>
-      <DetailHead/>
+      <DetailHead title="상품 정보"/>
       <ScrollView style={{flex:1,}}>
         <View style={{flex:1,width:'100%',height:250,}}>
           <Image
@@ -136,7 +136,9 @@ const PrdDetail = ({navigation}) => {
         </View>
       </ScrollView>
       <View style={{flex:1,backgroundColor: '#F8F8F8', flexDirection:'row',position:'absolute',bottom:0,left:0,elevation:0,}}>
-          <TouchableOpacity style={{width:Width,height:57,justifyContent: 'center',alignItems: 'center',borderRightWidth:1, borderRightColor:'#ddd'}}>
+          <TouchableOpacity
+              onPress={() => navigation.navigate('PurchaseOrder')}
+              style={{width:Width,height:57,justifyContent: 'center',alignItems: 'center',borderRightWidth:1, borderRightColor:'#ddd'}}>
               <Text style={{fontSize:18,fontWeight:'bold'}}>즉시 구매</Text>
           </TouchableOpacity>
           <TouchableOpacity

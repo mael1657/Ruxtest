@@ -8,8 +8,9 @@ import {
   TextInput,
 } from 'react-native';
 import styles from '../style/style';
-import Selector from './Select';
+import Selector, {DealType2} from './Select';
 import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 const Header = () => {
@@ -110,11 +111,11 @@ export const HeaderA = () => {
   );
 };
 
-export const DetailHead = () => {
+export const DetailHead = ({title}) => {
   const navigation = useNavigation();
   return(
     <View style={{flexDirection:'row',justifyContent: 'center', alignItems:'center',backgroundColor: '#fff',height:62,borderBottomWidth:1,borderBottomColor: '#eee',}}>
-      <Text style={{fontSize:18,fontWeight:'bold',}}>타이틀 명</Text>
+      <Text style={{fontSize:18,fontWeight:'bold',}}>{title}</Text>
       <TouchableOpacity
         style={{position:'absolute',left:15,}}
         onPress={() => navigation.goBack()}>
@@ -123,5 +124,161 @@ export const DetailHead = () => {
     </View>
   );
 };
+
+export const EstHeader = ({title}) => {
+
+  const [tab, setTab] = useState('buyer');
+
+  return(
+    <View style={styles.header , {paddingBottom:10,}}>
+        <View style={styles.header01}>
+            <TouchableOpacity>
+                <Image
+                style={{width:120,height:60,resizeMode:'contain',}}
+                source={require('../images/logo01.png')}
+                />
+            </TouchableOpacity>
+            <View style={{width:70,height:50,justifyContent:'space-between',flexDirection:'row',paddingTop:10,}}>
+                <TouchableOpacity style={{width:30,height:30}}>
+                    <Image
+                    style={{width:30,height:30,resizeMode:'contain'}}
+                    source={require('../images/img_hd01.png')}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity style={{width:30,height:30}}>
+                    <Image
+                    style={{width:30,height:30,resizeMode:'contain'}}
+                    source={require('../images/img_hd02.png')}
+                    />
+                </TouchableOpacity>
+            </View>
+        </View>
+        <View style={{alignItems: 'center',justifyContent: 'center',height:50,}}>
+          <Text style={{fontSize:18,fontWeight:'bold'}}>{title}</Text>
+        </View>
+        <View style={{
+                paddingBottom:5,
+                paddingLeft:15,
+                paddingRight:15,
+                flexDirection:'row',
+                justifyContent:'space-between',
+                alignItems:'center',
+            }}>
+            <DealType2/>
+            <View style={{flexDirection:'row',backgroundColor:'#DEDEDE',borderRadius:8,width:120,height:35,justifyContent:'space-between',alignItems:'center'}}>
+                <TouchableOpacity
+                onPress ={ () => setTab('buyer')}
+                style={{backgroundColor: tab === 'buyer' ? '#477DD1' : '#DEDEDE',width:60,height:35,borderRadius:8,justifyContent:'center',alignItems:'center',}}>
+                    <Text style={{color: tab === 'buyer' ? '#fff' : '#999' ,fontWeight:'bold',}}>구매자</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                onPress ={ () => setTab('seller')}
+                style={{backgroundColor: tab === 'seller' ? '#477DD1' : '#DEDEDE',width:60,height:35,borderRadius:8,justifyContent:'center',alignItems:'center',}}>
+                    <Text style={{color: tab === 'seller' ? '#fff' : '#999' , fontWeight:'bold',}}>판매자</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+        <View style={{marginHorizontal: 15,borderWidth:1,borderColor:'#eee',borderRadius:8,height:35,flexDirection: 'row',justifyContent: 'space-between',alignItems: 'center',paddingHorizontal: 10}}>
+          <TextInput
+            style={{height:35,paddingVertical: 0,justifyContent:'center',flex:1}}
+            placeholder="제품명을 입력해주세요."
+            placeholderTextColor="#C9C9C9"
+          />
+          <Icon name="search" size={20} color="#477DD1"/>
+        </View>
+    </View>
+  );
+};
+
+export const ChatHeader =({title})=> {
+
+  const [tab, setTab] = useState('buyer');
+
+  return(
+    <View style={styles.header, {paddingBottom:10,}}>
+        <View style={styles.header01}>
+            <TouchableOpacity>
+                <Image
+                style={{width:120,height:60,resizeMode:'contain',}}
+                source={require('../images/logo01.png')}
+                />
+            </TouchableOpacity>
+            <View style={{width:70,height:50,justifyContent:'space-between',flexDirection:'row',paddingTop:10,}}>
+                <TouchableOpacity style={{width:30,height:30}}>
+                    <Image
+                    style={{width:30,height:30,resizeMode:'contain'}}
+                    source={require('../images/img_hd01.png')}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity style={{width:30,height:30}}>
+                    <Image
+                    style={{width:30,height:30,resizeMode:'contain'}}
+                    source={require('../images/img_hd02.png')}
+                    />
+                </TouchableOpacity>
+            </View>
+        </View>
+        <View style={{alignItems: 'center',justifyContent: 'center',height:50,}}>
+          <Text style={{fontSize:18,fontWeight:'bold'}}>{title}</Text>
+        </View>
+        <View style={{
+                paddingBottom:5,
+                paddingLeft:15,
+                paddingRight:15,
+                flexDirection:'row',
+                justifyContent:'space-between',
+                alignItems:'center',
+            }}>
+            <View style={{flex:1,marginRight:5,borderWidth:1,borderColor:'#eee',borderRadius:8,height:35,flexDirection: 'row',justifyContent: 'space-between',alignItems: 'center',paddingHorizontal: 10}}>
+              <TextInput
+                style={{height:35,paddingVertical: 0,justifyContent:'center',flex:1}}
+                placeholder="제품명을 입력해주세요."
+                placeholderTextColor="#C9C9C9"
+              />
+              <Icon name="search" size={20} color="#477DD1"/>
+            </View>
+            <View style={{flexDirection:'row',backgroundColor:'#DEDEDE',borderRadius:8,width:120,height:35,justifyContent:'space-between',alignItems:'center'}}>
+                <TouchableOpacity
+                onPress ={ () => setTab('buyer')}
+                style={{backgroundColor: tab === 'buyer' ? '#477DD1' : '#DEDEDE',width:60,height:35,borderRadius:8,justifyContent:'center',alignItems:'center',}}>
+                    <Text style={{color: tab === 'buyer' ? '#fff' : '#999' ,fontWeight:'bold',}}>구매자</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                onPress ={ () => setTab('seller')}
+                style={{backgroundColor: tab === 'seller' ? '#477DD1' : '#DEDEDE',width:60,height:35,borderRadius:8,justifyContent:'center',alignItems:'center',}}>
+                    <Text style={{color: tab === 'seller' ? '#fff' : '#999' , fontWeight:'bold',}}>판매자</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+    </View>
+  );
+};
+
+export const ChatDetailHeader = ({title}) => {
+  const navigation = useNavigation();
+  return(
+    <View>
+      <View style={{flexDirection:'row',justifyContent: 'center', alignItems:'center',backgroundColor: '#fff',height:62,borderBottomWidth:1,borderBottomColor: '#eee',}}>
+        <Text style={{fontSize:18,fontWeight:'bold',}}>{title}</Text>
+        <TouchableOpacity
+          style={{position:'absolute',left:15,}}
+          onPress={() => navigation.goBack()}>
+          <Image source={require('../images/head_arr.png')}/>
+        </TouchableOpacity>
+      </View>
+      <View style={{flexDirection:'row',}}>
+        <TouchableOpacity style={{flex:1,flexDirection:'row',justifyContent: 'space-between',alignItems:'center',height:48,backgroundColor: '#EBEBEB',paddingHorizontal:20,borderRightWidth:1,borderRightColor:'#fff '}}>
+          <Text style={{fontSize:16,fontWeigth:'bold'}}>프로필 정보</Text>
+          <Icon name="chevron-forward" size={20} color="#333"/>
+        </TouchableOpacity>
+        <TouchableOpacity style={{flex:1,flexDirection:'row',justifyContent: 'space-between',alignItems:'center',height:48,backgroundColor: '#EBEBEB',paddingHorizontal:20,}}>
+          <Text style={{fontSize:16,fontWeigth:'bold'}}>프로필 정보</Text>
+          <Icon name="chevron-forward" size={20} color="#333"/>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
 
 export default Header;

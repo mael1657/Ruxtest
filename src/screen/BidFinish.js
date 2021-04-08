@@ -10,7 +10,7 @@ export const Width = Dimensions.get('window').width / 4;
 const BidFinish = ({navigation}) => {
   return(
     <SafeAreaView style={{flex:1,backgroundColor:'#fff'}}>
-      <DetailHead/>
+      <DetailHead title="입찰하기"/>
       <View style={{padding:20,}}>
         <View style={{paddingBottom:10,marginBottom:20,borderBottomWidth:1,borderBottomColor:'#eee'}}>
           <Product/>

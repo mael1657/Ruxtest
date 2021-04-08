@@ -11,7 +11,7 @@ export const Width = Dimensions.get('window').width / 4;
 const Bidding = ({navigation}) => {
   return(
     <SafeAreaView style={{flex:1,backgroundColor:"#fff"}}>
-      <DetailHead/>
+      <DetailHead title="입찰하기"/>
       <View style={{padding:20,flex:1}}>
         <View style={{paddingBottom:10,marginBottom:20,borderBottomWidth:1,borderBottomColor:'#eee'}}>
           <Product/>
@@ -36,7 +36,7 @@ const Bidding = ({navigation}) => {
             <TouchableOpacity
               onPress={()=>navigation.navigate('BidFinish')}
               style={{width:'50%',height:57,justifyContent: 'center',alignItems: 'center',}}>
-              <Text style={{color:'#fff',fontSize:16,fontWeight:'bold'}}>입찰 하기</Text>
+              <Text style={{color:'#fff',fontSize:16,fontWeight:'bold'}}>입찰하기</Text>
             </TouchableOpacity>
           </View>
         </View>

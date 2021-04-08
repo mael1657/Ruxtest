@@ -1,16 +1,18 @@
-import React from 'react';
-import {View,Text} from 'react-native';
+ import React from 'react';
+import {View,Text,SafeAreaView,Image,TouchableOpacity} from 'react-native';
 
 import styles from '../style/style';
-import Header from '../components/header';
+import Header, {ChatHeader} from '../components/header';
+import ChatList from '../components/ChatList';
 
-const ChatScreen = () => {
+const ChatScreen = ({navigation}) => {
     return(
-    <View>
-        <View style={{flex:1, justifyContent: 'center',alignItems:'center',}}>
-            <Text>ChatScreen</Text>
+    <SafeAreaView style={{flex:1,backgroundColor: '#fff',}}>
+        <ChatHeader title="채팅"/>
+        <View style={{flex:1,paddingHorizontal: 20,}}>
+          <ChatList/>
         </View>
-    </View>
+    </SafeAreaView>
     )
 }
 
