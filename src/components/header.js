@@ -267,12 +267,12 @@ export const ChatDetailHeader = ({title}) => {
         </TouchableOpacity>
       </View>
       <View style={{flexDirection:'row',}}>
-        <TouchableOpacity style={{flex:1,flexDirection:'row',justifyContent: 'space-between',alignItems:'center',height:48,backgroundColor: '#EBEBEB',paddingHorizontal:20,borderRightWidth:1,borderRightColor:'#fff '}}>
-          <Text style={{fontSize:16,fontWeigth:'bold'}}>프로필 정보</Text>
+        <TouchableOpacity style={{flex:1,flexDirection:'row',justifyContent: 'space-between',alignItems:'center',height:48,backgroundColor: '#EBEBEB',paddingHorizontal:20,borderRightWidth:1,borderRightColor:'#fff'}}>
+          <Text style={{fontSize:16,fontWeight:'bold'}}>프로필 정보</Text>
           <Icon name="chevron-forward" size={20} color="#333"/>
         </TouchableOpacity>
         <TouchableOpacity style={{flex:1,flexDirection:'row',justifyContent: 'space-between',alignItems:'center',height:48,backgroundColor: '#EBEBEB',paddingHorizontal:20,}}>
-          <Text style={{fontSize:16,fontWeigth:'bold'}}>프로필 정보</Text>
+          <Text style={{fontSize:16,fontWeight:'bold'}}>사기 방지 가이드</Text>
           <Icon name="chevron-forward" size={20} color="#333"/>
         </TouchableOpacity>
       </View>

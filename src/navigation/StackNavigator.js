@@ -15,7 +15,7 @@ import BidFinish from '../screen/BidFinish';
 import EstDetail from '../screen/EstDetail';
 import EstCheck from '../screen/EstCheck';
 import PurchaseOrder from '../screen/PurchaseOrder';
-import ChatDetail from '../screen/ChatDetail'
+import ChatDetail from '../screen/ChatDetail';
 
 const Stack = createStackNavigator();
 
@@ -63,6 +63,7 @@ export const ChatStack = () => {
         >
             <Stack.Screen name="Chat" component={ChatScreen}/>
             <Stack.Screen name="ChatDetail" component={ChatDetail}/>
+            <Stack.Screen name="PurchaseOrder" component={PurchaseOrder}/>
         </Stack.Navigator>
     );
 };
