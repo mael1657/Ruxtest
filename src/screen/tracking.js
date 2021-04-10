@@ -67,6 +67,9 @@ const Tracking = () => {
               </View>
               <View style={{width:'100%',height:8,backgroundColor: '#eee',borderTopWidth:1,borderTopColor:'#d9d9d9'}}>
               </View>
+              <View>
+                
+              </View>
             </ScrollView>
           <Footer/>
         </SafeAreaView>
