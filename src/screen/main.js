@@ -17,7 +17,10 @@ import Header from '../components/header';
 import MainSlide from '../components/main_slide';
 import SellerSlide from '../components/seller_slide';
 
-type Props = {};
+export const Width = Dimensions.get('window').width;
+export const Boxwidth = Width / 2 - 30;
+export const Boxheight = Boxwidth * 1.4;
+
 const MainScreen = () => {
 
     return (
@@ -25,15 +28,21 @@ const MainScreen = () => {
         <Header/>
         <ScrollView style={styles.content}>
         <MainSlide/>
-        <TouchableOpacity style={{backgroundColor:'#EBEBEB',borderRadius:10,marginLeft:15,marginRight:15,flexDirection:'row',justifyContent:'space-between',alignItems:'center',paddingLeft:15,paddingRight:15,paddingTop:15,paddingBottom:15,}}>
+        <TouchableOpacity style={{backgroundColor:'#EBEBEB',borderRadius:10,marginHorizontal:20,flexDirection:'row',justifyContent:'space-between',alignItems:'center',paddingLeft:15,paddingRight:15,paddingTop:15,paddingBottom:15,}}>
           <Text style={{color:'#333',fontSize:18,}}>내 상품 등록하기</Text>
           <Image
            style={{}}
            source={require('../images/ar_right.png')}
           />
         </TouchableOpacity>
+        <TouchableOpacity style={{padding:15,width:Width}}>
+          <Image 
+            style={{resizeMode:'contain',width:'100%',}}
+            source={require('../images/main_banner01.png')}
+          />
+        </TouchableOpacity>
         <View style={{marginBottom:30,}}>
-          <View style={{paddingLeft:15,paddingRight:15,flexDirection:'row',justifyContent:'space-between',paddingTop:15,paddingBottom:15,}}>
+          <View style={{padding:20,flexDirection:'row',justifyContent:'space-between',}}>
             <Text style={{fontSize:20,fontWeight:'bold',}}>새로운 상품</Text>
             <TouchableOpacity style={{flexDirection:'row',alignItems:'center',}}>
               <Text style={{fontSize:13,}}>전체보기</Text>
@@ -43,7 +52,7 @@ const MainScreen = () => {
               />
             </TouchableOpacity>
           </View>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator = {true} showsHorizontalScrollIndicator={false} style={{paddingLeft:15,paddingRight:15,}}>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator = {true} showsHorizontalScrollIndicator={false} style={{paddingLeft:20,}}>
            <TouchableOpacity style={styles.prdRow} >
               <View style={{width:155,height:155,borderColor:'#e3e3e3',borderWidth:1,borderRadius:15,justifyContent:'center',alignItems:'center',marginBottom:10,overflow:'hidden'}}>
                  <Image style={{resizeMode:'contain',width:'80%'}}
@@ -107,7 +116,7 @@ const MainScreen = () => {
           </ScrollView>
         </View>
         <View style={{paddingBottom:30,}}>
-           <View style={{paddingLeft:15,paddingRight:15,flexDirection:'row',justifyContent:'space-between',paddingTop:15,paddingBottom:15,}}>
+           <View style={{padding:20,flexDirection:'row',justifyContent:'space-between',}}>
                 <Text style={{fontSize:20,fontWeight:'bold',}}>실시간 리뷰</Text>
                 <TouchableOpacity style={{flexDirection:'row',alignItems:'center',}}>
                   <Text style={{fontSize:13,}}>전체보기</Text>
@@ -117,8 +126,15 @@ const MainScreen = () => {
                   />
                 </TouchableOpacity>
            </View>
-           <View style={{flexDirection:'row',flexWrap:'wrap',justifyContent:'space-between',paddingHorizontal:15,}}>
-              <TouchableOpacity style={styles.rv_list}>
+           <View style={{flexDirection:'row',flexWrap:'wrap',justifyContent:'space-between',paddingHorizontal:20,}}>
+              <TouchableOpacity style={{
+                backgroundColor:'#F1F1F1',
+                width:Boxwidth,
+                height:Boxheight,
+                overflow:'hidden',
+                borderRadius:9,
+                marginBottom:20,
+              }}>
                 <Image
                   style={{width:200,height:143,justifyContent:'center',alignItems:'center',}}
                   source={require('../images/rv_thumb01.jpg')}
@@ -154,7 +170,14 @@ const MainScreen = () => {
                 </View>
                 <Text style={{alignSelf:'flex-end',paddingRight:10,color:'#999',}}>nappeni</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.rv_list}>
+              <TouchableOpacity style={{
+                backgroundColor:'#F1F1F1',
+                width:Boxwidth,
+                height:Boxheight,
+                overflow:'hidden',
+                borderRadius:9,
+                marginBottom:20,
+              }}>
                 <Image
                   style={{width:200,height:143,justifyContent:'center',alignItems:'center',}}
                   source={require('../images/rv_thumb01.jpg')}
@@ -190,7 +213,14 @@ const MainScreen = () => {
                 </View>
                 <Text style={{alignSelf:'flex-end',paddingRight:10,color:'#999',}}>nappeni</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.rv_list}>
+              <TouchableOpacity style={{
+                backgroundColor:'#F1F1F1',
+                width:Boxwidth,
+                height:Boxheight,
+                overflow:'hidden',
+                borderRadius:9,
+                marginBottom:20,
+              }}>
                 <Image
                   style={{width:200,height:143,justifyContent:'center',alignItems:'center',}}
                   source={require('../images/rv_thumb01.jpg')}
@@ -226,7 +256,14 @@ const MainScreen = () => {
                 </View>
                 <Text style={{alignSelf:'flex-end',paddingRight:10,color:'#999',}}>nappeni</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.rv_list}>
+              <TouchableOpacity style={{
+                backgroundColor:'#F1F1F1',
+                width:Boxwidth,
+                height:Boxheight,
+                overflow:'hidden',
+                borderRadius:9,
+                marginBottom:20,
+              }}>
                 <Image
                   style={{width:200,height:143,justifyContent:'center',alignItems:'center',}}
                   source={require('../images/rv_thumb01.jpg')}

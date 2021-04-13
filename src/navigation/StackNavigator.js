@@ -4,6 +4,7 @@ import {createStackNavigator,CardStyleInterpolators,TransitionPresets} from '@re
 
 import DrawerNavigator from '../navigation/DrawerNavigator';
 
+import Header from '../components/header';
 import MainScreen from '../screen/main';
 import EstimateScreen from '../screen/estimate';
 import ChatScreen from '../screen/chat';
@@ -16,7 +17,7 @@ import EstDetail from '../screen/EstDetail';
 import EstCheck from '../screen/EstCheck';
 import PurchaseOrder from '../screen/PurchaseOrder';
 import ChatDetail from '../screen/ChatDetail';
-import Review, { ReviewWrite, ReviewComplete, ReviewList } from '../screen/review';
+import Review, { ReviewWrite, ReviewComplete, ReviewList,Rv_Detail } from '../screen/review';
 
 const Stack = createStackNavigator();
 
@@ -27,6 +28,7 @@ export const MainStack = () => {
                 headerShown: false,
               }}>
             <Stack.Screen name="Main" component={MainScreen}/>
+            <Stack.Screen name="head" component={Header}/>
         </Stack.Navigator>
     );
 };
@@ -110,6 +112,7 @@ export const ReviewStack = () => {
       <Stack.Screen name="ReviewWrite" component={ReviewWrite}/>
       <Stack.Screen name="ReviewComplete" component={ReviewComplete}/>
       <Stack.Screen name="ReviewList" component={ReviewList}/>
+      <Stack.Screen name="Rv_Detail" component={Rv_Detail}/>
     </Stack.Navigator>
   );
 };

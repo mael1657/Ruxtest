@@ -7,6 +7,7 @@ import Product from '../components/product';
 import BotLine from '../components/bottomline';
 import Btn, {BtnFull} from '../components/button';
 import Rv_List from '../components/ReviewListitem';
+import ReviewDetail from '../screen/reviewdetail';
 
 export const Width = Dimensions.get('window').width / 4 - 10
 
@@ -130,17 +131,13 @@ export const ReviewList = ({navigation}) => {
                 <Rv_List/>
             </View>
             <Footer/>
-        </SafeAreaView>
+        </SafeAreaView> 
     );
 };
 
-export const ReviewDetail = ({navigation}) => {
+export const Rv_Detail = ({navigation}) => {
     return(
-        <SafeAreaView>
-            <View>
-                <Text></Text>
-            </View>
-        </SafeAreaView>
+        <ReviewDetail/>
     );
 }
 
@@ -155,6 +152,9 @@ const Review = ({navigation}) => {
         </View>
         <View style={{marginBottom:10,}}>
             <Button title="리뷰 목록" onPress={()=> navigation.navigate('ReviewList')}/>
+        </View>
+        <View style={{marginBottom:10,}}>
+            <Button title="리뷰 상세" onPress={()=> navigation.navigate('Rv_Detail')}/>
         </View>
     </SafeAreaView>
     );

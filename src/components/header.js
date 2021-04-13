@@ -14,6 +14,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 
 const Header = () => {
+  const navigation = useNavigation(); 
 
   const [tab, setTab] = useState('buyer');
 
@@ -43,8 +44,9 @@ const Header = () => {
             </View>
         </View>
         <View style={styles.header02}>
-            <TouchableOpacity
+            <TouchableOpacity 
             accessibilityRole="button"
+            onPress={() => navigation.openDrawer()}
             style={{flexDirection:'row',alignItems:'center'}}>
                     <Image
                     style={{width:40,height:40,resizeMode:'contain',}}

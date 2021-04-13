@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { StyleSheet, Dimensions, Platform } from 'react-native';
 
+
+
 export default StyleSheet.create({
   container:{
     backgroundColor: 'white',
@@ -73,7 +75,7 @@ export default StyleSheet.create({
   footer: {
     backgroundColor: '#F8F8F8',
     paddingVertical:30,
-    paddingHorizontal:15,
+    paddingHorizontal:20,
 
   },
   footText: {

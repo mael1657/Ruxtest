@@ -1,8 +1,10 @@
 import React, {Component,useState} from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Image, TouchableOpacity, Dimensions} from 'react-native';
 
 import Carousel from 'react-native-snap-carousel';
 import styles from '../style/style';
+
+export const Width = Dimensions.get('window').width - 65;
 
 export default class MainSlide extends React.Component {
 
@@ -26,14 +28,14 @@ export default class MainSlide extends React.Component {
     _renderItem = ({item, index}) => {
         return(
             <View style={styles.wrapper}>
-                  <View style={styles.slide}>
+                  <TouchableOpacity style={styles.slide}>
                         <Image
                         key={index}
                         source={item.image}
-                        resizeMode={'contain'}
-                        style={{width:'100%',height:'100%'}}
+                        resizeMode={'cover'}
+                        style={{width:Width,height:'100%'}}
                         />
-                  </View>
+                  </TouchableOpacity>
             </View>
         );
     };
@@ -43,12 +45,13 @@ export default class MainSlide extends React.Component {
         <View style={{ flex: 1, flexDirection:'row', justifyContent: 'center', }}>
             <Carousel
                 loop={true}
+                autoplay={true}
                 layout={"default"}
                 ref={ref => this.carousel = ref}
                 data={this.state.MainItems}
                 renderItem={this._renderItem}
-                sliderWidth={350}
-                itemWidth={350}
+                sliderWidth={Width}
+                itemWidth={Width}
             />
         </View>
         );
