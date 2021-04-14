@@ -126,8 +126,8 @@ function PrdItem({item: renderItems}){
             <Image source={fav === 'off' ? require('../images/heart_no.png') : require('../images/heart.png') } />
           </TouchableWithoutFeedback>
         </View>
-        <Text style={{fontWeight:'bold',color:'#333'}}>즉시구매 <Text style={{fontWeight:'normal',color:'#555'}}>{renderItems.price}</Text></Text>
-        <Text style={{fontWeight:'bold',color:'#333'}}>견적 마감 <Text style={{fontWeight:'normal',color:'#555'}}>{renderItems.date}</Text></Text>
+        <Text style={{fontWeight:'bold',color:'#333'}}>즉시구매 <Text style={{fontWeight:'normal',color:'#555'}}>{renderItems.price}원</Text></Text>
+        <Text style={{fontWeight:'bold',color:'#333'}}>견적 마감 <Text style={{fontWeight:'normal',color:'#555'}}>{renderItems.date}일 전</Text></Text>
         <View style={{flexDirection: 'row',flexWrap:'wrap',marginTop:10,width:HashWidth}}>
             <Text style={styles.hashtag}>#메종마르지엘라</Text>
             <Text style={styles.hashtag}>#클러치</Text>

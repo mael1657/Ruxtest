@@ -18,6 +18,8 @@ import EstCheck from '../screen/EstCheck';
 import PurchaseOrder from '../screen/PurchaseOrder';
 import ChatDetail from '../screen/ChatDetail';
 import Review, { ReviewWrite, ReviewComplete, ReviewList,Rv_Detail } from '../screen/review';
+import FavoriteList from '../screen/favoritelist';
+import DeliveryCheck from '../screen/deliverycheck';
 
 const Stack = createStackNavigator();
 
@@ -75,6 +77,10 @@ export const MypageStack = () => {
     return(
         <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name="Mypage" component={MypageScreen}/>
+            <Stack.Screen name="FavoriteList" component={FavoriteList}/>
+            <Stack.Screen name="PrdDetail" component={PrdDetail}/>
+            <Stack.Screen name="DeliveryCheck" component={DeliveryCheck}/>
+
         </Stack.Navigator>
     );
 };
@@ -93,7 +99,7 @@ export const PrdStack = ({navigation}) => {
         }}
       >
         <Stack.Screen name="PrdList" component={PrdList}/>
-        <Stack.Screen name="PrdDetail" component={PrdDetail} options={{title:'상품 정보'}}/>
+        <Stack.Screen name="PrdDetail" component={PrdDetail}/>
         <Stack.Screen name="Bidding" component={Bidding}/>
         <Stack.Screen name="BidFinish" component={BidFinish}/>
         <Stack.Screen name="PurchaseOrder" component={PurchaseOrder}/>

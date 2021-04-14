@@ -386,5 +386,49 @@ export const ReviewHeader = ({title}) => {
   );
 };
 
+export const FavoriteHeader = ({title}) => {
+  return(
+    <View style={styles.header}>
+      <View style={styles.header01}>
+            <TouchableOpacity>
+                <Image
+                style={{width:120,height:60,resizeMode:'contain',}}
+                source={require('../images/logo01.png')}
+                />
+            </TouchableOpacity>
+            <View style={{width:70,height:50,justifyContent:'space-between',flexDirection:'row',paddingTop:10,}}>
+                <TouchableOpacity style={{width:30,height:30}}>
+                    <Image
+                    style={{width:30,height:30,resizeMode:'contain'}}
+                    source={require('../images/img_hd01.png')}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity style={{width:30,height:30}}>
+                    <Image
+                    style={{width:30,height:30,resizeMode:'contain'}}
+                    source={require('../images/img_hd02.png')}
+                    />
+                </TouchableOpacity>
+            </View>
+        </View>
+        <View style={{flexDirection:'row',justifyContent: 'center', alignItems:'center',backgroundColor: '#fff',height:62}}>
+          <Text style={{fontSize:18,fontWeight:'bold',}}>{title}</Text>
+        </View>
+        <View style={{
+          paddingHorizontal:20,paddingBottom:10,
+        }}>
+          <View style={{width:'100%',borderWidth:1,borderColor:'#eee',borderRadius:8,height:35,flexDirection: 'row',justifyContent: 'space-between',alignItems: 'center',paddingHorizontal: 10}}>
+            <TextInput
+              style={{height:35,paddingVertical: 0,justifyContent:'center',flex:1}}
+              placeholder="제품명을 입력해주세요."
+              placeholderTextColor="#C9C9C9"
+            />
+            <Icon name="search" size={20} color="#477DD1"/>
+          </View>
+        </View>
+    </View>
+  );
+};
+
 
 export default Header;

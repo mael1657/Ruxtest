@@ -28,11 +28,10 @@ export const BottomTabNavigator = () => {
                 style:{
                     height:65,
                     backgroundColor:'#fff',
-                    paddingTop:10,
                 }
             }}
             screenOptions={({route}) => ({
-                tabBarIcon: ({focused, color, size}) => {
+                tabBarIcon: ({focused}) => {
                      let iconName;
 
                      if (route.name === 'Home') {

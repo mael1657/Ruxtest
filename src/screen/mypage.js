@@ -8,7 +8,7 @@ import BotLine from '../components/bottomline';
 
 export const Width = Dimensions.get('window').width / 4 - 20
 
-const MypageScreen = () => { 
+const MypageScreen = ({navigation}) => { 
     return(
     <SafeAreaView style={{flex:1,backgroundColor:'#fff'}}>
         <MypageHeader/>
@@ -113,7 +113,10 @@ const MypageScreen = () => {
                     </TouchableOpacity>
                 </View>
                 <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',paddingVertical:10,}}>
-                    <TouchableOpacity style={{width:80,alignItems:'center'}}>
+                    <TouchableOpacity 
+                    style={{width:80,alignItems:'center'}}
+                    onPress={() => navigation.navigate('FavoriteList')}
+                    >
                         <View style={{width:27,height:30,justifyContent:'center',paddingBottom:5,}}>
                             <Image
                             style={{resizeMode:'cover',width:'auto'}} 
@@ -122,7 +125,10 @@ const MypageScreen = () => {
                         </View>
                         <Text style={{fontSize:13,color:'#444'}}>찜</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{width:80,alignItems:'center'}}>
+                    <TouchableOpacity 
+                    style={{width:80,alignItems:'center'}}
+                    onPress={() => navigation.navigate('DeliveryCheck')}
+                    >
                         <View style={{width:27,height:30,justifyContent:'center',paddingBottom:5,}}>
                             <Image
                             style={{resizeMode:'cover',width:'auto'}} 

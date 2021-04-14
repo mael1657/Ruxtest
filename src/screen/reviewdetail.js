@@ -72,9 +72,11 @@ const ReviewDetail = () => {
                         <ReviewSlide/>
                         <View style={{flex:1,paddingVertical:20,}}>
                             <ScrollView style={{}} horizontal={true}>
-                                {rvitems.map(rvitem => (
-                                    <ReviewItem rvitem={rvitem}/>
-                                ))}
+
+                                {rvitems.map((rvitem) => (
+                                    <ReviewItem key={rvitem.id} rvitem={rvitem}/>
+                                ))} 
+                                
                             </ScrollView>
                         </View>
                     </View>
@@ -100,7 +102,6 @@ function ReviewItem({rvitem}){
             marginRight:10,
             }}>
             <Image 
-            key={rvitem.id}
             source={rvitem.image}
             style={{resizeMode:'contain',width:Box}}/>
         </TouchableOpacity>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {SafeAreaView, View, Text, ScrollView, TouchableOpacity, TouchableWithoutFeedback, TextInput, Dimensions} from 'react-native';
 
 import Header, {ChatDetailHeader} from '../components/header';
@@ -7,6 +7,11 @@ import ChatCont, {ChatLeft, ChatRight, ChatDateLine, DealRequest, DealFalse, Dea
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const ChatDetail = ({navigation}) => {
+  useEffect(() => {
+    const parent = navigation.dangerouslyGetParent();
+    parent?.setOptions({ tabBarVisible: false });
+    return () => parent?.setOptions({ tabBarVisible: true });
+  }, []);
     return(
       <SafeAreaView style={{flex:1,backgroundColor: '#F5F5F5'}}>
         <ChatDetailHeader title="채팅"/>
@@ -37,7 +42,7 @@ const ChatDetail = ({navigation}) => {
           <TouchableOpacity style={{height:48,backgroundColor: '#EBEBEB',justifyContent: 'center',alignItems:'center'}}>
             <Text style={{fontSize:16,fontWeight:'bold'}}>견적서 확인</Text>
           </TouchableOpacity>
-          <View style={{backgroundColor: '#fff',flexDirection: 'row',justifyContent: 'space-between',paddingHorizontal: 20,paddingVertical: 12,}}>
+          <View style={{backgroundColor: '#fff',flexDirection: 'row',justifyContent: 'space-between',paddingHorizontal: 20,paddingVertical: 12}}>
             <TouchableWithoutFeedback>
               <View style={{backgroundColor:'#477DD1',width:42,height:42,borderRadius:21,justifyContent: 'center',alignItems: 'center',marginRight:10,}}>
                 <Icon name="camera-alt" size={24} color="#fff"/>

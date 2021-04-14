@@ -87,7 +87,6 @@ function CustomDrawerContent(props) {
                     <DrawerItem label="MEN" onPress={() => {}}/>
                     <DrawerItem label="KIDS" onPress={() => {}}/>
                     <DrawerItem label="UNISEX" onPress={() => {}}/> */}
-                    <DrawerItemList {...props}/>
                     <TouchableOpacity 
                         onPress={() => {}}
                         style={{
@@ -140,6 +139,7 @@ function CustomDrawerContent(props) {
                         <Text style={{fontSize:16,fontWeight:'bold'}}>UNISEX</Text>
                         <Icon name="ios-chevron-forward" size={20} color="#D8D8D8"/>
                     </TouchableOpacity>
+                    <DrawerItemList {...props}/>
                 </View>
             </DrawerContentScrollView>
             <TouchableOpacity

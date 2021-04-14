@@ -138,6 +138,28 @@ export const ReviewSelect = () => {
   );
 };
 
+export const DeliverySelect = () => {
+  const placeholder = {
+    label: '택배사',
+    value: null,
+    color:'#555',
+  }
+  return(
+      <View style={{borderColor:"#eee",borderWidth:1,flex:1,height:35,justifyContent: 'center',borderRadius:8}}>
+        <RNPickerSelect
+            itemStyle={{fontSize:10,}}
+            onValueChange={(value) => console.log(value)}
+            placeholder={placeholder}
+            items={[
+              { label: '카테고리1', value: '카테고리1' },
+              { label: '카테고리2', value: '카테고리2' },
+              { label: '카테고리3', value: '카테고리3' },
+            ]}
+        />
+      </View>
+  );
+};
+
 
 const styles = StyleSheet.create({
   selectItem:{

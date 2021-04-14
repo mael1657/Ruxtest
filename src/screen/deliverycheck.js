@@ -68,7 +68,7 @@ const DeliveryCheck = ({navigation}) => {
                         </View>
                         <DeliverySelect/>
                     </View>
-                    <View style={{paddingBottom:2 0,}}>
+                    <View style={{paddingBottom:20,}}>
                         <View style={{paddingBottom:10,}}>
                             <Text>운송장 번호</Text>
                         </View>
