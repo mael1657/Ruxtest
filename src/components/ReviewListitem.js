@@ -20,7 +20,9 @@ function ReviewItem({item: renderItems}) {
             overflow:'hidden',
             borderRadius:9,
             margin:10,
-        }}>
+        }}
+        onPress={() => navigation.navigate('ReviewDetail')}
+        >
             <Image
                 style={{width:'auto',justifyContent:'center',alignItems:'center',resizeMode:'cover'}}
                 source={renderItems.img}
@@ -59,7 +61,7 @@ function ReviewItem({item: renderItems}) {
     );
 };
 
-const Rv_List = () => {
+const Rv_List = ({navigation}) => {
     const renderItems=[
         {
             id:1,

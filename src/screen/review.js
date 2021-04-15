@@ -127,19 +127,13 @@ export const ReviewList = ({navigation}) => {
     return(
         <SafeAreaView style={{flex:1,backgroundColor:'#fff'}}>
             <ReviewHeader title="리뷰"/>
-            <View style={{flex:1,padding:10,paddingBottom:60,}}>
+            <View style={{flex:1,padding:10,paddingBottom:0}}>
                 <Rv_List/>
             </View>
-            <Footer/>
         </SafeAreaView> 
     );
 };
 
-export const Rv_Detail = ({navigation}) => {
-    return(
-        <ReviewDetail/>
-    );
-}
 
 const Review = ({navigation}) => {
     return(

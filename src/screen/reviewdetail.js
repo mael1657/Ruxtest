@@ -14,7 +14,7 @@ export const Box = Width / 4 - 18;
 export const Boxheight = Box * 0.7;
 
 
-const ReviewDetail = () => {
+const ReviewDetail = ({navigation}) => {
     const rvitems = [
         {
             id: 1,
@@ -82,7 +82,6 @@ const ReviewDetail = () => {
                     </View>
                 </View>
             </ScrollView>
-            <Footer/>
         </SafeAreaView>
     );
 };

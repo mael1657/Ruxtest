@@ -45,7 +45,7 @@ export default class MainSlide extends React.Component {
         <View style={{ flex: 1, flexDirection:'row', justifyContent: 'center', }}>
             <Carousel
                 loop={true}
-                autoplay={true}
+                autoplay={false}
                 layout={"default"}
                 ref={ref => this.carousel = ref}
                 data={this.state.MainItems}

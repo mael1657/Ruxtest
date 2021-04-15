@@ -2,15 +2,14 @@ import React, {useState } from 'react';
 import {SafeAreaView,View,FlatList,Text,Image,TouchableOpacity,Dimensions,TouchableWithoutFeedback} from 'react-native';
 
 import Header, {FavoriteHeader} from '../components/header';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
  
 export const Width = Dimensions.get('window').width;
 export const Height = Dimensions.get('window').height;
 const PADDING = 20;
 const Box = Width / 4;
-const HashWidth = (Width - Box) - (PADDING * 2) - 10;
 
 const FavoriteList = ({navigation}) => {
-    const [fav ,setFav] = useState('off');
     const [favitem, setFavitem] = useState([
         {
         id: 1 ,
@@ -68,7 +67,13 @@ const FavoriteList = ({navigation}) => {
         price: "200,000",
         date: "10",
         },
-    ])
+    ]);
+
+    const [fav ,setFav] = useState('false');
+    
+    function handleOnPress(){
+        setFav(!fav);
+    };
     return(
         <SafeAreaView style={{flex:1,backgroundColor:'#fff '}}>
             <FavoriteHeader title="찜 목록"/>
@@ -111,9 +116,12 @@ const FavoriteList = ({navigation}) => {
                             <Text style={{fontWeight:'bold',color:'#333'}}>견적 마감 <Text style={{fontWeight:'normal',color:'#555'}}>{item.date}일 전</Text></Text>
                         </View>
                         <View style={{alignSelf:'flex-end'}}>
-                            <TouchableWithoutFeedback>
-                                <Image source={fav === 'off' ? require('../images/heart_no.png') : require('../images/heart.png') } />
-                            </TouchableWithoutFeedback>
+                            <TouchableWithoutFeedback onPress={handleOnPress} key={item.index}>
+                                {/* <Image source={fav === 'false' ? require('../images/heart_no.png') : require('../images/heart.png') } /> */}
+                                {fav === 'false'
+                                ? <Icon name="heart-outline" size={30} color="#ccc"/>
+                                : <Icon name="heart" size={30} color="#477DD1"/>}
+                            </TouchableWithoutFeedback> 
                         </View>
                         </TouchableOpacity>
                     </View>

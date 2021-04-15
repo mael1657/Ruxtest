@@ -21,28 +21,7 @@ const Header = () => {
   return(
 
     <View style={styles.header}>
-        <View style={styles.header01}>
-            <TouchableOpacity>
-                <Image
-                style={{width:120,height:60,resizeMode:'contain',}}
-                source={require('../images/logo01.png')}
-                />
-            </TouchableOpacity>
-            <View style={{width:70,height:50,justifyContent:'space-between',flexDirection:'row',paddingTop:10,}}>
-                <TouchableOpacity style={{width:30,height:30}}>
-                    <Image
-                    style={{width:30,height:30,resizeMode:'contain'}}
-                    source={require('../images/img_hd01.png')}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity style={{width:30,height:30}}>
-                    <Image
-                    style={{width:30,height:30,resizeMode:'contain'}}
-                    source={require('../images/img_hd02.png')}
-                    />
-                </TouchableOpacity>
-            </View>
-        </View>
+        <DefaultHead/>
         <View style={styles.header02}>
             <TouchableOpacity 
             accessibilityRole="button"
@@ -74,22 +53,7 @@ const Header = () => {
 export const HeaderA = () => {
   return(
     <View style={styles.header}>
-        <View style={styles.header01}>
-            <TouchableOpacity>
-                <Image
-                style={{width:120,height:60,resizeMode:'contain',}}
-                source={require('../images/logo01.png')}
-                />
-            </TouchableOpacity>
-            <View style={{width:30,height:50,justifyContent:'space-between',flexDirection:'row',paddingTop:10,}}>
-                <TouchableOpacity style={{width:30,height:30}}>
-                    <Image
-                    style={{width:30,height:30,resizeMode:'contain'}}
-                    source={require('../images/img_hd02.png')}
-                    />
-                </TouchableOpacity>
-            </View>
-        </View>
+        <DefaultHead/>
         <View style={{flexDirection:'row', justifyContent: 'space-between',alignItems: 'center',paddingHorizontal: 15,paddingVertical: 10,}}>
               <Selector/>
             <View style={{flex:2, flexDirection: 'row',borderColor:'#eee',borderWidth:1,borderRadius:8,height:35,justifyContent:'space-between',alignItems: 'center',paddingHorizontal: 6,}}>
@@ -133,28 +97,7 @@ export const EstHeader = ({title}) => {
 
   return(
     <View style={styles.header , {paddingBottom:10,}}>
-        <View style={styles.header01}>
-            <TouchableOpacity>
-                <Image
-                style={{width:120,height:60,resizeMode:'contain',}}
-                source={require('../images/logo01.png')}
-                />
-            </TouchableOpacity>
-            <View style={{width:70,height:50,justifyContent:'space-between',flexDirection:'row',paddingTop:10,}}>
-                <TouchableOpacity style={{width:30,height:30}}>
-                    <Image
-                    style={{width:30,height:30,resizeMode:'contain'}}
-                    source={require('../images/img_hd01.png')}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity style={{width:30,height:30}}>
-                    <Image
-                    style={{width:30,height:30,resizeMode:'contain'}}
-                    source={require('../images/img_hd02.png')}
-                    />
-                </TouchableOpacity>
-            </View>
-        </View>
+        <DefaultHead/>
         <View style={{alignItems: 'center',justifyContent: 'center',height:50,}}>
           <Text style={{fontSize:18,fontWeight:'bold'}}>{title}</Text>
         </View>
@@ -198,28 +141,7 @@ export const ChatHeader =({title})=> {
 
   return(
     <View style={styles.header, {paddingBottom:10,}}>
-        <View style={styles.header01}>
-            <TouchableOpacity>
-                <Image
-                style={{width:120,height:60,resizeMode:'contain',}}
-                source={require('../images/logo01.png')}
-                />
-            </TouchableOpacity>
-            <View style={{width:70,height:50,justifyContent:'space-between',flexDirection:'row',paddingTop:10,}}>
-                <TouchableOpacity style={{width:30,height:30}}>
-                    <Image
-                    style={{width:30,height:30,resizeMode:'contain'}}
-                    source={require('../images/img_hd01.png')}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity style={{width:30,height:30}}>
-                    <Image
-                    style={{width:30,height:30,resizeMode:'contain'}}
-                    source={require('../images/img_hd02.png')}
-                    />
-                </TouchableOpacity>
-            </View>
-        </View>
+        <DefaultHead/>
         <View style={{alignItems: 'center',justifyContent: 'center',height:50,}}>
           <Text style={{fontSize:18,fontWeight:'bold'}}>{title}</Text>
         </View>
@@ -285,28 +207,7 @@ export const ChatDetailHeader = ({title}) => {
 export const MypageHeader = () => {
   return(
     <View style={styles.header}>
-        <View style={styles.header01}>
-            <TouchableOpacity>
-                <Image
-                style={{width:120,height:60,resizeMode:'contain',}}
-                source={require('../images/logo01.png')}
-                />
-            </TouchableOpacity>
-            <View style={{width:70,height:50,justifyContent:'space-between',flexDirection:'row',paddingTop:10,}}>
-                <TouchableOpacity style={{width:30,height:30}}>
-                    <Image
-                    style={{width:30,height:30,resizeMode:'contain'}}
-                    source={require('../images/img_hd01.png')}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity style={{width:30,height:30}}>
-                    <Image
-                    style={{width:30,height:30,resizeMode:'contain'}}
-                    source={require('../images/img_hd02.png')}
-                    />
-                </TouchableOpacity>
-            </View>
-        </View>
+        <DefaultHead/>
     </View>
   );
 };
@@ -315,28 +216,7 @@ export const ReviewHeader = ({title}) => {
   const [tab, setTab] = useState('buyer');
   return(
     <View style={styles.header}>
-        <View style={styles.header01}>
-            <TouchableOpacity>
-                <Image
-                style={{width:120,height:60,resizeMode:'contain',}}
-                source={require('../images/logo01.png')}
-                />
-            </TouchableOpacity>
-            <View style={{width:70,height:50,justifyContent:'space-between',flexDirection:'row',paddingTop:10,}}>
-                <TouchableOpacity style={{width:30,height:30}}>
-                    <Image
-                    style={{width:30,height:30,resizeMode:'contain'}}
-                    source={require('../images/img_hd01.png')}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity style={{width:30,height:30}}>
-                    <Image
-                    style={{width:30,height:30,resizeMode:'contain'}}
-                    source={require('../images/img_hd02.png')}
-                    />
-                </TouchableOpacity>
-            </View>
-        </View>
+        <DefaultHead/>
         <View style={{alignItems: 'center',justifyContent: 'center',height:50,}}>
           <Text style={{fontSize:18,fontWeight:'bold'}}>{title}</Text>
         </View>
@@ -389,28 +269,7 @@ export const ReviewHeader = ({title}) => {
 export const FavoriteHeader = ({title}) => {
   return(
     <View style={styles.header}>
-      <View style={styles.header01}>
-            <TouchableOpacity>
-                <Image
-                style={{width:120,height:60,resizeMode:'contain',}}
-                source={require('../images/logo01.png')}
-                />
-            </TouchableOpacity>
-            <View style={{width:70,height:50,justifyContent:'space-between',flexDirection:'row',paddingTop:10,}}>
-                <TouchableOpacity style={{width:30,height:30}}>
-                    <Image
-                    style={{width:30,height:30,resizeMode:'contain'}}
-                    source={require('../images/img_hd01.png')}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity style={{width:30,height:30}}>
-                    <Image
-                    style={{width:30,height:30,resizeMode:'contain'}}
-                    source={require('../images/img_hd02.png')}
-                    />
-                </TouchableOpacity>
-            </View>
-        </View>
+      <DefaultHead/>
         <View style={{flexDirection:'row',justifyContent: 'center', alignItems:'center',backgroundColor: '#fff',height:62}}>
           <Text style={{fontSize:18,fontWeight:'bold',}}>{title}</Text>
         </View>
@@ -427,6 +286,33 @@ export const FavoriteHeader = ({title}) => {
           </View>
         </View>
     </View>
+  );
+};
+
+export const DefaultHead = () => {
+  return(
+    <View style={styles.header01}>
+      <TouchableOpacity>
+          <Image
+          style={{width:120,height:60,resizeMode:'contain',}}
+          source={require('../images/logo01.png')}
+          />
+      </TouchableOpacity>
+      <View style={{width:70,height:50,justifyContent:'space-between',flexDirection:'row',paddingTop:10,}}>
+          <TouchableOpacity style={{width:30,height:30}}>
+              <Image
+              style={{width:30,height:30,resizeMode:'contain'}}
+              source={require('../images/img_hd01.png')}
+              />
+          </TouchableOpacity>
+          <TouchableOpacity style={{width:30,height:30}}>
+              <Image
+              style={{width:30,height:30,resizeMode:'contain'}}
+              source={require('../images/img_hd02.png')}
+              />
+          </TouchableOpacity>
+      </View>
+  </View>
   );
 };
 

@@ -19,7 +19,6 @@ const PrdList = ({navigation}) => {
         <View style={{paddingHorizontal:PADDING,flex:1,}}>
           <PrdListItems/>
         </View>
-        <Footer/>
       </View>
     );
 };

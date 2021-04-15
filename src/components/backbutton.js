@@ -11,7 +11,8 @@ const Backbutton = () => {
             style={{
                 position:'absolute',
                 top:12,right:0,
-            }}>
+            }}
+            >
             <Icon name="ios-close-sharp" size={20} color="#D8D8D8"/>
         </TouchableOpacity>
     );

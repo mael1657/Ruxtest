@@ -10,7 +10,7 @@ export const Width = Dimensions.get('window').width / 4 - 20
 
 const MypageScreen = ({navigation}) => { 
     return(
-    <SafeAreaView style={{flex:1,backgroundColor:'#fff'}}>
+    <SafeAreaView style={{flex:1,backgroundColor:'#fff'}}> 
         <MypageHeader/>
         <ScrollView>
             <View style={{padding:20,}}>
@@ -102,7 +102,10 @@ const MypageScreen = ({navigation}) => {
                         </View>
                         <Text style={{fontSize:13,color:'#444'}}>감정신청</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{width:80,alignItems:'center'}}>
+                    <TouchableOpacity 
+                    style={{width:80,alignItems:'center'}}
+                    onPress={() => navigation.navigate('ReviewList')}
+                    >
                         <View style={{width:27,height:30,justifyContent:'center',paddingBottom:5,}}>
                             <Image
                             style={{resizeMode:'cover',width:'auto'}} 
@@ -137,7 +140,10 @@ const MypageScreen = ({navigation}) => {
                         </View>
                         <Text style={{fontSize:13,color:'#444'}}>택배조회</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{width:80,alignItems:'center'}}>
+                    <TouchableOpacity 
+                    style={{width:80,alignItems:'center'}}
+                    onPress={() => navigation.navigate('CustomerCenter')}
+                    >
                         <View style={{width:27,height:30,justifyContent:'center',paddingBottom:5,}}>
                             <Image
                             style={{resizeMode:'cover',width:'auto'}} 
@@ -146,7 +152,10 @@ const MypageScreen = ({navigation}) => {
                         </View>
                         <Text style={{fontSize:13,color:'#444'}}>고객센터</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{width:80,alignItems:'center'}}>
+                    <TouchableOpacity 
+                    style={{width:80,alignItems:'center'}}
+                    onPress={() => navigation.navigate('Setting')}
+                    >
                         <View style={{width:27,height:30,justifyContent:'center',paddingBottom:5,}}>
                             <Image
                             style={{resizeMode:'cover',width:'auto'}} 

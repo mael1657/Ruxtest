@@ -124,7 +124,6 @@ const PurchaseOrder = (props, {navigation}) => {
           </View>
         </View>
       </ScrollView>
-      <Footer/>
     </SafeAreaView>
   );
 };
