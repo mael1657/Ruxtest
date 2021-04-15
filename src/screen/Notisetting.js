@@ -41,7 +41,6 @@ const NotiSetting = ({navigation}) => {
 };
 
 
-
 const styles = StyleSheet.create({
     item:{
         backgroundColor:'#F8F8F8',

@@ -41,7 +41,6 @@ const Bidding = ({navigation}) => {
           </View>
         </View>
       </View>
-      <Footer/>
     </SafeAreaView>
   )
 }

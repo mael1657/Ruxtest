@@ -23,7 +23,6 @@ const BidFinish = ({navigation}) => {
           <Text style={{fontSize:16,fontWeight:'bold',color:'#fff',}}>상품 더보기</Text>
         </TouchableOpacity>
       </View>
-      <Footer/>
     </SafeAreaView>
   )
 }

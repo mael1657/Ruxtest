@@ -33,6 +33,9 @@ const DrawerNavigator = () => {
         <Drawer.Navigator 
         drawerContent={props => <CustomDrawerContent {...props}/>}
         drawerStyle={{width:'80%'}}
+        screenOptions={{
+            swipeEnabled:false,
+        }}
         >
             <Drawer.Screen name="Home" component={BottomTabNavigator}/>
         </Drawer.Navigator>
