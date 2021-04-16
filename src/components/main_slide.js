@@ -27,13 +27,18 @@ export default class MainSlide extends React.Component {
 
     _renderItem = ({item, index}) => {
         return(
-            <View style={styles.wrapper}>
-                  <TouchableOpacity style={styles.slide}>
+            <View style={{marginBottom:15,height:254,}}>
+                  <TouchableOpacity 
+                  style={{
+                    flex:1,
+                    justifyContent: 'flex-start',
+                    alignItems: 'flex-start',
+                  }}>
                         <Image
                         key={index}
                         source={item.image}
-                        resizeMode={'cover'}
-                        style={{width:Width,height:'100%'}}
+                        resizeMode={'contain'}
+                        style={{width:'100%'}}
                         />
                   </TouchableOpacity>
             </View>

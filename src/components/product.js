@@ -13,11 +13,11 @@ const Product = () => {
         />
       </View>
       <View>
-        <Text style={{fontSize:16,fontWeight:'bold',paddingBottom:10,}}>MAISON MARGIELA</Text>
-        <Text style={{fontSize:13,fontWeight:'bold'}}>입찰 기간</Text>
+        <Text style={{fontSize:16,lineHeight:20,fontFamily:'NotoSansKR-Bold',paddingBottom:10,}}>MAISON MARGIELA</Text>
+        <Text style={{fontSize:13,lineHeight:16,fontFamily:'NotoSansKR-Medium'}}>입찰 기간</Text>
         <View style={{flexDirection: 'row'}}>
-          <Text style={{fontSize:13,color:'#555',paddingRight:4,}}>~ 2021. 01. 30 </Text>
-          <Text style={{fontSize:10,lineHeight: 16,color:'#fff',backgroundColor:'#477DD1',paddingHorizontal:8,borderRadius:8,}}>D-10</Text>
+          <Text style={{fontSize:13,lineHeight:16,color:'#555',paddingRight:4,fontFamily:'NotoSansKR-Regular'}}>~ 2021. 01. 30 </Text>
+          <Text style={{fontSize:10,lineHeight:16,color:'#fff',backgroundColor:'#477DD1',paddingHorizontal:8,borderRadius:8,fontFamily:'NotoSansKR-Regular'}}>D-10</Text>
         </View>
       </View>
     </View>

@@ -40,7 +40,7 @@ const ChatDetail = ({navigation}) => {
             </View>
           </ScrollView>
           <TouchableOpacity style={{height:48,backgroundColor: '#EBEBEB',justifyContent: 'center',alignItems:'center'}}>
-            <Text style={{fontSize:16,fontWeight:'bold'}}>견적서 확인</Text>
+            <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold'}}>견적서 확인</Text>
           </TouchableOpacity>
           <View style={{backgroundColor: '#fff',flexDirection: 'row',justifyContent: 'space-between',paddingHorizontal: 20,paddingVertical: 12}}>
             <TouchableWithoutFeedback>
@@ -51,10 +51,10 @@ const ChatDetail = ({navigation}) => {
             <View style={{flex:1,flexDirection:'row',borderWidth:1,borderColor:'#eee',borderRadius:8,height:42,alignItems: 'center',justifyContent: 'space-between',}}>
               <TextInput
                 placeholder="메시지를 입력하세요"
-                style={{height:42,flex:1}}
+                style={{height:42,flex:1,fontFamily:'NotoSansKR-Regular',padding:0,paddingHorizontal:10,}}
               />
               <TouchableOpacity style={{backgroundColor:'#477DD1',height:42,width:54,borderRadius:8,justifyContent: 'center',alignItems: 'center',}}>
-                <Text style={{color:'#fff',fontSize:13,fontWeight:'bold'}}>전송</Text>
+                <Text style={{color:'#fff',fontSize:13,fontFamily:'NotoSansKR-Medium'}}>전송</Text>
               </TouchableOpacity>
             </View>
           </View>

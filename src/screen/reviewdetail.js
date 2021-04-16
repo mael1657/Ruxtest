@@ -51,8 +51,8 @@ const ReviewDetail = ({navigation}) => {
                     borderBottomColor:'#eee',
                     paddingBottom:10,
                 }}>
-                    <Text style={{fontSize:16,fontWeight:'bold'}}>별점</Text>
-                    <Text style={{fontSize:13,color:'#B7B7B7'}}><Text style={{color:'#477DD1'}}>4.0</Text>/5</Text>
+                    <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>별점</Text>
+                    <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:15,color:'#B7B7B7'}}><Text style={{fontFamily:'NotoSansKR-Regular',lineHeight:15,color:'#477DD1'}}>4.0</Text>/5</Text>
                 </View>
                 <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',paddingTop:10,paddingBottom:20,}}>
                         <Icon name="star" size={40} color="#477DD1"/>
@@ -110,10 +110,13 @@ function ReviewItem({rvitem}){
 const styles = StyleSheet.create({
     textbox:{
         paddingVertical:7,
+        fontSize:14,
+        fontFamily:'NotoSansKR-Regular',
     },
     title:{
         fontSize:16,
-        fontWeight:'bold',
+        fontFamily:'NotoSansKR-Bold',
+        lineHeight:20,
         paddingBottom:20,
     }
 })

@@ -55,7 +55,7 @@ const KeywordSet = ({navigation}) => {
         <SafeAreaView style={{flex:1,backgroundColor:'#fff'}}>
             <MypageHeader/>
             <View style={{flex:1, padding:20,}}>
-                <Text style={{fontSize:16,fontWeight:'bold'}}>키워드 알림 설정</Text>
+                <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>키워드 알림 설정</Text>
                 <View style={{width:102,height:35,borderRadius:8,backgroundColor:'#DEDEDE',flexDirection:'row',justifyContent:'center',alignItems:'center',marginVertical:10,}}>
                     <TouchableOpacity 
                     onPress ={() => setState('on')}
@@ -70,7 +70,8 @@ const KeywordSet = ({navigation}) => {
                         <Text 
                         style={{
                             color: state === 'on' ? '#fff' : '#999999',
-                            fontWeight:'bold',
+                            fontFamily:'NotoSansKR-Bold',
+                            lineHeight:20,
                         }}>ON</Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
@@ -86,7 +87,8 @@ const KeywordSet = ({navigation}) => {
                         <Text 
                         style={{
                             color: state === 'off' ? '#fff' : '#999999',
-                            fontWeight:'bold',
+                            fontFamily:'NotoSansKR-Bold',
+                            lineHeight:20,
                         }}>OFF</Text>
                     </TouchableOpacity>
                 </View>
@@ -101,9 +103,9 @@ const KeywordSet = ({navigation}) => {
                         paddingHorizontal:10,
                         flex:1,
                         }}>
-                        <Text style={{fontSize:20,color:'#707070'}}>#</Text>
+                        <Text style={{fontSize:20,color:'#707070',fontFamily:'NotoSansKR-Regular',lineHeight:26,}}>#</Text>
                         <TextInput
-                            style={{padding:0,paddingLeft:7,}}
+                            style={{padding:0,paddingLeft:7,fontFamily:'NotoSansKR-Regular',flex:1,height:45}}
                             placeholder="키워드를 입력해주세요."
                             placeholderTextColor="#C9C9C9"
                         />
@@ -117,7 +119,7 @@ const KeywordSet = ({navigation}) => {
                         alignItems:'center',
                         marginLeft:5,
                     }}>
-                        <Text style={{fontSize:13,fontWeight:'bold',color:'#fff'}}>키워드 추가</Text>
+                        <Text style={{fontSize:13,fontFamily:'NotoSansKR-Bold',color:'#fff'}}>키워드 추가</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={{
@@ -126,8 +128,8 @@ const KeywordSet = ({navigation}) => {
                     flexWrap:'wrap', 
                 }}>
                    {keyitems.map((keyitem) => (
-                                    <Array key={keyitem.id} keyitem={keyitem}/>
-                                ))} 
+                        <Array key={keyitem.id} keyitem={keyitem}/>
+                    ))} 
                 </View>
             </View>
         </SafeAreaView>
@@ -146,7 +148,7 @@ function Array({keyitem}){
             borderRadius:8,
             marginBottom:5,marginRight:5,
         }}>
-            <Text style={{fontSize:13,color:'#707070',paddingRight:5}}># {keyitem.title}</Text>
+            <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:16,color:'#707070',paddingRight:5}}># {keyitem.title}</Text>
             <TouchableOpacity>
                   <Icon name="close" size={13} color="#707070" />
             </TouchableOpacity>

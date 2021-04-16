@@ -27,9 +27,9 @@ const PrdDetail = ({navigation}) => {
           </View>
         </View>
         <View style={{flex:1,justifyContent: 'center',alignItems: 'center',marginBottom:10,marginTop:65,}}>
-          <Text style={{fontSize:13,fontWeight:'normal',}}>지방시</Text>
-          <Text style={{fontSize:24,fontWeight:'bold',paddingBottom:10,}}>MAISON MARGIEA</Text>
-          <Text style={{backgroundColor:'#477DD1',color:'#fff',fontWeight:'bold',paddingHorizontal: 20,paddingVertical: 6,borderRadius:30,}}>~ 2021. 01. 30 (D-5)</Text>
+          <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:15,}}>지방시</Text>
+          <Text style={{fontSize:24,fontFamily:'NotoSansKR-Bold',paddingBottom:10,lineHeight:35,}}>MAISON MARGIEA</Text>
+          <Text style={{backgroundColor:'#477DD1',color:'#fff',fontFamily:'NotoSansKR-Bold',lineHeight:18,paddingHorizontal: 20,paddingVertical: 6,borderRadius:30,}}>~ 2021. 01. 30 (D-5)</Text>
         </View>
         <View style={{width:'100%',flexDirection:'row',justifyContent: 'space-between',alignItems: 'center',paddingHorizontal: PADDING,marginBottom:10,}}>
           <View style={{flexDirection: 'row',justifyContent: 'space-between',alignItems: 'center',}}>
@@ -41,12 +41,12 @@ const PrdDetail = ({navigation}) => {
             </TouchableWithoutFeedback>
           </View>
           <View style={{alignItems: 'flex-end'}}>
-            <Text style={{fontSize:13,color:'#000'}}>즉시구매가</Text>
-            <Text style={{fontSize:24,fontWeight:'bold',color:'#000',}}>420,000원</Text>
+            <Text style={{fontSize:13,color:'#000',fontFamily:'NotoSansKR-Medium',lineHeight:15}}>즉시구매가</Text>
+            <Text style={{fontSize:24,fontFamily:'NotoSansKR-Bold',color:'#000',lineHeight:28}}>420,000원</Text>
           </View>
         </View>
         <View style={{borderWidth:1,borderColor:'#eee',borderRadius:10,marginHorizontal: 20,marginBottom:10,}}>
-          <Text style={{padding:10,borderBottomWidth:1,borderBottomColor:'#eee',fontSize:16,fontWeight:'bold',}}>기본 정보</Text>
+          <Text style={{padding:10,borderBottomWidth:1,borderBottomColor:'#eee',fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>기본 정보</Text>
           <View style={{padding:10,}}>
             <Text style={styles.title}>카테고리</Text>
             <View style={{flexDirection: 'row',flexWrap: 'wrap',paddingBottom:5,}}>
@@ -106,7 +106,7 @@ const PrdDetail = ({navigation}) => {
               source={require('../images/info_item01.jpg')}
             />
             <View style={{position: 'absolute',top:0,left:0,backgroundColor:'#eee',width:80,height:30,justifyContent: 'center',alignItems: 'center',}}>
-              <Text style={{color:'#333'}}>대표이미지</Text>
+              <Text style={{color:'#333',fontSize:13,lineHeight:16,fontFamily:'NotoSansKR-Medium'}}>대표이미지</Text>
             </View>
           </View>
           <View style={{borderColor: '#eee',borderWidth:1,marginBottom:10,}}>
@@ -114,7 +114,7 @@ const PrdDetail = ({navigation}) => {
               source={require('../images/info_item02.jpg')}
             />
             <View style={{position: 'absolute',top:0,left:0,backgroundColor:'#eee',width:80,height:30,justifyContent: 'center',alignItems: 'center',}}>
-              <Text style={{color:'#333'}}>전면</Text>
+              <Text style={{color:'#333',fontSize:13,lineHeight:16,fontFamily:'NotoSansKR-Medium'}}>전면</Text>
             </View>
           </View>
           <View style={{borderColor: '#eee',borderWidth:1,marginBottom:10,}}>
@@ -122,7 +122,7 @@ const PrdDetail = ({navigation}) => {
               source={require('../images/info_item03.jpg')}
             />
             <View style={{position: 'absolute',top:0,left:0,backgroundColor:'#eee',width:80,height:30,justifyContent: 'center',alignItems: 'center',}}>
-              <Text style={{color:'#333'}}>후면</Text>
+              <Text style={{color:'#333',fontSize:13,lineHeight:16,fontFamily:'NotoSansKR-Medium'}}>후면</Text>
             </View>
           </View>
           <View style={{borderColor: '#eee',borderWidth:1,marginBottom:10,}}>
@@ -130,7 +130,7 @@ const PrdDetail = ({navigation}) => {
               source={require('../images/info_item04.jpg')}
             />
             <View style={{position: 'absolute',top:0,left:0,backgroundColor:'#eee',width:80,height:30,justifyContent: 'center',alignItems: 'center',}}>
-              <Text style={{color:'#333'}}>사용감, 하자</Text>
+              <Text style={{color:'#333',fontSize:13,lineHeight:16,fontFamily:'NotoSansKR-Medium'}}>사용감, 하자</Text>
             </View>
           </View>
         </View>
@@ -139,12 +139,12 @@ const PrdDetail = ({navigation}) => {
           <TouchableOpacity
               onPress={() => navigation.navigate('PurchaseOrder')}
               style={{width:Width,height:57,justifyContent: 'center',alignItems: 'center',borderRightWidth:1, borderRightColor:'#ddd'}}>
-              <Text style={{fontSize:18,fontWeight:'bold'}}>즉시 구매</Text>
+              <Text style={{fontSize:18,fontFamily:'NotoSansKR-Bold'}}>즉시 구매</Text>
           </TouchableOpacity>
           <TouchableOpacity
               onPress={() => navigation.navigate('Bidding')}
               style={{width:Width,height:57,justifyContent: 'center',alignItems: 'center',}}>
-              <Text style={{fontSize:18,fontWeight:'bold'}}>입찰하기</Text>
+              <Text style={{fontSize:18,fontFamily:'NotoSansKR-Bold'}}>입찰하기</Text>
           </TouchableOpacity>
       </View>
     </View>
@@ -154,12 +154,15 @@ const PrdDetail = ({navigation}) => {
 const styles = StyleSheet.create({
   title:{
     fontSize:13,
-    fontWeight: 'bold',
+    fontFamily:'NotoSansKR-Bold',
+    lineHeight:18,
     width:80,
     paddingBottom:6,
   },
   cont:{
-    fontWeight: 'normal',
+    fontFamily:'NotoSansKR-Regular',
+    fontSize:13,
+    lineHeight:18,
   },
   contWrap:{
     flexDirection: 'row',
@@ -168,6 +171,8 @@ const styles = StyleSheet.create({
   hashtag:{
     backgroundColor: '#F8F8F8',
     fontSize:12,
+    fontFamily:'NotoSansKR-Regular',
+    lineHeight:16,
     paddingVertical:3,
     paddingHorizontal: 6,
     borderRadius: 7,

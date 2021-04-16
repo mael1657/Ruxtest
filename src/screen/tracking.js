@@ -49,7 +49,7 @@ const Tracking = () => {
         <SafeAreaView style={{flex:1,backgroundColor:"#fff"}}>
           <DetailHead title="운송장 조회"/>
             <ScrollView style={{}}>
-              <View style={{padding:20,  }}>
+              <View style={{padding:20, }}>
                 <Product/>
               </View>
               <BotLine/>

@@ -8,6 +8,9 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import DrawerNavigator from './src/navigation/DrawerNavigator';
 import {BottomTabNavigator} from './src/navigation/TabNavigator';
+import {
+  setCustomText,
+} from 'react-native-global-props';
 
 const App = () => {
   return (

@@ -88,7 +88,7 @@ const FavoriteList = ({navigation}) => {
                             Width:Width,
                             flexDirection: 'row',
                             justifyContent:'space-between',
-                            alignItems: 'flex-start',
+                            alignItems: 'center',
                             borderBottomWidth: 1,
                             borderBottomColor: '#eee',
                             paddingBottom:10,
@@ -102,18 +102,19 @@ const FavoriteList = ({navigation}) => {
                             source={item.image}/>
                         </View>
                         <View style={{flexGrow:1,}}>
-                            <View style={{flexDirection: 'row',justifyContent: 'space-between',alignItems: 'center',marginBottom:10,}}>
+                            <View style={{flexDirection: 'row',justifyContent: 'space-between',alignItems: 'center',marginBottom:4,}}>
                                 <Text 
                                 style={{
                                     fontSize:16,
-                                    fontWeight: 'bold',
+                                    fontFamily:'NotoSansKR-Bold',
+                                    lineHeight:20,
                                     flex:1,
                                 }}
                                 numberOfLines={1}
                                 >{item.name}</Text>
                             </View>
-                            <Text style={{fontWeight:'bold',color:'#333'}} numberOfLines={1}>즉시구매 <Text style={{fontWeight:'normal',color:'#555'}}>{item.price}원</Text></Text>
-                            <Text style={{fontWeight:'bold',color:'#333'}}>견적 마감 <Text style={{fontWeight:'normal',color:'#555'}}>{item.date}일 전</Text></Text>
+                            <Text style={{fontFamily:'NotoSansKR-Medium',color:'#333',fontSize:13,lineHeight:20}} numberOfLines={1}>즉시구매 <Text style={{fontWeight:'normal',color:'#555'}}>{item.price}원</Text></Text>
+                            <Text style={{fontFamily:'NotoSansKR-Medium',color:'#333',fontSize:13,lineHeight:20}}>견적 마감 <Text style={{fontWeight:'normal',color:'#555'}}>{item.date}일 전</Text></Text>
                         </View>
                         <View style={{alignSelf:'flex-end'}}>
                             <TouchableWithoutFeedback onPress={handleOnPress} key={item.index}>

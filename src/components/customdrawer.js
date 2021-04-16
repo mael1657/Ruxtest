@@ -28,7 +28,7 @@ const CustomDrawer = (props, {navigation}) => {
                             alignItems:'center',
                             marginRight:10,
                         }}>
-                            <Text style={{fontSize:13,color:'#fff'}}>로그인</Text>
+                            <Text style={{fontSize:13,color:'#fff',fontFamily:'NotoSansKR-Regular',lineHeight:20}}>로그인</Text>
                         </TouchableOpacity>
                         <TouchableOpacity 
                         style={{
@@ -42,7 +42,7 @@ const CustomDrawer = (props, {navigation}) => {
                             alignItems:'center',
                             marginRight:10,
                         }}>
-                            <Text style={{fontSize:13,color:'#477DD1'}}>회원가입</Text>
+                            <Text style={{fontSize:13,color:'#477DD1',fontFamily:'NotoSansKR-Regular',lineHeight:20}}>회원가입</Text>
                         </TouchableOpacity>
                         <Backbutton onPress={() => props.navigation.closeDrawer()}/>
                     </View>
@@ -66,7 +66,7 @@ const CustomDrawer = (props, {navigation}) => {
                             borderBottomWidth:1,
                             borderBottomColor:'#eee',
                         }}>
-                        <Text style={{fontSize:16,fontWeight:'bold'}}>WOMEN</Text>
+                        <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>WOMEN</Text>
                         <Icon name="ios-chevron-forward" size={20} color="#D8D8D8"/>
                     </TouchableOpacity>
                     <TouchableOpacity 
@@ -79,7 +79,7 @@ const CustomDrawer = (props, {navigation}) => {
                             borderBottomWidth:1,
                             borderBottomColor:'#eee',
                         }}>
-                        <Text style={{fontSize:16,fontWeight:'bold'}}>MEN</Text>
+                        <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>MEN</Text>
                         <Icon name="ios-chevron-forward" size={20} color="#D8D8D8"/>
                     </TouchableOpacity>
                     <TouchableOpacity 
@@ -92,7 +92,7 @@ const CustomDrawer = (props, {navigation}) => {
                             borderBottomWidth:1,
                             borderBottomColor:'#eee',
                         }}>
-                        <Text style={{fontSize:16,fontWeight:'bold'}}>KIDS</Text>
+                        <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>KIDS</Text>
                         <Icon name="ios-chevron-forward" size={20} color="#D8D8D8"/>
                     </TouchableOpacity>
                     <TouchableOpacity 
@@ -105,7 +105,7 @@ const CustomDrawer = (props, {navigation}) => {
                             borderBottomWidth:1,
                             borderBottomColor:'#eee',
                         }}>
-                        <Text style={{fontSize:16,fontWeight:'bold'}}>UNISEX</Text>
+                        <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>UNISEX</Text>
                         <Icon name="ios-chevron-forward" size={20} color="#D8D8D8"/>
                     </TouchableOpacity>
                 </View>
@@ -118,7 +118,7 @@ const CustomDrawer = (props, {navigation}) => {
                     justifyContent:'center',
                     alignItems:'center',
                 }}>
-                <Text style={{color:'#fff'}}>찜 목록 보러가기</Text>
+                <Text style={{color:'#fff',fontFamily:'NotoSansKR-Regular',lineHeight:20,fontSize:14,}}>찜 목록 보러가기</Text>
                 <View style={{width:24,height:24,backgroundColor:'#fff',justifyContent:'center',alignItems:'center',borderRadius:24,marginLeft:10,}}>
                     <Text style={{color:'#477DD1'}}>8</Text>
                 </View>

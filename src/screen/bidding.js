@@ -17,26 +17,26 @@ const Bidding = ({navigation}) => {
           <Product/>
         </View>
         <View style={{borderWidth:1,borderColor:'#eee',borderRadius:10}}>
-          <Text style={{padding:12,borderBottomWidth:1,borderBottomColor:'#eee',fontSize:16,fontWeight:'bold'}}>입찰정보</Text>
+          <Text style={{padding:12,borderBottomWidth:1,borderBottomColor:'#eee',fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>입찰정보</Text>
           <View style={{padding:12,}}>
-            <Text style={{paddingBottom:6,fontSize:13}}>입찰금액</Text>
+            <Text style={{paddingBottom:6,fontSize:13,fontFamily:'NotoSansKR-Medium',lineHeight:16,}}>입찰금액</Text>
             <TextInput
-              style={{borderWidth:1,borderColor:'#eee',borderRadius:6,lineHeight: 20,height:30,padding:0,paddingHorizontal:10,marginBottom:12,}}
+              style={{borderWidth:1,borderColor:'#eee',borderRadius:6,lineHeight:20,height:30,paddingVertical:0,paddingHorizontal:10,marginBottom:12,fontFamily:'NotoSansKR-Medium',fontSize:12,}}
               placeholder="210,000원"
               placeholderTextColor="#C9C9C9"
               keyboardType="numeric"
               />
-            <Text style={{paddingBottom:6,fontSize:13}}>거래유형</Text>
+            <Text style={{paddingBottom:6,fontSize:13,fontFamily:'NotoSansKR-Medium',lineHeight:16,}}>거래유형</Text>
             <DealType/>
           </View>
           <View style={{flexDirection: 'row',backgroundColor: '#477DD1',borderBottomLeftRadius:10,borderBottomRightRadius:10,}}>
             <TouchableOpacity style={{width:'50%',height:57,justifyContent: 'center',alignItems: 'center',borderRightWidth:1,borderRightColor:'#fff',}}>
-              <Text style={{color:'#fff',fontSize:16,fontWeight:'bold'}}>취소</Text>
+              <Text style={{color:'#fff',fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>취소</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={()=>navigation.navigate('BidFinish')}
               style={{width:'50%',height:57,justifyContent: 'center',alignItems: 'center',}}>
-              <Text style={{color:'#fff',fontSize:16,fontWeight:'bold'}}>입찰하기</Text>
+              <Text style={{color:'#fff',fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>입찰하기</Text>
             </TouchableOpacity>
           </View>
         </View>

@@ -16,11 +16,11 @@ const BidFinish = ({navigation}) => {
           <Product/>
         </View>
         <View style={{backgroundColor:"#F8F8F8",borderRadius:8,paddingHorizontal: 20,paddingVertical: 30,marginBottom:20,}}>
-          <Text style={{fontSize:13}}>210,000원 입찰이 완료되었습니다.</Text>
-          <Text style={{fontSize:13}}>자세한 내용은 내 견적 메뉴로 가셔서 확인할 수 있습니다.</Text>
+          <Text style={{fontSize:13,lineHeight:20,fontFamily:'NotoSansKR-Regular'}}>210,000원 입찰이 완료되었습니다.</Text>
+          <Text style={{fontSize:13,lineHeight:20,fontFamily:'NotoSansKR-Regular'}}>자세한 내용은 내 견적 메뉴로 가셔서 확인할 수 있습니다.</Text>
         </View>
         <TouchableOpacity style={{backgroundColor:'#477DD1',justifyContent: 'center',alignItems: 'center',height:57,borderRadius:8,}}>
-          <Text style={{fontSize:16,fontWeight:'bold',color:'#fff',}}>상품 더보기</Text>
+          <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold',color:'#fff',}}>상품 더보기</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

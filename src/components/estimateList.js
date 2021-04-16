@@ -21,19 +21,19 @@ function Est({item : items}) {
                         />
                     </View>
                     <Text
-                      style={{fontSize:18,fontWeight:'bold',alignSelf:'flex-start',width:'100%',paddingHorizontal:5}}
+                      style={{fontSize:18,fontFamily:'NotoSansKR-Bold',lineHeight:30,alignSelf:'flex-start',width:'100%',paddingHorizontal:5}}
                       numberOfLines={1}
                       >{items.name}</Text>
                     <View style={{flexDirection:'row',justifyContent:'space-between',width:'100%',paddingHorizontal:3,}}>
-                        <Text style={{fontSize:13,}}>내가 넣은 견적</Text>
+                        <Text style={{fontSize:13,fontFamily:'NotoSansKR-Medium',lineHeight:18}}>내가 넣은 견적</Text>
                         <Text
-                          style={{color:'#707070',fontSize:13,maxWidth:80}}
+                          style={{color:'#707070',fontSize:13,maxWidth:80,fontFamily:'NotoSansKR-Regular',lineHeight:18}}
                           numberOfLines={1}
                           >{items.price}원</Text>
                     </View>
                     <View style={{flexDirection:'row',justifyContent:'space-between',width:'100%',paddingHorizontal:3,}}>
-                        <Text style={{fontSize:13,}}>견적 마감</Text>
-                        <Text style={{color:'#707070',fontSize:13}}>{items.date}일 전</Text>
+                        <Text style={{fontSize:13,fontFamily:'NotoSansKR-Medium',lineHeight:18}}>견적 마감</Text>
+                        <Text style={{color:'#707070',fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:18}}>{items.date}일 전</Text>
                     </View>
               </TouchableOpacity>
     )

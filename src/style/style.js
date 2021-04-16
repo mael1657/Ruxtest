@@ -68,6 +68,8 @@ export default StyleSheet.create({
   reviewText: {
     paddingHorizontal:10,
     paddingVertical:5,
+    fontFamily:'NotoSansKR-Regular',
+    fontSize:13,
   },
   star: {
     marginRight:2,
@@ -81,6 +83,8 @@ export default StyleSheet.create({
   footText: {
     fontSize:13,
     color:'#999',
+    fontFamily:'NotoSansKR-Regular',
+    lineHeight:20,
   },
   bottomTabNav: {
     position:'absolute',

@@ -21,9 +21,10 @@ export const BottomTabNavigator = () => {
                 inactiveTintColor:'#999',
                 labelStyle:{
                     fontSize:13,
-                    fontWeight:'bold',
                     paddingBottom:5,
                     letterSpacing:-0.5,
+                    fontFamily:'NotoSansKR-Medium',
+                    lineHeight:15,
                 },
                 style:{
                     height:65,

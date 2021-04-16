@@ -11,7 +11,7 @@ export const BtnFull = ({title}) => {
             justifyContent:'center',
             alignItems:'center',
         }}>
-            <Text style={{color:'#fff',fontSize:16,fontWeight:'bold'}}>{title}</Text>
+            <Text style={{color:'#fff',fontSize:16,fontFamily:'NotoSansKR-Bold'}}>{title}</Text>
         </TouchableOpacity>
     );
 };

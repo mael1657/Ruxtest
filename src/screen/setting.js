@@ -9,42 +9,42 @@ const Setting = ({navigation}) => {
         <SafeAreaView style={{flex:1,backgroundColor:'#fff'}}>
             <MypageHeader/>
             <View style={{width:'100%',height:60,justifyContent:'center',paddingLeft:20,}}>
-                <Text style={{fontSize:16,fontWeight:'bold'}}>환경설정</Text>
+                <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold'}}>환경설정</Text>
             </View>
             <View style={{flex:1}}>
                 <TouchableOpacity 
                     style={styles.item}
                     onPress={() => navigation.navigate('Useredit')}
                     >
-                    <Text style={{fontSize:15,}}>회원 정보 수정</Text>
+                    <Text style={styles.text}>회원 정보 수정</Text>
                     <Icon name="chevron-forward" size={20} color="#AAAAAA"/>
                 </TouchableOpacity>
                 <TouchableOpacity 
                     style={styles.item}
                     onPress={() => navigation.navigate('Useredit')}
                     >
-                    <Text style={{fontSize:15,}}>판매자 전환 신청</Text>
+                    <Text style={styles.text}>판매자 전환 신청</Text>
                     <Icon name="chevron-forward" size={20} color="#AAAAAA"/>
                 </TouchableOpacity>
                 <TouchableOpacity 
                     style={styles.item}
                     onPress={() => navigation.navigate('Useredit')}
                     >
-                    <Text style={{fontSize:15,}}>사업자 회원 등록</Text>
+                    <Text style={styles.text}>사업자 회원 등록</Text>
                     <Icon name="chevron-forward" size={20} color="#AAAAAA"/>
                 </TouchableOpacity>
                 <TouchableOpacity 
                     style={styles.item}
                     onPress={() => navigation.navigate('NotiSetting')}
                     >
-                    <Text style={{fontSize:15,}}>알림 설정</Text>
+                    <Text style={styles.text}>알림 설정</Text>
                     <Icon name="chevron-forward" size={20} color="#AAAAAA"/>
                 </TouchableOpacity>
                 <TouchableOpacity 
                     style={styles.item}
                     onPress={() => navigation.navigate('Useredit')}
                     >
-                    <Text style={{fontSize:15,}}>회원탈퇴</Text>
+                    <Text style={styles.text}>회원탈퇴</Text>
                     <Icon name="chevron-forward" size={20} color="#AAAAAA"/>
                 </TouchableOpacity>
                 <TouchableOpacity 
@@ -60,7 +60,7 @@ const Setting = ({navigation}) => {
                     }}
                     onPress={() => navigation.navigate('Useredit')}
                     >
-                    <Text style={{fontSize:15,}}>로그아웃</Text>
+                    <Text style={styles.text}>로그아웃</Text>
                     <Icon name="chevron-forward" size={20} color="#AAAAAA"/>
                 </TouchableOpacity>
             </View>
@@ -80,6 +80,11 @@ const styles = StyleSheet.create({
         paddingHorizontal:20,
         borderBottomColor:'#eee',
         borderBottomWidth:1,
+    },
+    text: {
+        fontSize:15,
+        lineHeight:20,
+        fontFamily:'NotoSansKR-Regular',
     }
 })
 

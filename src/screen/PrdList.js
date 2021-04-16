@@ -120,13 +120,13 @@ function PrdItem({item: renderItems}){
       </View>
       <View style={{flexGrow:1,}}>
         <View style={{flexDirection: 'row',justifyContent: 'space-between',alignItems: 'center',marginBottom:10,}}>
-          <Text style={{fontSize:16,fontWeight: 'bold'}}>{renderItems.name}</Text>
+          <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>{renderItems.name}</Text>
           <TouchableWithoutFeedback>
             <Image source={fav === 'off' ? require('../images/heart_no.png') : require('../images/heart.png') } />
           </TouchableWithoutFeedback>
         </View>
-        <Text style={{fontWeight:'bold',color:'#333'}}>즉시구매 <Text style={{fontWeight:'normal',color:'#555'}}>{renderItems.price}원</Text></Text>
-        <Text style={{fontWeight:'bold',color:'#333'}}>견적 마감 <Text style={{fontWeight:'normal',color:'#555'}}>{renderItems.date}일 전</Text></Text>
+        <Text style={{fontFamily:'NotoSansKR-Medium',color:'#333',fontSize:13,lineHeight:15,paddingBottom:5,}}>즉시구매 <Text style={{fontFamily:'NotoSansKR-Regular',color:'#555'}}>{renderItems.price}원</Text></Text>
+        <Text style={{fontFamily:'NotoSansKR-Medium',color:'#333',fontSize:13,lineHeight:15}}>견적 마감 <Text style={{fontFamily:'NotoSansKR-Regular',color:'#555'}}>{renderItems.date}일 전</Text></Text>
         <View style={{flexDirection: 'row',flexWrap:'wrap',marginTop:10,width:HashWidth}}>
             <Text style={styles.hashtag}>#메종마르지엘라</Text>
             <Text style={styles.hashtag}>#클러치</Text>
@@ -146,7 +146,9 @@ function PrdItem({item: renderItems}){
 const styles = StyleSheet.create({
   hashtag:{
     backgroundColor: '#F8F8F8',
-    fontSize:12,
+    fontSize:10,
+    fontFamily:'NotoSansKR-Medium',
+    lineHeight:15,
     paddingVertical:3,
     paddingHorizontal: 6,
     borderRadius: 7,

@@ -56,25 +56,25 @@ const DeliveryCheck = ({navigation}) => {
                     justifyContent:'center',
                     alignItems:'center',
                 }}>
-                    <Text style={{fontSize:13,color:"#444"}}>택배사와 운송장 번호를 이용하여 배송 조회를 하실 수 있습니다.</Text>
+                    <Text style={{fontSize:13,color:"#444",fontFamily:'NotoSansKR-Regular'}}>택배사와 운송장 번호를 이용하여 배송 조회를 하실 수 있습니다.</Text>
                 </View>
                 <View style={{padding:20,}}>
                     <View style={{paddingBottom:10,}}>
-                        <Text style={{fontSize:16,fontWeight:'bold'}}>택배사 정보</Text>
+                        <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>택배사 정보</Text>
                     </View>
                     <View style={{paddingBottom:10,}}>
                         <View style={{paddingBottom:10,}}>
-                            <Text>택배사</Text>
+                            <Text style={{fontSize:13,fontFamily:'NotoSansKR-Medium',lineHeight:20,}}>택배사</Text>
                         </View>
                         <DeliverySelect/>
                     </View>
                     <View style={{paddingBottom:20,}}>
                         <View style={{paddingBottom:10,}}>
-                            <Text>운송장 번호</Text>
+                            <Text style={{fontSize:13,fontFamily:'NotoSansKR-Medium',lineHeight:20,}}>운송장 번호</Text>
                         </View>
                         <View style={{flex:1,borderWidth:1,borderColor:'#eee',borderRadius:8,height:35,lineHeight:16,justifyContent:'center',paddingHorizontal:8,}}>
                             <TextInput
-                                style={{height:35,paddingVertical:0,}}
+                                style={{height:35,paddingVertical:0,fontFamily:'NotoSansKR-Regular',fontSize:13,}}
                                 placeholder="운송장 번호를 입력하세요."
                                 placeholderTextColor="#C9C9C9"
                             />
@@ -92,9 +92,9 @@ const DeliveryCheck = ({navigation}) => {
                         borderBottomColor:'#eee',
                         paddingBottom:15,
                         }}>
-                        <Text style={{fontSize:14,fontWeight:'bold',width:100,textAlign:'center'}}>처리 일시</Text>
-                        <Text style={{fontSize:14,fontWeight:'bold',width:100,textAlign:'center'}}>현재 위치</Text>
-                        <Text style={{fontSize:14,fontWeight:'bold',width:100,textAlign:'center'}}>배송 상태</Text>
+                        <Text style={{fontSize:14,fontFamily:'NotoSansKR-Medium',lineHeight:20,width:100,textAlign:'center'}}>처리 일시</Text>
+                        <Text style={{fontSize:14,fontFamily:'NotoSansKR-Medium',lineHeight:20,width:100,textAlign:'center'}}>현재 위치</Text>
+                        <Text style={{fontSize:14,fontFamily:'NotoSansKR-Medium',lineHeight:20,width:100,textAlign:'center'}}>배송 상태</Text>
                     </View>
                     <View>
                         {dsitems.map((dsitem) => (
@@ -118,9 +118,9 @@ function DeliveriStatus({dsitem}){
           paddingBottom:15,
           paddingTop:15,
           }}>
-          <Text style={{fontSize:14,width:100,textAlign:'center'}}>{dsitem.time}</Text>
-          <Text style={{fontSize:14,width:100,textAlign:'center'}}>{dsitem.location}</Text>
-          <Text style={{fontSize:14,width:100,textAlign:'center'}}>{dsitem.status}</Text>
+          <Text style={{fontSize:14,fontFamily:'NotoSansKR-Regular',lineHeight:20,width:100,textAlign:'center'}}>{dsitem.time}</Text>
+          <Text style={{fontSize:14,fontFamily:'NotoSansKR-Regular',lineHeight:20,width:100,textAlign:'center'}}>{dsitem.location}</Text>
+          <Text style={{fontSize:14,fontFamily:'NotoSansKR-Regular',lineHeight:20,width:100,textAlign:'center'}}>{dsitem.status}</Text>
       </View>
     );
   };

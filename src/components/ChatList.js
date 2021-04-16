@@ -63,24 +63,24 @@ function ChatItem({item: renderItems}){
           />
         </View>
         <View style={{flexGrow:1,}}>
-          <Text style={{fontSize:16,fontWeight:'bold',}}>{renderItems.prd}</Text>
+          <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:22}}>{renderItems.prd}</Text>
           <View style={{flexDirection: 'row',alignItems: 'center'}}>
-            <Text style={{fontSize:13,fontWeight:'bold',color:'#333',paddingRight:20,}}>내가 넣은 견적</Text>
-            <Text style={{fontSize:13,color:'#555'}}>{renderItems.price}</Text>
+            <Text style={{fontSize:13,fontFamily:'NotoSansKR-Bold',lineHeight:16,color:'#333',paddingRight:20,}}>내가 넣은 견적</Text>
+            <Text style={{fontSize:13,color:'#555',fontFamily:'NotoSansKR-Regular',lineHeight:16}}>{renderItems.price}</Text>
           </View>
           <Text
             numberOfLines={1}
-            style={{fontSize:13,color:'#999',maxWidth: 220}}
+            style={{fontSize:13,color:'#999',maxWidth: 220,fontFamily:'NotoSansKR-Regular',lineHeight:20,}}
             >{renderItems.txt}</Text>
           <View style={{flexDirection:'row',alignItems:'center',}}>
-            <Text style={{fontSize:13,fontWeight:'bold',color:'#5E5E5E',paddingRight:10,}}>{renderItems.user}</Text>
-            <Text style={{fontSize:12,color:'#B9B9B9'}}>샤넬 종로점</Text>
+            <Text style={{fontSize:13,fontFamily:'NotoSansKR-Bold',lineHeight:16,color:'#5E5E5E',paddingRight:10,}}>{renderItems.user}</Text>
+            <Text style={{fontSize:12,fontFamily:'NotoSansKR-Bold',lineHeight:16,color:'#B9B9B9'}}>샤넬 종로점</Text>
           </View>
         </View>
         <View style={{alignItems: 'flex-end'}}>
           <Text style={{fontSize:10,color:'#999',paddingBottom:10,}}>2021.01.09</Text>
           <View style={{width:26,height:26,backgroundColor:'#477DD1',alignItems: 'center',justifyContent: 'center',borderRadius: 13,}}>
-            <Text style={{color:'#fff',fontSize:13,fontWeight:'bold'}}>1</Text>
+            <Text style={{color:'#fff',fontSize:13,fontFamily:'NotoSansKR-Bold',lineHeight:16}}>1</Text>
           </View>
         </View>
     </TouchableOpacity>
