@@ -54,13 +54,7 @@ export const EstimateStack = () => {
     return(
         <Stack.Navigator
             screenOptions={{
-              headerShown: false,
-              gestureEnabled: true,
-              gestureDirection:"horizontal",
-              ...TransitionPresets.SlideFromRightIOS,
-              // cardStyleInterpolator:
-              // CardStyleInterpolators.forHorizontalIOS
-            }}
+              headerShown: false,}}
           >
             <Stack.Screen name="Estimate" component={EstimateScreen}/>
             <Stack.Screen name="EstDetail" component={EstDetail}/>
@@ -73,12 +67,7 @@ export const ChatStack = () => {
     return(
         <Stack.Navigator
         screenOptions={{
-          headerShown: false,
-          gestureEnabled: true,
-          gestureDirection:"horizontal",
-          ...TransitionPresets.SlideFromRightIOS,
-          // cardStyleInterpolator:
-          // CardStyleInterpolators.forHorizontalIOS
+          headerShown: false,// CardStyleInterpolators.forHorizontalIOS
         }}
         >
             <Stack.Screen name="Chat" component={ChatScreen}/>
@@ -114,13 +103,7 @@ export const PrdStack = ({navigation}) => {
       <Stack.Navigator
         initialRouteName="PrdList"
         screenOptions={{
-          headerShown: false,
-          gestureEnabled: true,
-          gestureDirection:"horizontal",
-          ...TransitionPresets.SlideFromRightIOS,
-          // cardStyleInterpolator:
-          // CardStyleInterpolators.forHorizontalIOS
-        }}
+          headerShown: false,}}
       >
         <Stack.Screen name="PrdList" component={PrdList}/>
         <Stack.Screen name="PrdDetail" component={PrdDetail}/>

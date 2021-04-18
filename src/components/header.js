@@ -159,7 +159,7 @@ export const ChatHeader =({title})=> {
             }}>
             <View style={{flex:1,marginRight:5,borderWidth:1,borderColor:'#eee',borderRadius:8,height:35,flexDirection: 'row',justifyContent: 'space-between',alignItems: 'center',paddingHorizontal: 10}}>
               <TextInput
-                style={{height:35,paddingVertical: 0,justifyContent:'center',flex:1,fontFamily:'NotoSansKR-Regular',fontSize:13}}
+                style={{height:35,paddingVertical: 0,justifyContent:'center',flex:1,fontSize:13}}
                 placeholder="제품명을 입력해주세요."
                 placeholderTextColor="#C9C9C9"
               />
@@ -219,7 +219,7 @@ export const MypageHeader = () => {
 export const ReviewHeader = ({title}) => {
   const [tab, setTab] = useState('buyer');
   return(
-    <View style={styles.header}>
+    <View style={styles.header, {zIndex:999}}>
         <DefaultHead/>
         <View style={{alignItems: 'center',justifyContent: 'center',height:50,}}>
           <Text style={{fontSize:18,fontFamily:'NotoSansKR-Bold'}}>{title}</Text>
@@ -255,11 +255,11 @@ export const ReviewHeader = ({title}) => {
               <Text style={{color: tab === 'seller' ? '#fff' : '#477DD1' ,fontFamily:'NotoSansKR-Medium',fontSize:14,lineHeight:20,}}>판매자</Text>
           </TouchableOpacity>
       </View>
-      <View style={{width:'100%',height:45,backgroundColor:'#fff',flexDirection:'row',justifyContent:'space-between',alignItems:'center',paddingHorizontal:20,}}>
+      <View style={{width:'100%',height:45,backgroundColor:'#fff',flexDirection:'row',justifyContent:'space-between',alignItems:'center',paddingHorizontal:20}}>
         <ReviewSelect/>
         <View style={{flex:2,borderWidth:1,borderColor:'#eee',borderRadius:8,height:35,flexDirection: 'row',justifyContent: 'space-between',alignItems: 'center',paddingHorizontal: 10}}>
               <TextInput
-                style={{height:35,paddingVertical: 0,justifyContent:'center',flex:1,fontFamily:'NotoSansKR-Regular',fontSize:13,}}
+                style={{height:35,paddingVertical: 0,justifyContent:'center',flex:1,fontSize:13,}}
                 placeholder="제품명을 입력해주세요."
                 placeholderTextColor="#C9C9C9"
               />

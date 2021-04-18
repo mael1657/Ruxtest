@@ -116,7 +116,7 @@ export const PaymentType = () => {
     color:'#555',
   }
   return(
-    <View style={{position:'relative',zIndex:999999999}}>
+    <View style={{position:'relative',zIndex:9999}}>
       <DropDownPicker
         items={[
           {label: '신용카드', value:'신용카드', },
@@ -143,18 +143,23 @@ export const ReviewSelect = () => {
     color:'#555',
   }
   return(
-      <View style={{borderColor:"#eee",borderWidth:1,flex:1,height:35,justifyContent: 'center',borderRadius:8,marginRight:5,}}>
-        <RNPickerSelect
-            itemStyle={{fontSize:10,}}
-            onValueChange={(value) => console.log(value)}
-            placeholder={placeholder}
-            items={[
-              { label: '카테고리1', value: '카테고리1' },
-              { label: '카테고리2', value: '카테고리2' },
-              { label: '카테고리3', value: '카테고리3' },
-            ]}
+    <View style={{position:'relative',zIndex:9999,flex:1,marginRight:5,}}>
+        <DropDownPicker
+          items={[
+            {label: '상품명', value:'상품명', },
+            {label: '카테고리1', value:'카테고리1', },
+            {label: '카테고리2', value:'카테고리3', },
+          ]}
+          defaultValue='상품명'
+          containerStyle={{height:35,backgroundColor:'#fff'}}
+          style={{borderWidth:1,borderColor:'#eee',borderRadius:8,backgroundColor:'#fff',}}
+          dropDownStyle={{borderColor:'#eee',borderWidth:1,}}
+          globalTextStyle={{fontSize:11,lineHeight:12,fontFamily:'NotoSansKR-Regular'}}
+          itemStyle={{justifyContent:'flex-start'}}
+          labelStyle={{color:'#7E7E7E'}}
+          arrowSize={11}
         />
-      </View>
+    </View>
   );
 };
 

@@ -16,10 +16,10 @@ function ReviewItem({item: renderItems}) {
         <TouchableOpacity style={{
             backgroundColor:'#F1F1F1',
             width:Box,
-            height:247,
             overflow:'hidden',
             borderRadius:9,
             margin:10,
+            paddingBottom:10,
         }}
         onPress={() => navigation.navigate('ReviewDetail')}
         >

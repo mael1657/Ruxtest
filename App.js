@@ -24,3 +24,6 @@ const App = () => {
 };
 
 export default App;
+
+Text.defaultProps = Text.defaultProps || {}
+Text.defaultProps.allowFontScaling = false
