@@ -37,8 +37,7 @@ export default class MainSlide extends React.Component {
                         <Image
                         key={index}
                         source={item.image}
-                        resizeMode={'contain'}
-                        style={{width:'100%'}}
+                        style={{resizeMode:'cover',width:'100%',height:'100%'}}
                         />
                   </TouchableOpacity>
             </View>

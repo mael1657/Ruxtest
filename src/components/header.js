@@ -1,16 +1,18 @@
-import React,{Component,useState} from 'react';
+import React,{useState} from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   TouchableOpacity,
   Image,
   TextInput,
+  Modal,
 } from 'react-native';
 import styles from '../style/style';
 import Selector, {DealType2, ReviewSelect} from './Select';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Search from './search';
+import PrdFilter from './filter';
 
 
 const Header = () => {
@@ -51,33 +53,54 @@ const Header = () => {
 }
 
 export const HeaderA = () => {
+  const[modalOpen, setModalOpen] = useState(false);
+
   return(
-    <View style={styles.header, {zIndex:9999999999}}>
-        <DefaultHead/>
-        <View style={{flexDirection:'row', justifyContent: 'space-between',alignItems: 'center',paddingHorizontal: 15,paddingVertical: 10,zIndex:99999999}}>
-              <Selector/>
-            <View style={{flex:2, flexDirection: 'row',borderColor:'#eee',borderWidth:1,borderRadius:8,height:35,justifyContent:'space-between',alignItems: 'center',paddingHorizontal: 6,}}>
-              <TextInput
-                placeholder="상품명을 입력하세요"
-                style={{height:35,alignItems:'center',fontSize:12,lineHeight:14,fontFamily:'NotoSansKR-Regular',padding:0,flex:1,}}
-                placeholderTextColor={'#C9C9C9'}
-              />
-              <TouchableOpacity>
-                  <Image
-                  style={{resizeMode: 'contain',width:20,}}
-                  source={require('../images/img_hd01.png')}/>
-              </TouchableOpacity>
-            </View>
-            <TouchableOpacity style={{flexDirection: 'row', borderRadius: 8,backgroundColor: "#477DD1",height:35,alignItems: 'center',justifyContent: 'center',width:70,marginLeft:5,}}>
-              <Text style={{color:'#fff',paddingRight: 5,fontFamily:'NotoSansKR-Medium',lineHeight:20}}>필터</Text>
-              <View style={{width:12,}}>
-                <Image 
-                style={{resizeMode:'contain',width:'100%'}}
-                source={require('../images/ico_filter.png')}/>
+    <>
+      <View style={styles.header, {zIndex:9999}}>
+          <DefaultHead/>
+          <View style={{flexDirection:'row', justifyContent: 'space-between',alignItems: 'center',paddingHorizontal: 15,paddingVertical: 10,zIndex:99999999}}>
+                <Selector/>
+              <View style={{flex:2, flexDirection: 'row',borderColor:'#eee',borderWidth:1,borderRadius:8,height:35,justifyContent:'space-between',alignItems: 'center',paddingHorizontal: 6,}}>
+                <TextInput
+                  placeholder="상품명을 입력하세요"
+                  style={{height:35,alignItems:'center',fontSize:12,lineHeight:14,padding:0,flex:1,}}
+                  placeholderTextColor={'#C9C9C9'}
+                />
+                <TouchableOpacity>
+                    <Image
+                    style={{resizeMode: 'contain',width:20,}}
+                    source={require('../images/img_hd01.png')}/>
+                </TouchableOpacity>
               </View>
+              <TouchableOpacity 
+              style={{flexDirection: 'row', borderRadius: 8,backgroundColor: "#477DD1",height:35,alignItems: 'center',justifyContent: 'center',width:70,marginLeft:5,}}
+              onPress={() => setModalOpen(true)}
+              >
+                <Text style={{color:'#fff',paddingRight: 5,fontFamily:'NotoSansKR-Medium',lineHeight:20}}>필터</Text>
+                <View style={{width:12,}}>
+                  <Image 
+                  style={{resizeMode:'contain',width:'100%'}}
+                  source={require('../images/ico_filter.png')}/>
+                </View>
+              </TouchableOpacity>
+          </View>
+      </View>
+      <Modal 
+        visible={modalOpen} 
+        animationType="slide" 
+      >
+        <View style={{flex:1,backgroundColor:'#fff'}}>
+            <TouchableOpacity 
+              onPress={() => setModalOpen(false)}
+              style={{alignSelf:'flex-end',paddingRight:20,paddingTop:20,}}
+            >
+              <Icon name="close" size={24} color="#aaaaaa"/>
             </TouchableOpacity>
+            <PrdFilter/>
         </View>
-    </View>
+      </Modal>
+    </>
   );
 };
 
@@ -129,7 +152,7 @@ export const EstHeader = ({title}) => {
         </View>
         <View style={{marginHorizontal: 15,borderWidth:1,borderColor:'#eee',borderRadius:8,height:35,flexDirection: 'row',justifyContent: 'space-between',alignItems: 'center',paddingHorizontal: 10}}>
           <TextInput
-            style={{height:35,paddingVertical: 0,justifyContent:'center',flex:1,fontFamily:'NotoSansKR-Regular',fontSize:13}}
+            style={{height:35,paddingVertical: 0,justifyContent:'center',flex:1,fontSize:13}}
             placeholder="제품명을 입력해주세요."
             placeholderTextColor="#C9C9C9"
           />
@@ -294,29 +317,44 @@ export const FavoriteHeader = ({title}) => {
 };
 
 export const DefaultHead = () => {
+  const [modalOpen, setModalOpen] = useState(false);
   return(
+    <>
     <View style={styles.header01}>
-      <TouchableOpacity>
-          <Image
-          style={{width:120,height:60,resizeMode:'contain',}}
-          source={require('../images/logo01.png')}
-          />
+        <TouchableOpacity>
+            <Image
+            style={{width:120,height:60,resizeMode:'contain',}}
+            source={require('../images/logo01.png')}
+            />
+        </TouchableOpacity>
+        <View style={{width:70,height:50,justifyContent:'space-between',flexDirection:'row',paddingTop:10,}}>
+            <TouchableOpacity 
+            style={{width:30,height:30}}
+            onPress={() => setModalOpen(true)}
+            >
+                <Image
+                style={{width:30,height:30,resizeMode:'contain'}}
+                source={require('../images/img_hd01.png')}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity style={{width:30,height:30}}>
+                <Image
+                style={{width:30,height:30,resizeMode:'contain'}}
+                source={require('../images/img_hd02.png')}
+                />
+            </TouchableOpacity>
+        </View>
+    </View>
+    <Modal visible={modalOpen} animationType="slide">
+      <TouchableOpacity 
+        style={{width:24,height:24,justifyContent:'center',alignItems:'center',alignSelf:'flex-end',marginRight:20,marginTop:20,}}
+        onPress={() => setModalOpen(false)}
+        >
+            <Icon name="close" size={24} color="#AAAAAA"/>
       </TouchableOpacity>
-      <View style={{width:70,height:50,justifyContent:'space-between',flexDirection:'row',paddingTop:10,}}>
-          <TouchableOpacity style={{width:30,height:30}}>
-              <Image
-              style={{width:30,height:30,resizeMode:'contain'}}
-              source={require('../images/img_hd01.png')}
-              />
-          </TouchableOpacity>
-          <TouchableOpacity style={{width:30,height:30}}>
-              <Image
-              style={{width:30,height:30,resizeMode:'contain'}}
-              source={require('../images/img_hd02.png')}
-              />
-          </TouchableOpacity>
-      </View>
-  </View>
+      <Search/>
+    </Modal>
+    </>
   );
 };
 

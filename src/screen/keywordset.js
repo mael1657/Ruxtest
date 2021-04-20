@@ -105,7 +105,7 @@ const KeywordSet = ({navigation}) => {
                         }}>
                         <Text style={{fontSize:20,color:'#707070',fontFamily:'NotoSansKR-Regular',lineHeight:26,}}>#</Text>
                         <TextInput
-                            style={{padding:0,paddingLeft:7,fontFamily:'NotoSansKR-Regular',flex:1,height:45}}
+                            style={{padding:0,paddingLeft:7,flex:1,height:45}}
                             placeholder="키워드를 입력해주세요."
                             placeholderTextColor="#C9C9C9"
                         />

@@ -41,8 +41,8 @@ const MainScreen = ({navigation}) => {
         </TouchableOpacity>
         <TouchableOpacity style={{padding:15,width:Width}}>
           <Image 
-            style={{resizeMode:'contain',width:'100%',}}
-            source={require('../images/main_banner01.png')}
+            style={{resizeMode:'contain',width:'100%',height:100}}
+            source={require('../images/main_banner01.jpg')}
           />
         </TouchableOpacity>
         <View style={{marginBottom:30,}}>

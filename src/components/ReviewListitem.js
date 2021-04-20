@@ -2,6 +2,7 @@ import React from 'react';
 import {View,Text,Image,FlatList,TouchableOpacity,Dimensions} from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import styles from '../style/style';
 
@@ -24,38 +25,23 @@ function ReviewItem({item: renderItems}) {
         onPress={() => navigation.navigate('ReviewDetail')}
         >
             <Image
-                style={{width:'auto',justifyContent:'center',alignItems:'center',resizeMode:'cover'}}
+                style={{width:Box,height:Box,resizeMode:'cover',}}
                 source={renderItems.img}
             />
             <Text style={styles.reviewText} numberOfLines={2}>{renderItems.txt}</Text>
             <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',paddingHorizontal:10,}}>
                 <View style={{flexDirection:'row',}}>
-                <Image
-                style={styles.star}
-                source={require('../images/star01.png')}
-                />
-                <Image
-                style={styles.star}
-                source={require('../images/star01.png')}
-                />
-                <Image
-                style={styles.star}
-                source={require('../images/star01.png')}
-                />
-                <Image
-                style={styles.star}
-                source={require('../images/star01.png')}
-                />
-                <Image
-                style={styles.star}
-                source={require('../images/star02.png')}
-                />
+                  <Icon name="star" size={20} color="#477DD1"/>
+                  <Icon name="star" size={20} color="#477DD1"/>
+                  <Icon name="star" size={20} color="#477DD1"/>
+                  <Icon name="star" size={20} color="#477DD1"/>
+                  <Icon name="star-border" size={20} color="#DDDDDD"/>
                 </View>
                 <Text>
-                <Text style={{color:'#444'}}>4.0</Text>
-                <Text style={{color:'#999'}}>/5</Text>
+                  <Text style={{color:'#444',fontFamily:'NotoSansKR-Regular',fontSize:12,lineHeight:13,}}>{renderItems.rate}</Text>
+                  <Text style={{color:'#999',fontFamily:'NotoSansKR-Regular',fontSize:12,lineHeight:13,}}>/5</Text>
                 </Text>
-            </View>
+              </View>
             <Text style={{alignSelf:'flex-end',paddingRight:10,color:'#999',}}>{renderItems.user}</Text>
         </TouchableOpacity>
     );
@@ -68,48 +54,56 @@ const Rv_List = ({navigation}) => {
             img:require('../images/rv_thumb01.jpg'),
             txt:"매우 좋아요 잘 사용할게요. 여태 산 제품 중에서 만족해요.",
             user:"nappeni",
+            rate: "4.0"
         },
         {
             id:2,
             img:require('../images/rv_thumb01.jpg'),
             txt:"매우 좋아요 잘 사용할게요. 여태 산 제품 중에서 만족해요.",
             user:"nappeni",
+            rate: "4.0"
         },
         {
             id:3,
             img:require('../images/rv_thumb01.jpg'),
             txt:"매우 좋아요 잘 사용할게요. 여태 산 제품 중에서 만족해요.",
             user:"nappeni",
+            rate: "4.0"
         },
         {
             id:4,
             img:require('../images/rv_thumb01.jpg'),
             txt:"매우 좋아요 잘 사용할게요. 여태 산 제품 중에서 만족해요.",
             user:"nappeni",
+            rate: "4.0"
         },
         {
             id:5,
             img:require('../images/rv_thumb01.jpg'),
             txt:"매우 좋아요 잘 사용할게요. 여태 산 제품 중에서 만족해요.",
             user:"nappeni",
+            rate: "4.0"
         },
         {
             id:6,
             img:require('../images/rv_thumb01.jpg'),
             txt:"매우 좋아요 잘 사용할게요. 여태 산 제품 중에서 만족해요.",
             user:"nappeni",
+            rate: "4.0"
         },
         {
             id:7,
             img:require('../images/rv_thumb01.jpg'),
             txt:"매우 좋아요 잘 사용할게요. 여태 산 제품 중에서 만족해요.",
             user:"nappeni",
+            rate: "4.0"
         },
         {
             id:8,
             img:require('../images/rv_thumb01.jpg'),
             txt:"매우 좋아요 잘 사용할게요. 여태 산 제품 중에서 만족해요.",
             user:"nappeni",
+            rate: "4.0"
         },
     ]
     return(

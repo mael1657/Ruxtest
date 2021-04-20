@@ -14,7 +14,7 @@ const PrdDetail = ({navigation}) => {
       <ScrollView style={{flex:1,}}>
         <View style={{flex:1,width:'100%',height:250,}}>
           <Image
-            style={{resizeMode: 'cover',width:'100%'}}
+            style={{resizeMode: 'cover',width:'100%',height:'100%'}}
             source={require('../images/info_item01.jpg')}
           />
         </View>
@@ -101,32 +101,36 @@ const PrdDetail = ({navigation}) => {
           </View>
         </View>
         <View style={{paddingHorizontal: PADDING,marginBottom:60,}}>
-          <View style={{borderColor: '#eee',borderWidth:1,marginBottom:10,}}>
+          <View style={{borderColor: '#eee',borderWidth:1,marginBottom:10,flex:1,height:250,}}>
             <Image
+              style={{resizeMode:'cover',width:'100%',height:'100%'}}
               source={require('../images/info_item01.jpg')}
             />
             <View style={{position: 'absolute',top:0,left:0,backgroundColor:'#eee',width:80,height:30,justifyContent: 'center',alignItems: 'center',}}>
               <Text style={{color:'#333',fontSize:13,lineHeight:16,fontFamily:'NotoSansKR-Medium'}}>대표이미지</Text>
             </View>
           </View>
-          <View style={{borderColor: '#eee',borderWidth:1,marginBottom:10,}}>
+          <View style={{borderColor: '#eee',borderWidth:1,marginBottom:10,flex:1,height:250,}}>
             <Image
+              style={{resizeMode:'cover',width:'100%',height:'100%'}}
               source={require('../images/info_item02.jpg')}
             />
             <View style={{position: 'absolute',top:0,left:0,backgroundColor:'#eee',width:80,height:30,justifyContent: 'center',alignItems: 'center',}}>
               <Text style={{color:'#333',fontSize:13,lineHeight:16,fontFamily:'NotoSansKR-Medium'}}>전면</Text>
             </View>
           </View>
-          <View style={{borderColor: '#eee',borderWidth:1,marginBottom:10,}}>
+          <View style={{borderColor: '#eee',borderWidth:1,marginBottom:10,flex:1,height:250,}}>
             <Image
+              style={{resizeMode:'cover',width:'100%',height:'100%'}}
               source={require('../images/info_item03.jpg')}
             />
             <View style={{position: 'absolute',top:0,left:0,backgroundColor:'#eee',width:80,height:30,justifyContent: 'center',alignItems: 'center',}}>
               <Text style={{color:'#333',fontSize:13,lineHeight:16,fontFamily:'NotoSansKR-Medium'}}>후면</Text>
             </View>
           </View>
-          <View style={{borderColor: '#eee',borderWidth:1,marginBottom:10,}}>
+          <View style={{borderColor: '#eee',borderWidth:1,marginBottom:10,flex:1,height:250,}}>
             <Image
+              style={{resizeMode:'cover',width:'100%',height:'100%'}}
               source={require('../images/info_item04.jpg')}
             />
             <View style={{position: 'absolute',top:0,left:0,backgroundColor:'#eee',width:80,height:30,justifyContent: 'center',alignItems: 'center',}}>

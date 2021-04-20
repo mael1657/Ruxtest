@@ -1,8 +1,8 @@
-import React,{Component, useState} from 'react';
-import {View, Text, ScrollView, Dimensions, TouchableOpacity, TouchableWithoutFeedback, FlatList, Image, StyleSheet} from 'react-native';
+import React,{useState} from 'react';
+import {View, Text, Dimensions, TouchableOpacity, TouchableWithoutFeedback, FlatList, Image, StyleSheet,Modal} from 'react-native';
 
-import Footer from '../components/footer';
 import Header, {HeaderA} from '../components/header';
+
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -20,7 +20,8 @@ const PrdList = ({navigation}) => {
           <PrdListItems/>
         </View>
       </View>
-    );
+      
+    );q
 };
 
 
@@ -113,9 +114,9 @@ function PrdItem({item: renderItems}){
       }}
       onPress={() => navigation.navigate('PrdDetail')}
       >
-      <View style={{width:Box,height:Box,borderWidth: 1,borderColor: '#e3e3e3',borderRadius: 8,marginRight:10,}}>
+      <View style={{width:Box,height:Box,borderWidth: 1,borderColor: '#e3e3e3',borderRadius: 8,marginRight:10,padding:10,}}>
         <Image
-          style={{resizeMode:'center',flex:1,alignSelf: 'center'}}
+          style={{resizeMode:'cover',width:'100%',height:'100%'}}
           source={renderItems.image}/>
       </View>
       <View style={{flexGrow:1,}}>

@@ -12,28 +12,25 @@ const Selector = () => {
     <View style={{zIndex:999999999,flex:1}}>
       <DropDownPicker
         items={[
-          {label: '인기상품순', value:'인기상품순', },
-          {label: '리뷰많은순', value:'리뷰많은순', },
-          {label: '낮은 가격순', value:'낮은 가격순', },
+          {label: '인기상품순', value:'a', },
+          {label: '리뷰많은순', value:'b', },
+          {label: '낮은 가격순', value:'c', },
         ]}
-        defaultValue='인기상품순'
+        defaultValue='a'
         containerStyle={{height:35,flex:1,backgroundColor:'#fff',marginRight:5,}}
         style={{borderWidth:1,borderColor:'#eee',borderRadius:8,backgroundColor:'#fff',}}
         dropDownStyle={{borderColor:'#eee',borderWidth:1,}}
         globalTextStyle={{fontSize:11,lineHeight:12,fontFamily:'NotoSansKR-Regular',}}
         labelStyle={{color:'#7E7E7E'}}
+        onValueChange={(value) => onValSelect(value)}
         arrowSize={11}
+        
       />
     </View>
   );
 };
 
 export const DealType = () => {
-  const placeholder = {
-    label: '거래유형 선택',
-    value: null,
-    color:'#555',
-  }
   return(
       <View style={{position:'relative',zIndex:999999}}>
           <DropDownPicker
