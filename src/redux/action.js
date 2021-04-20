@@ -1,0 +1,2 @@
+export const TOGGLE_BUYER = 'TOGGLE_BUYER';
+export const TOGGLE_SELLER = 'TOGGLE_SELLER';
