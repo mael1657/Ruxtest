@@ -15,7 +15,6 @@ import styles from '../style/style';
 import Header from '../components/header';
 // import Footer from '../components/footer';
 import MainSlide from '../components/main_slide';
-import SellerSlide from '../components/seller_slide';
 import MainComp, {NewPrd, MainReview} from '../components/maincomp';
 
 
@@ -41,7 +40,7 @@ const MainScreen = ({navigation}) => {
         </TouchableOpacity>
         <TouchableOpacity style={{padding:15,width:Width}}>
           <Image 
-            style={{resizeMode:'contain',width:'100%',height:100}}
+            style={{resizeMode:'contain',width:'100%',height:100}} 
             source={require('../images/main_banner01.jpg')}
           />
         </TouchableOpacity>

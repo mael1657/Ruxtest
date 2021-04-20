@@ -88,9 +88,17 @@ export const HeaderA = () => {
       </View>
       <Modal 
         visible={modalOpen} 
-        animationType="slide" 
+        animationType={"slide"}
+        transparent={true}
+        style={{flex:1}}
       >
-        <View style={{flex:1,backgroundColor:'#fff'}}>
+        <View 
+          style={{
+            position:'absolute',
+            top:0,bottom:0,left:0,right:0,
+            backgroundColor:'rgba(0,0,0,0.4)',
+            justifyContent:'flex-end',
+            }}>
             <TouchableOpacity 
               onPress={() => setModalOpen(false)}
               style={{alignSelf:'flex-end',paddingRight:20,paddingTop:20,}}

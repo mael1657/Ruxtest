@@ -17,7 +17,7 @@ const MypageScreen = ({navigation}) => {
                 <View style={{flexDirection:'row',borderBottomWidth:1,borderBottomColor:'#eee',paddingBottom:20,}}>
                     <View style={{width:63,height:63,borderRadius:32,overflow:'hidden',}}>
                         <Image
-                        style={{resizeMode:'cover'}}
+                        style={{resizeMode:'cover',width:'100%',height:'100%',}}
                         source={require('../images/profile02.png')}
                         />
                     </View>
@@ -75,7 +75,10 @@ const MypageScreen = ({navigation}) => {
             <BotLine/>
             <View style={{paddingVertical:10,}}>
                 <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',paddingVertical:10,}}>
-                    <TouchableOpacity style={{width:80,alignItems:'center'}}>
+                    <TouchableOpacity 
+                    style={{width:80,alignItems:'center'}}
+                    onPress={() => navigation.navigate('Transaction')}
+                    >
                         <View style={{width:27,height:30,justifyContent:'center',paddingBottom:5,}}>
                             <Image
                             style={{resizeMode:'contain',width:'auto'}} 

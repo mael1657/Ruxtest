@@ -25,6 +25,7 @@ import Useredit from '../screen/useredit';
 import CustomerCenter from '../screen/customercenter';
 import NotiSetting from '../screen/Notisetting';
 import KeywordSet from '../screen/keywordset';
+import Transaction from '../screen/transaction';
 
 const Stack = createStackNavigator();
 
@@ -94,6 +95,7 @@ export const MypageStack = () => {
             <Stack.Screen name="ReviewComplete" component={ReviewComplete}/>
             <Stack.Screen name="ReviewList" component={ReviewList}/>
             <Stack.Screen name="ReviewDetail" component={ReviewDetail}/>
+            <Stack.Screen name="Transaction" component={Transaction}/>
         </Stack.Navigator>
     );
 };

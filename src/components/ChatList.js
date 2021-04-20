@@ -58,7 +58,7 @@ function ChatItem({item: renderItems}){
     style={{flexDirection:'row',justifyContent: 'space-between',alignItems:'center',borderBottomWidth:1,borderBottomColor:'#eee',paddingBottom:12,marginBottom:12,}}>
         <View style={{width:62,height:62,borderWidth:2,borderColor:'#eee',borderRadius:31,marginRight:20,}}>
           <Image
-            style={{resizeMode:'cover',width:'auto'}}
+            style={{resizeMode:'cover',width:'100%',height:'100%'}}
             source={renderItems.img}
           />
         </View>
