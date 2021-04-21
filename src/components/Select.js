@@ -53,11 +53,6 @@ export const DealType = () => {
 };
 
 export const DealType2 = () => {
-  const placeholder = {
-    label: '거래방식 선택',
-    value: null,
-    color:'#7E7E7E',
-  }
   return(
     <View style={{position:'relative',zIndex:999999999,flex:1}}>
         <DropDownPicker
@@ -80,11 +75,6 @@ export const DealType2 = () => {
 };
 
 export const LocationSelect = () => {
-  const placeholder = {
-    label: '배송지 선택',
-    value: null,
-    color:'#555',
-  };
   return(
     <View style={{position:'relative',zIndex:999999999,flex:1}}>
       <DropDownPicker
@@ -93,9 +83,9 @@ export const LocationSelect = () => {
           {label: '리뷰많은순', value:'리뷰많은순', },
           {label: '낮은 가격순', value:'낮은 가격순', },
         ]}
-        defaultValue='배송지선택'
+        placeholder='배송지선택'
         containerStyle={{height:35,flex:1,backgroundColor:'#fff'}}
-        style={{borderWidth:1,borderColor:'#eee',borderRadius:8,backgroundColor:'#fff',}}
+        style={{borderWidth:1,borderColor:'#eee',borderRadius:8,backgroundColor:'#fff',zIndex:999999999}}
         dropDownStyle={{borderColor:'#eee',borderWidth:1,}}
         globalTextStyle={{fontSize:11,lineHeight:12,fontFamily:'NotoSansKR-Regular'}}
         itemStyle={{justifyContent:'flex-start'}}
@@ -107,11 +97,6 @@ export const LocationSelect = () => {
 };
 
 export const PaymentType = () => {
-  const placeholder = {
-    label: '결제 수단 선택',
-    value: null,
-    color:'#555',
-  }
   return(
     <View style={{position:'relative',zIndex:9999}}>
       <DropDownPicker
@@ -134,11 +119,6 @@ export const PaymentType = () => {
 };
 
 export const ReviewSelect = () => {
-  const placeholder = {
-    label: '제품명',
-    value: null,
-    color:'#555',
-  }
   return(
     <View style={{position:'relative',zIndex:9999,flex:1,marginRight:5,}}>
         <DropDownPicker
@@ -147,7 +127,7 @@ export const ReviewSelect = () => {
             {label: '카테고리1', value:'카테고리1', },
             {label: '카테고리2', value:'카테고리3', },
           ]}
-          defaultValue='상품명'
+          placeholder='상품명'
           containerStyle={{height:35,backgroundColor:'#fff'}}
           style={{borderWidth:1,borderColor:'#eee',borderRadius:8,backgroundColor:'#fff',}}
           dropDownStyle={{borderColor:'#eee',borderWidth:1,}}

@@ -24,7 +24,7 @@ const PurchaseOrder = (props, {navigation}) => {
               <Text style={{fontSize:12,fontFamily:'NotoSansKR-Medium',lineHeight:16,}}>최근 데이터 자동 입력</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.inputWrap}>
+          <View style={[styles.inputWrap,{zIndex:999}]}>
             <Text style={{fontSize:14,fontFamily:'NotoSansKR-Medium',paddingBottom:10,lineHeight:17,}}>배송지 선택</Text>
             <LocationSelect/>
           </View>

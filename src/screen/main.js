@@ -31,7 +31,9 @@ const MainScreen = ({navigation}) => {
         <Header/>
         <ScrollView style={styles.content}>
         <MainSlide/>
-        <TouchableOpacity style={{backgroundColor:'#EBEBEB',borderRadius:10,marginHorizontal:20,flexDirection:'row',justifyContent:'space-between',alignItems:'center',padding:15,}}>
+        <TouchableOpacity 
+          style={{backgroundColor:'#EBEBEB',borderRadius:10,marginHorizontal:20,flexDirection:'row',justifyContent:'space-between',alignItems:'center',padding:15,}}
+          onPress={() => navigation.navigate('ProductRegistCaution')}>
           <Text style={{color:'#333',fontSize:17,fontFamily:'NotoSansKR-Medium',lineHeight:20,}}>내 상품 등록하기</Text>
           <Image
            style={{}}

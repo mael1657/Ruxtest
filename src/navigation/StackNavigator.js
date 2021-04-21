@@ -26,7 +26,11 @@ import CustomerCenter from '../screen/customercenter';
 import NotiSetting from '../screen/Notisetting';
 import KeywordSet from '../screen/keywordset';
 import Transaction from '../screen/transaction';
-
+import ProductRegistCaution from '../screen/ProductRegistCaution';
+import ProductRegistCategory from '../screen/ProductRegistCategory0';
+import ProductRegistCategory1 from '../screen/ProductRegistCategory1';
+import ProductRegistBrand from '../screen/ProductRegistBrand';
+import ProductRegistInfo from '../screen/ProductRegistInfo';
 const Stack = createStackNavigator();
 
 export const MainStack = () => {
@@ -47,6 +51,11 @@ export const MainStack = () => {
             <Stack.Screen name="ReviewList" component={ReviewList}/>
             <Stack.Screen name="ReviewDetail" component={ReviewDetail}/>
             <Stack.Screen name="head" component={Header}/>
+            <Stack.Screen name="ProductRegistCaution" component={ProductRegistCaution}/>
+            <Stack.Screen name="ProductRegistCategory" component={ProductRegistCategory}/>
+            <Stack.Screen name="ProductRegistCategory1" component={ProductRegistCategory1}/>
+            <Stack.Screen name="ProductRegistBrand" component={ProductRegistBrand}/>
+            <Stack.Screen name="ProductRegistInfo" component={ProductRegistInfo}/>
         </Stack.Navigator>
     );
 };
