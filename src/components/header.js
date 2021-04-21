@@ -8,11 +8,29 @@ import {
   Modal,
 } from 'react-native';
 import styles from '../style/style';
-import Selector, {DealType2, ReviewSelect} from './Select';
+import {DefaultPicker, DealType2, ReviewSelect} from './Select';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Search from './search';
 import PrdFilter from './filter';
+
+const prdPicker= [
+  {label:'인기상품순' , value:'인기상품순'},
+  {label:'인기상품순' , value:'인기상품순'},
+  {label:'인기상품순' , value:'인기상품순'},
+]
+
+const reviewPicker= [
+  {label:'제품명' , value:'제품명'},
+  {label:'제품명' , value:'제품명'},
+  {label:'제품명' , value:'제품명'},
+]
+
+const estPicker= [
+  {label:'직거래' , value:'직거래'},
+  {label:'택배거래' , value:'택배거래'},
+  {label:'안전거래' , value:'안전거래'},
+]
 
 
 const Header = () => {
@@ -57,10 +75,12 @@ export const HeaderA = () => {
 
   return(
     <>
-      <View style={styles.header, {zIndex:9999}}>
+      <View style={styles.header,{zIndex:999}}>
           <DefaultHead/>
-          <View style={{flexDirection:'row', justifyContent: 'space-between',alignItems: 'center',paddingHorizontal: 15,paddingVertical: 10,zIndex:99999999}}>
-                <Selector/>
+          <View style={{flexDirection:'row', justifyContent: 'space-between',alignItems: 'center',paddingHorizontal: 15,paddingVertical: 10,height:45}}>
+                <View style={{width:100,marginRight:5,}}>
+                  <DefaultPicker picker={prdPicker} placeholder="인기상품순"/>
+                </View>
               <View style={{flex:2, flexDirection: 'row',borderColor:'#eee',borderWidth:1,borderRadius:8,height:35,justifyContent:'space-between',alignItems: 'center',paddingHorizontal: 6,}}>
                 <TextInput
                   placeholder="상품명을 입력하세요"
@@ -144,7 +164,9 @@ export const EstHeader = ({title}) => {
                 justifyContent:'space-between',
                 alignItems:'center',
             }}>
-            <DealType2/>
+              <View style={{flex:1,marginRight:5,}}>
+                <DefaultPicker placeholder="거래방식 선택" picker={estPicker}/>
+              </View>
             <View style={{flexDirection:'row',backgroundColor:'#DEDEDE',borderRadius:8,width:120,height:35,justifyContent:'space-between',alignItems:'center'}}>
                 <TouchableOpacity
                 onPress ={ () => setTab('buyer')}
@@ -287,7 +309,9 @@ export const ReviewHeader = ({title}) => {
           </TouchableOpacity>
       </View>
       <View style={{width:'100%',height:45,backgroundColor:'#fff',flexDirection:'row',justifyContent:'space-between',alignItems:'center',paddingHorizontal:20}}>
-        <ReviewSelect/>
+        <View style={{flex:1,marginRight:5,}}>
+          <DefaultPicker picker={reviewPicker} placeholder="제품명"/>
+        </View>
         <View style={{flex:2,borderWidth:1,borderColor:'#eee',borderRadius:8,height:35,flexDirection: 'row',justifyContent: 'space-between',alignItems: 'center',paddingHorizontal: 10}}>
               <TextInput
                 style={{height:35,paddingVertical: 0,justifyContent:'center',flex:1,fontSize:13,}}

@@ -3,8 +3,14 @@ import {SafeAreaView,ScrollView,View,Text,TextInput,} from 'react-native';
 
 import Header, {DetailHead} from '../components/header';
 import Btn , {BtnFull} from '../components/button';
-import {DeliverySelect} from '../components/Select';
+import {DefaultPicker} from '../components/Select';
 import BotLine from '../components/bottomline';
+
+const tracking = [
+    { label: '카테고리1', value: '카테고리1' },
+    { label: '카테고리2', value: '카테고리2' },
+    { label: '카테고리3', value: '카테고리3' },
+]
 
 const DeliveryCheck = ({navigation}) => {
     const dsitems = [
@@ -66,7 +72,10 @@ const DeliveryCheck = ({navigation}) => {
                         <View style={{paddingBottom:10,}}>
                             <Text style={{fontSize:13,fontFamily:'NotoSansKR-Medium',lineHeight:20,}}>택배사</Text>
                         </View>
-                        <DeliverySelect/>
+                        <View style={{flex:1}}>
+                           <DefaultPicker placeholder="택배사" picker={tracking}/>
+                        </View>
+                        
                     </View>
                     <View style={{paddingBottom:20,}}>
                         <View style={{paddingBottom:10,}}>

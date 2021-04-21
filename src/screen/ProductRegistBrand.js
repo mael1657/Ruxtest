@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import { SafeAreaView, ScrollView, View, Text, TouchableOpacity, TextInput} from 'react-native';
+import React from 'react';
+import { SafeAreaView, View, Text, TouchableOpacity, TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 //컴포넌트
@@ -31,8 +31,10 @@ const ProductRegistBrand = ({navigation}) => {
                         marginVertical:10,
                     }}>
                     <TextInput
-                        style={{padding:0,}}
+                        style={{padding:0,color:'#222'}}
                         placeholder="제품명을 입력해주세요."
+                        placeholderTextColor="#aaa"
+
                     />
                     <TouchableOpacity>
                       <Icon name="search" size={24} color="#447DD1"/>

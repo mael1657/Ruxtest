@@ -4,7 +4,19 @@ import {SafeAreaView,ScrollView,View,Text,TouchableOpacity,StyleSheet,TextInput}
 import Header, {DetailHead} from '../components/header';
 import Footer from '../components/footer';
 import Product from '../components/product';
-import Selector, {LocationSelect, PaymentType} from '../components/Select';
+import Selector, {DefaultPicker} from '../components/Select';
+
+const location =[
+  {label:'배송지 선택' ,  value:'배송지 선택'},
+  {label:'배송지 선택' ,  value:'배송지 선택'},
+  {label:'배송지 선택' ,  value:'배송지 선택'},
+]
+
+const payment =[
+  {label:'신용카드' ,  value:'신용카드'},
+  {label:'신용카드' ,  value:'신용카드'},
+  {label:'신용카드' ,  value:'신용카드'},
+]
 
 const PurchaseOrder = (props, {navigation}) => {
   return(
@@ -26,7 +38,9 @@ const PurchaseOrder = (props, {navigation}) => {
           </View>
           <View style={[styles.inputWrap,{zIndex:999}]}>
             <Text style={{fontSize:14,fontFamily:'NotoSansKR-Medium',paddingBottom:10,lineHeight:17,}}>배송지 선택</Text>
-            <LocationSelect/>
+            <View style={{}}>
+              <DefaultPicker placeholder="배송지 선택" picker={location}/>
+            </View>
           </View>
           <View style={styles.inputWrap}>
             <Text style={{fontSize:14,fontFamily:'NotoSansKR-Medium',paddingBottom:10,lineHeight:17,}}>이름</Text>
@@ -105,7 +119,9 @@ const PurchaseOrder = (props, {navigation}) => {
               </View>
               <View style={styles.payinfo}>
                 <Text style={{fontSize:13,fontFamily:'NotoSansKR-Medium',lineHeight:20,}}>결제수단</Text>
-                <PaymentType/>
+                <View style={{width:150,}}>
+                  <DefaultPicker placeholder="신용카드" picker={payment}/>
+                </View>
               </View>
             </View>
             <View style={{backgroundColor:'#EBEBEB',flexDirection:'row',justifyContent: 'space-between',padding:12,}}>

@@ -1,8 +1,18 @@
 import React from 'react';
 import {SafeAreaView, ScrollView, View, Text, TouchableOpacity, StyleSheet,TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {DefaultPicker} from '../components/Select';
 
-const ProductRegistInfo = () => {
+const brandPicker = [
+    {label: '티파니', value:'티파니'},
+    {label: '지방시', value:'지방시'},
+    {label: '프라다', value:'프라다'},
+  ]
+
+
+
+
+const ProductRegistInfo = ({navigation}) => {
     return(
         <SafeAreaView style={{flex:1,backgroundColor:'#fff'}}>
             <View style={{flexDirection:'row',height:60,justifyContent:'space-between',alignItems:'center',borderBottomColor:'#EEEEEE',borderBottomWidth:1,paddingHorizontal:20,}}>
@@ -29,11 +39,29 @@ const ProductRegistInfo = () => {
                     </View>
                     <View style={styles.contbox}>
                         <Text style={styles.contitle}>브랜드</Text>
+                        <View style={{}}>
+                            <DefaultPicker picker={brandPicker} placeholder="브랜드 선택"/>
+                        </View>
+                    </View>
+                    <View style={styles.contbox}>
+                        <Text style={styles.contitle}>사이즈가 어떻게 되나요?</Text>
                         <TextInput
-                            placeholder="상품명 입력"
+                            placeholder="사이즈 입력"
                             placeholderTextColor="#C9C9C9"
                             style={styles.inputstyle}
                         />
+                    </View>
+                    <View style={styles.contbox}>
+                        <Text style={styles.contitle}>구매시기를 아시나요?</Text>
+                        <View style={{flexDirection:'row'}}>
+                            <View style={{width:100,marginRight:10,}}>
+                                <DefaultPicker picker={brandPicker} placeholder="연도 선택"/>
+                            </View>
+                            <View style={{width:100,}}>
+                                <DefaultPicker picker={brandPicker} placeholder="월 선택"/>
+                            </View>
+                        </View>
+                        
                     </View>
                 </View>
             </ScrollView>

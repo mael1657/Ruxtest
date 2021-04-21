@@ -3,10 +3,16 @@ import {SafeAreaView, View, Text, Image, TouchableOpacity, Dimensions, TextInput
 
 import Header, {DetailHead} from '../components/header';
 import Footer from '../components/footer';
-import Selector, {DealType} from '../components/Select';
+import {DefaultPicker} from '../components/Select';
 import Product from '../components/product';
 
 export const Width = Dimensions.get('window').width / 4;
+
+const payment =[
+  {label:'신용카드' ,  value:'신용카드'},
+  {label:'신용카드' ,  value:'신용카드'},
+  {label:'신용카드' ,  value:'신용카드'},
+]
 
 const Bidding = ({navigation}) => {
   return(
@@ -27,7 +33,9 @@ const Bidding = ({navigation}) => {
               keyboardType="numeric"
               />
             <Text style={{paddingBottom:6,fontSize:13,fontFamily:'NotoSansKR-Medium',lineHeight:16,}}>거래유형</Text>
-            <DealType/>
+            <View style={{width:150,}}>
+              <DefaultPicker placeholder="거래방식 선택" picker={payment}/>
+            </View>
           </View>
           <View style={{flexDirection: 'row',backgroundColor: '#477DD1',borderBottomLeftRadius:10,borderBottomRightRadius:10,}}>
             <TouchableOpacity style={{width:'50%',height:57,justifyContent: 'center',alignItems: 'center',borderRightWidth:1,borderRightColor:'#fff',}}>
