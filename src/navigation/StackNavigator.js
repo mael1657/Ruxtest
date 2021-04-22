@@ -31,6 +31,7 @@ import ProductRegistCategory from '../screen/ProductRegistCategory0';
 import ProductRegistCategory1 from '../screen/ProductRegistCategory1';
 import ProductRegistBrand from '../screen/ProductRegistBrand';
 import ProductRegistInfo from '../screen/ProductRegistInfo';
+import AppraisalCostGuide from '../screen/AppraisalCostGuide';
 const Stack = createStackNavigator();
 
 export const MainStack = () => {
@@ -56,6 +57,7 @@ export const MainStack = () => {
             <Stack.Screen name="ProductRegistCategory1" component={ProductRegistCategory1}/>
             <Stack.Screen name="ProductRegistBrand" component={ProductRegistBrand}/>
             <Stack.Screen name="ProductRegistInfo" component={ProductRegistInfo}/>
+            <Stack.Screen name="AppraisalCostGuide" component={AppraisalCostGuide}/>
         </Stack.Navigator>
     );
 };
