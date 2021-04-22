@@ -32,6 +32,9 @@ import ProductRegistCategory1 from '../screen/ProductRegistCategory1';
 import ProductRegistBrand from '../screen/ProductRegistBrand';
 import ProductRegistInfo from '../screen/ProductRegistInfo';
 import AppraisalCostGuide from '../screen/AppraisalCostGuide';
+import Appraise from '../screen/Appraise';
+import AppraiseWrite from '../screen/AppraiseWrite';
+
 const Stack = createStackNavigator();
 
 export const MainStack = () => {
@@ -58,6 +61,8 @@ export const MainStack = () => {
             <Stack.Screen name="ProductRegistBrand" component={ProductRegistBrand}/>
             <Stack.Screen name="ProductRegistInfo" component={ProductRegistInfo}/>
             <Stack.Screen name="AppraisalCostGuide" component={AppraisalCostGuide}/>
+            <Stack.Screen name="Appraise" component={Appraise}/>
+            <Stack.Screen name="AppraiseWrite" component={AppraiseWrite}/>
         </Stack.Navigator>
     );
 };
@@ -107,6 +112,8 @@ export const MypageStack = () => {
             <Stack.Screen name="ReviewList" component={ReviewList}/>
             <Stack.Screen name="ReviewDetail" component={ReviewDetail}/>
             <Stack.Screen name="Transaction" component={Transaction}/>
+            <Stack.Screen name="Appraise" component={Appraise}/>
+            <Stack.Screen name="AppraiseWrite" component={AppraiseWrite}/>
         </Stack.Navigator>
     );
 };

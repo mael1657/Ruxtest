@@ -40,7 +40,9 @@ const MainScreen = ({navigation}) => {
            source={require('../images/ar_right.png')}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={{padding:15,width:Width}}>
+        <TouchableOpacity 
+        onPress={() => navigation.navigate('AppraiseWrite')}
+        style={{padding:15,width:Width}}>
           <Image 
             style={{resizeMode:'contain',width:'100%',height:100}} 
             source={require('../images/main_banner01.jpg')}
