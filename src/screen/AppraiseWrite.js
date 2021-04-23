@@ -36,34 +36,42 @@ const AppraiseWrite = ({navigation}) => {
         {
             id:1,
             title:'셔츠',
+            state:false
         },
         {
             id:2,
             title:'블라우스',
+            state:false
         },
         {
             id:3,
             title:'스웨터',
+            state:false
         },
         {
             id:4,
             title:'맨투맨',
+            state:false
         },
         {
             id:5,
             title:'티셔츠',
+            state:false
         },
         {
             id:6,
             title:'목티',
+            state:false
         },
         {
             id:7,
             title:'반팔',
+            state:false
         },
         {
             id:8,
             title:'아우터',
+            state:false
         },
     ])
     const [data_1,setData_1] = useState([
@@ -330,6 +338,7 @@ const AppraiseWrite = ({navigation}) => {
                             </View>
                             </View>
                             <TouchableOpacity 
+                            onPress={() => navigation.navigate('AppraiseWriteComplete')}
                             style={{
                                 backgroundColor:'#447DD1',
                                 borderRadius:8,

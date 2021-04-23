@@ -96,7 +96,9 @@ const MypageScreen = ({navigation}) => {
                         </View>
                         <Text style={{fontSize:13,color:'#444',lineHeight:18,fontFamily:'NotoSansKR-Regular'}}>광고센터</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{width:80,alignItems:'center'}}>
+                    <TouchableOpacity 
+                    onPress={() => navigation.navigate('Appraise')}
+                    style={{width:80,alignItems:'center'}}>
                         <View style={{width:27,height:30,justifyContent:'center',paddingBottom:5,}}>
                             <Image
                             style={{resizeMode:'contain',width:'auto'}} 

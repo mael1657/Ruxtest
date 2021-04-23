@@ -348,6 +348,68 @@ export const FavoriteHeader = ({title}) => {
   );
 };
 
+export const AppraiseHeader = ({title}) =>{
+  return(
+    <View style={styles.header}>
+      <DefaultHead/>
+       <View style={{flexDirection:'row',justifyContent: 'center', alignItems:'center',backgroundColor: '#fff',height:62}}>
+          <Text style={{fontSize:18,fontFamily:'NotoSansKR-Bold'}}>{title}</Text>
+          <TouchableOpacity 
+          style={{
+            position:'absolute',
+            top:14,
+            right:20,
+            backgroundColor:'#447DD1',
+            width:98,
+            height:35,
+            borderRadius:8,
+            justifyContent:'center',
+            alignItems:'center'
+            }}>
+            <Text style={{
+              fontSize:14,
+              fontFamily:'NotoSansKR-Medium',
+              lineHeight:20,
+              color:'#fff'
+            }}>신청서 작성</Text>
+          </TouchableOpacity>
+        </View>
+        <View 
+        style={{
+          flexDirection:'row',
+          backgroundColor:'#fff',
+          paddingHorizontal:20,
+          paddingBottom:10,
+          width:'100%',
+          alignItems:'center'
+        }}>
+          <View style={{flex:4,marginRight:5,}}>
+             <DefaultPicker placeholder="제품명" />
+          </View>
+          <View style={{
+            flexDirection:'row',
+            justifyContent:'space-between',
+            alignItems:'center',
+            borderWidth:1,
+            borderColor:'#eee',
+            borderRadius:8,
+            height:35,
+            flex:6,
+            }}>
+            <TextInput
+            placeholder="제품명을 입력해주세요."
+            placeholderTextColor="#C9C9C9"
+            style={{height:35,padding:0,paddingLeft:10,width:'80%'}}
+            />
+            <TouchableOpacity style={{width:30,}}>
+              <Icon name="search" size={24} color="#447DD1"/>
+            </TouchableOpacity>
+          </View>
+        </View>
+    </View>
+  );
+};
+
 export const DefaultHead = () => {
   const [modalOpen, setModalOpen] = useState(false);
   return(

@@ -34,6 +34,7 @@ import ProductRegistInfo from '../screen/ProductRegistInfo';
 import AppraisalCostGuide from '../screen/AppraisalCostGuide';
 import Appraise from '../screen/Appraise';
 import AppraiseWrite from '../screen/AppraiseWrite';
+import AppraiseWriteComplete from '../screen/AppraiseWriteComplete';
 
 const Stack = createStackNavigator();
 
@@ -63,6 +64,7 @@ export const MainStack = () => {
             <Stack.Screen name="AppraisalCostGuide" component={AppraisalCostGuide}/>
             <Stack.Screen name="Appraise" component={Appraise}/>
             <Stack.Screen name="AppraiseWrite" component={AppraiseWrite}/>
+            <Stack.Screen name="AppraiseWriteComplete" component={AppraiseWriteComplete}/>
         </Stack.Navigator>
     );
 };
@@ -114,6 +116,7 @@ export const MypageStack = () => {
             <Stack.Screen name="Transaction" component={Transaction}/>
             <Stack.Screen name="Appraise" component={Appraise}/>
             <Stack.Screen name="AppraiseWrite" component={AppraiseWrite}/>
+            <Stack.Screen name="AppraiseWriteComplete" component={AppraiseWriteComplete}/>
         </Stack.Navigator>
     );
 };
