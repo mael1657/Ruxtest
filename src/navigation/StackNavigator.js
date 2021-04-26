@@ -35,6 +35,9 @@ import AppraisalCostGuide from '../screen/AppraisalCostGuide';
 import Appraise from '../screen/Appraise';
 import AppraiseWrite from '../screen/AppraiseWrite';
 import AppraiseWriteComplete from '../screen/AppraiseWriteComplete';
+import Login from '../screen/Login';
+import RegisterAgree from '../screen/RegisterAgree';
+import Register from '../screen/Register';
 
 const Stack = createStackNavigator();
 
@@ -65,6 +68,9 @@ export const MainStack = () => {
             <Stack.Screen name="Appraise" component={Appraise}/>
             <Stack.Screen name="AppraiseWrite" component={AppraiseWrite}/>
             <Stack.Screen name="AppraiseWriteComplete" component={AppraiseWriteComplete}/>
+            <Stack.Screen name="Login" component={Login}/>
+            <Stack.Screen name="RegisterAgree" component={RegisterAgree}/>
+            <Stack.Screen name="Register" component={Register}/>
         </Stack.Navigator>
     );
 };

@@ -19,11 +19,11 @@ const PrdDetail = ({navigation}) => {
           />
         </View>
         <View style={{width:'100%',height:120,justifyContent: 'center',alignItems: 'center',position:'absolute',top:185,}}>
-          <View style={{width:100,height:100,borderRadius:50,backgroundColor: '#fff',justifyContent:'center',alignItems:'center',elevation: 10,}}>
-            <Image
-            style={{resizeMode: 'center'}}
-            source={require('../images/make02.jpg')}
-            />
+          <View style={{width:100,height:100,borderRadius:50,backgroundColor: '#fff',justifyContent:'center',alignItems:'center',elevation: 10,overflow:'hidden'}}>
+              <Image
+              style={{resizeMode: 'contain',width:'100%',height:'100%'}}
+              source={require('../images/make02.jpg')} 
+              />
           </View>
         </View>
         <View style={{flex:1,justifyContent: 'center',alignItems: 'center',marginBottom:10,marginTop:65,}}>
