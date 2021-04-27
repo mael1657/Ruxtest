@@ -1,6 +1,6 @@
 import React, {useState}from 'react';
 import {SafeAreaView,ScrollView, View,Text,Image,TouchableOpacity, Dimensions, TextInput, StyleSheet} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {DefaultPicker} from '../components/Select';
 
@@ -230,7 +230,7 @@ const Register = ({navigation}) => {
                         />
                     </View>
                 </View>
-                <View style={{paddingHorizontal:20,}}>
+                <View style={{paddingHorizontal:20,paddingBottom:20,}}>
                     <TouchableOpacity 
                     style={{
                         flexDirection:'row',
@@ -242,7 +242,7 @@ const Register = ({navigation}) => {
                         marginBottom:10,
                     }}> 
                         <Text style={{fontSize:13,fontFamily:'NotoSansKR-Medium'}}>개인정보 처리방침</Text>
-                        <Icon name="chevron-forward" size={24} color="#aaa"/>
+                        <Icon name="arrow-forward-ios" size={20} color="#aaa"/>
                     </TouchableOpacity>
                     <TouchableOpacity 
                     style={{
@@ -252,10 +252,10 @@ const Register = ({navigation}) => {
                         backgroundColor:'#EBEBEB',
                         paddingVertical:8,
                         paddingHorizontal:12,
-                        marginBottom:10,
+                        marginBottom:20,
                     }}> 
                         <Text style={{fontSize:13,fontFamily:'NotoSansKR-Medium'}}>딜메이트 이용약관</Text>
-                        <Icon name="chevron-forward" size={24} color="#aaa"/>
+                        <Icon name="arrow-forward-ios" size={20} color="#aaa"/>
                     </TouchableOpacity>
                     <TouchableOpacity 
                     onPress={() => setCheck(!check)}
@@ -278,7 +278,7 @@ const Register = ({navigation}) => {
                         alignItems:'center',
                         borderRadius:8,
                     }}
-                    onPress={check === false ? null : () => {}}
+                    onPress={check === false ? null : () => navigation.navigate('RegisterFinish')}
                     
                     >
                         <Text style={{

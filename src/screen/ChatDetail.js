@@ -19,7 +19,7 @@ const ChatDetail = ({navigation}) => {
             <View style={{paddingHorizontal: 20,}}>
               <ChatDateLine date="2021년 1월 11일 월요일" />
               <ChatLeft user="nappeni" message="안녕하세요."/>
-              <ChatRight message="아니요."/>
+              <ChatRight message="안녕하세요."/>
               <ChatDateLine date="2021년 1월 12일 화요일" />
               <DealRequest
               user="nappeni"

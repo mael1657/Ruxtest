@@ -2,11 +2,10 @@ import React, {useState} from 'react';
 import {SafeAreaView, ScrollView, View, Text, Image,FlatList,} from 'react-native';
 
 import Header, {DetailHead} from '../components/header';
-import Footer from '../components/footer';
 import Product from '../components/product';
 import BotLine from '../components/bottomline';
 
-const Tracking = () => {
+const Tracking = ({navigation}) => {
   const dsitems = [
     {
       id:1,
@@ -54,14 +53,14 @@ const Tracking = () => {
               </View>
               <BotLine/>
               <View style={{padding:20,}}>
-                <Text style={{fontSize:16,fontWeight:'bold',paddingBottom:12,marginBottom:12,borderBottomWidth:1,borderBottomColor:'#eee'}}>배송 정보</Text>
+                <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,paddingBottom:12,marginBottom:12,borderBottomWidth:1,borderBottomColor:'#eee'}}>배송 정보</Text>
                 <View style={{flexDirection:'row',justifyContent: 'space-between',paddingBottom:10,}}>
-                  <Text style={{fontSize:13}}>택배사</Text>
-                  <Text style={{fontSize:13}}>CJ대한통운</Text>
+                  <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,}}>택배사</Text>
+                  <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,}}>CJ대한통운</Text>
                 </View>
                 <View style={{flexDirection:'row',justifyContent: 'space-between'}}>
-                  <Text style={{fontSize:13}}>운송장번호</Text>
-                  <Text style={{fontSize:13}}>13287513557521</Text>
+                  <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,}}>운송장번호</Text>
+                  <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,}}>13287513557521</Text>
                 </View>
               </View>
               <BotLine/>
@@ -75,7 +74,7 @@ const Tracking = () => {
                     style={{width:30,height:30,resizeMode:'contain'}}
                     source={require('../images/track_01.png')}/>
                   </View>
-                  <Text>상품발송</Text>
+                  <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,}}>상품발송</Text>
                 </View>
                 <View style={{alignItems: 'center'}}>
                   <View style={{width:53,height:53,backgroundColor: '#eee',borderRadius:53,justifyContent: 'center',alignItems:'center',marginBottom:4,}}>
@@ -83,7 +82,7 @@ const Tracking = () => {
                     style={{width:30,height:30,resizeMode:'contain'}}
                     source={require('../images/track_02.png')}/>
                   </View>
-                  <Text>택배사도착</Text>
+                  <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,}}>택배사도착</Text>
                 </View>
                 <View style={{alignItems: 'center'}}>
                   <View style={{width:53,height:53,backgroundColor: '#eee',borderRadius:53,justifyContent: 'center',alignItems:'center',marginBottom:4,}}>
@@ -91,7 +90,7 @@ const Tracking = () => {
                     style={{width:30,height:30,resizeMode:'contain'}}
                     source={require('../images/track_03.png')}/>
                   </View>
-                  <Text>배송중</Text>
+                  <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,}}>배송중</Text>
                 </View>
                 <View style={{alignItems: 'center'}}>
                   <View style={{width:53,height:53,backgroundColor: '#ECF2FB',borderRadius:53,justifyContent: 'center',alignItems:'center',marginBottom:4,}}>
@@ -99,7 +98,7 @@ const Tracking = () => {
                     style={{width:30,height:30,resizeMode:'contain'}}
                     source={require('../images/track_04_on.png')}/>
                   </View>
-                  <Text style={{color:'#477DD1'}}>배송완료</Text>
+                  <Text style={{color:'#477DD1',fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,}}>배송완료</Text>
                 </View>
               </View>
               </View>
@@ -113,9 +112,9 @@ const Tracking = () => {
                   borderBottomColor:'#eee',
                   paddingBottom:15,
                   }}>
-                  <Text style={{fontSize:14,fontWeight:'bold',width:100,textAlign:'center'}}>처리 일시</Text>
-                  <Text style={{fontSize:14,fontWeight:'bold',width:100,textAlign:'center'}}>현재 위치</Text>
-                  <Text style={{fontSize:14,fontWeight:'bold',width:100,textAlign:'center'}}>배송 상태</Text>
+                  <Text style={{fontSize:14,fontFamily:'NotoSansKR-Bold',lineHeight:20,width:100,textAlign:'center'}}>처리 일시</Text>
+                  <Text style={{fontSize:14,fontFamily:'NotoSansKR-Bold',lineHeight:20,width:100,textAlign:'center'}}>현재 위치</Text>
+                  <Text style={{fontSize:14,fontFamily:'NotoSansKR-Bold',lineHeight:20,width:100,textAlign:'center'}}>배송 상태</Text>
                 </View>
                 <View style={{flex:1}}>
                   {dsitems.map((dsitem) => (
@@ -124,7 +123,6 @@ const Tracking = () => {
                 </View>
               </View>
             </ScrollView>
-          <Footer/>
         </SafeAreaView>
     );
 };
@@ -140,9 +138,9 @@ function DeliveriStatus({dsitem}){
         paddingBottom:15,
         paddingTop:15,
         }}>
-        <Text style={{fontSize:14,width:100,textAlign:'center'}}>{dsitem.time}</Text>
-        <Text style={{fontSize:14,width:100,textAlign:'center'}}>{dsitem.location}</Text>
-        <Text style={{fontSize:14,width:100,textAlign:'center'}}>{dsitem.status}</Text>
+        <Text style={{fontSize:14,width:100,textAlign:'center',fontFamily:'NotoSansKR-Regular',lineHeight:20}}>{dsitem.time}</Text>
+        <Text style={{fontSize:14,width:100,textAlign:'center',fontFamily:'NotoSansKR-Regular',lineHeight:20}}>{dsitem.location}</Text>
+        <Text style={{fontSize:14,width:100,textAlign:'center',fontFamily:'NotoSansKR-Regular',lineHeight:20}}>{dsitem.status}</Text>
     </View>
   );
 }

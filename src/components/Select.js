@@ -1,6 +1,6 @@
 import React, {Component,useState} from 'react';
 
-import {View,StyleSheet} from 'react-native';
+import {View,StyleSheet,Image} from 'react-native';
 
 import {Picker} from '@react-native-picker/picker';
 import RNPickerSelect from 'react-native-picker-select';
@@ -42,8 +42,19 @@ export const DefaultPicker = ({picker, placeholder}) => {
       dropDownStyle={{borderColor:'#eee',borderWidth:1,}}
       globalTextStyle={{fontSize:11,lineHeight:12,fontFamily:'NotoSansKR-Regular'}}
       itemStyle={{justifyContent:'flex-start'}}
-      arrowStyle={{position:'absolute',top:0,right:0,}}
       arrowColor="#447DD1"
+      customArrowDown={() => (
+        <Image
+        width={20}
+        source={require('../images/select_box_arr.png')}
+        />
+      )}
+      customArrowUp={() => (
+        <Image
+        width={20}
+        source={require('../images/select_box_arr.png')}
+        />
+      )}
       zIndex={50000}
       defaultNull
       onChangeItem={(item) => console.log(item.label, item.value)}

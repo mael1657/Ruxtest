@@ -91,14 +91,18 @@ const MainScreen = ({navigation}) => {
               로그인
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{backgroundColor:'#eee',width:200,height:50,justifyContent:'center',alignItems:'center',marginBottom:10,}}>
-            <Text style={{fontSize:15,}}>
-              회원가입
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={{backgroundColor:'#eee',width:200,height:50,justifyContent:'center',alignItems:'center',marginBottom:10,}}>
+          <TouchableOpacity 
+          onPress={() => navigation.navigate('Tracking')}
+          style={{backgroundColor:'#eee',width:200,height:50,justifyContent:'center',alignItems:'center',marginBottom:10,}}>
             <Text style={{fontSize:15,}}>
               운송장조회
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity 
+          onPress={() => navigation.navigate('RegisteredProduct')}
+          style={{backgroundColor:'#eee',width:200,height:50,justifyContent:'center',alignItems:'center',marginBottom:10,}}>
+            <Text style={{fontSize:15,}}>
+              등록물품
             </Text>
           </TouchableOpacity>
         </View>

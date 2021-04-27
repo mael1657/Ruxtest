@@ -1,5 +1,5 @@
-import React from 'react';
-import {SafeAreaView, View, ScrollView, TouchableOpacity, Text, StyleSheet,} from 'react-native';
+import React, {useState} from 'react';
+import {SafeAreaView, View, ScrollView, TouchableOpacity, Text, StyleSheet,Modal} from 'react-native';
 
 import Header, {DetailHead} from '../components/header';
 import Footer from '../components/footer';
@@ -8,6 +8,7 @@ import Product from '../components/product';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const EstDetail = ({navigation}) => {
+  const [isvisible, setIsvisible] = useState(false);
   return(
     <SafeAreaView style={{flex:1,backgroundColor: '#fff'}}>
       <DetailHead title="견적 상세 정보"/>
@@ -41,7 +42,9 @@ const EstDetail = ({navigation}) => {
               <Text style={{fontSize:16,fontFamily:'NotoSansKR-Medium'}}>견적서 보기</Text>
             </TouchableOpacity>
             <View style={{flexDirection: 'row',overflow: 'hidden',borderBottomLeftRadius: 10,borderBottomRightRadius: 10,}}>
-                <TouchableOpacity style={styles.btnbox}>
+                <TouchableOpacity 
+                style={styles.btnbox}
+                onPress={() => setIsvisible(true)}>
                     <Text style={styles.btncont}>견적 수정</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.btnbox}>
@@ -66,6 +69,72 @@ const EstDetail = ({navigation}) => {
           <Icon name="chevron-forward" size={20} color="#000"/>
         </TouchableOpacity>
       </ScrollView>
+      <Modal
+      visible={isvisible}
+      transparent={true}
+      style={{flex:1}}
+      animationType="fade"
+      onRequestClose={() => setIsvisible(false)}
+      >
+        <View style={{
+          position:'absolute',
+          top:0,left:0,bottom:0,right:0,
+          backgroundColor:'rgba(0,0,0,0.7)',
+          justifyContent:'flex-start',
+        }}>
+          <View style={{
+            paddingVertical:30,
+            backgroundColor:'#fff',
+            justifyContent:'center',
+            alignItems:'center',
+            paddingHorizontal:20,
+          }}>
+            <Text style={{fontSize:16,fontFamily:'NotoSansKR-Medium',lineHeight:20,paddingBottom:6,}}>견적 수정</Text>
+            <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,paddingBottom:10}}>입력 하신 금액으로 견적을 수정하시겠습니까?</Text>
+            <View style={{
+              flexDirection:'row',
+              justifyContent:'center',
+              alignItems:'center',
+            }}>
+              <TouchableOpacity 
+              style={{
+                backgroundColor:'#447DD1',
+                borderRadius:8,
+                height:35,
+                width:64,
+                justifyContent:'center',
+                alignItems:'center',
+                margin:5,
+              }}
+              onPress={() => setIsvisible(false)}>
+                <Text style={{
+                  fontSize:13,
+                  fontFamily:'NotoSansKR-Regular',
+                  color:'#fff',
+                  lineHeight:20,
+                }}>취소</Text>
+              </TouchableOpacity>
+              <TouchableOpacity 
+              style={{
+                backgroundColor:'#447DD1',
+                borderRadius:8,
+                height:35,
+                width:64,
+                justifyContent:'center',
+                alignItems:'center',
+                margin:5,
+              }}>
+                <Text style={{
+                  fontSize:13,
+                  fontFamily:'NotoSansKR-Regular',
+                  color:'#fff',
+                  lineHeight:20,
+                }}>확인</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 };

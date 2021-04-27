@@ -21,6 +21,7 @@ import Backbutton from '../components/backbutton';
 import CustomDrawer from '../components/customdrawer';
 import Category from '../screen/category';
 import FavoriteList from '../screen/favoritelist';
+import Login from '../screen/Login';
 
 
 
@@ -28,7 +29,7 @@ const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
 
-const DrawerNavigator = () => {
+const DrawerNavigator = ({navigation}) => {
     return (
         <Drawer.Navigator 
         drawerContent={props => <CustomDrawerContent {...props}/>}
@@ -54,6 +55,7 @@ export const DrawerStack = ({navigation}) => {
     return(
         <Stack.Navigator>
             <Stack.Screen name="CustomDrawer" component={CustomDrawer}/>
+            <Stack.Screen name="Login" component={Login}/>
             <Stack.Screen name="Category" component={Category}/>
             <Stack.Screen name="FavoriteList" component={FavoriteList}/>
             <Stack.Screen name="Backbutton" component={Backbutton}/>

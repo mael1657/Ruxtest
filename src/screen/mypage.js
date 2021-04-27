@@ -81,7 +81,7 @@ const MypageScreen = ({navigation}) => {
                     >
                         <View style={{width:27,height:30,justifyContent:'center',paddingBottom:5,}}>
                             <Image
-                            style={{resizeMode:'contain',width:'auto'}} 
+                            style={{resizeMode:'contain',width:'100%',height:'100%'}} 
                             source={require('../images/ico_my01.png')}
                             />
                         </View>
@@ -90,7 +90,7 @@ const MypageScreen = ({navigation}) => {
                     <TouchableOpacity style={{width:80,alignItems:'center'}}>
                         <View style={{width:27,height:30,justifyContent:'center',paddingBottom:5,}}>
                             <Image
-                            style={{resizeMode:'contain',width:'auto'}} 
+                            style={{resizeMode:'contain',width:'100%',height:'100%'}} 
                             source={require('../images/ico_my02.png')}
                             />
                         </View>
@@ -101,7 +101,7 @@ const MypageScreen = ({navigation}) => {
                     style={{width:80,alignItems:'center'}}>
                         <View style={{width:27,height:30,justifyContent:'center',paddingBottom:5,}}>
                             <Image
-                            style={{resizeMode:'contain',width:'auto'}} 
+                            style={{resizeMode:'contain',width:'100%',height:'100%'}} 
                             source={require('../images/ico_my03.png')}
                             />
                         </View>
@@ -113,7 +113,7 @@ const MypageScreen = ({navigation}) => {
                     >
                         <View style={{width:27,height:30,justifyContent:'center',paddingBottom:5,}}>
                             <Image
-                            style={{resizeMode:'contain',width:'auto'}} 
+                            style={{resizeMode:'contain',width:'100%',height:'100%'}} 
                             source={require('../images/ico_my04.png')}
                             />
                         </View>
@@ -127,7 +127,7 @@ const MypageScreen = ({navigation}) => {
                     >
                         <View style={{width:27,height:30,justifyContent:'center',paddingBottom:5,}}>
                             <Image
-                            style={{resizeMode:'contain',width:'auto'}} 
+                            style={{resizeMode:'contain',width:'100%',height:'100%'}} 
                             source={require('../images/ico_my05.png')}
                             />
                         </View>
@@ -139,7 +139,7 @@ const MypageScreen = ({navigation}) => {
                     >
                         <View style={{width:27,height:30,justifyContent:'center',paddingBottom:5,}}>
                             <Image
-                            style={{resizeMode:'contain',width:'auto'}} 
+                            style={{resizeMode:'contain',width:'100%',height:'100%'}} 
                             source={require('../images/ico_my06.png')}
                             />
                         </View>
@@ -151,7 +151,7 @@ const MypageScreen = ({navigation}) => {
                     >
                         <View style={{width:27,height:30,justifyContent:'center',paddingBottom:5,}}>
                             <Image
-                            style={{resizeMode:'contain',width:'auto'}} 
+                            style={{resizeMode:'contain',width:'100%',height:'100%'}} 
                             source={require('../images/ico_my07.png')}
                             />
                         </View>
@@ -163,7 +163,7 @@ const MypageScreen = ({navigation}) => {
                     >
                         <View style={{width:27,height:30,justifyContent:'center',paddingBottom:5,}}>
                             <Image
-                            style={{resizeMode:'contain',width:'auto'}} 
+                            style={{resizeMode:'contain',width:'100%',height:'100%'}} 
                             source={require('../images/ico_my08.png')}
                             />
                         </View>

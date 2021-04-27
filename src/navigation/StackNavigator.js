@@ -20,6 +20,7 @@ import Review, { ReviewWrite, ReviewComplete, ReviewList } from '../screen/revie
 import ReviewDetail from '../screen/reviewdetail';
 import FavoriteList from '../screen/favoritelist';
 import DeliveryCheck from '../screen/deliverycheck';
+import Tracking from '../screen/tracking';
 import Setting from '../screen/setting';
 import Useredit from '../screen/useredit';
 import CustomerCenter from '../screen/customercenter';
@@ -38,6 +39,9 @@ import AppraiseWriteComplete from '../screen/AppraiseWriteComplete';
 import Login from '../screen/Login';
 import RegisterAgree from '../screen/RegisterAgree';
 import Register from '../screen/Register';
+import RegisterFinish from '../screen/RegisterFinish';
+import RegisteredProduct from '../screen/RegisteredProduct';
+import ReigsteredProductInfo from '../screen/ReigsteredProductInfo';
 
 const Stack = createStackNavigator();
 
@@ -71,6 +75,10 @@ export const MainStack = () => {
             <Stack.Screen name="Login" component={Login}/>
             <Stack.Screen name="RegisterAgree" component={RegisterAgree}/>
             <Stack.Screen name="Register" component={Register}/>
+            <Stack.Screen name="RegisterFinish" component={RegisterFinish}/>
+            <Stack.Screen name="Tracking" component={Tracking}/>
+            <Stack.Screen name="RegisteredProduct" component={RegisteredProduct}/>
+            <Stack.Screen name="ReigsteredProductInfo" component={ReigsteredProductInfo}/>
         </Stack.Navigator>
     );
 };

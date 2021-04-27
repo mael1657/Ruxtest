@@ -84,22 +84,22 @@ const Login = ({navigation}) => {
                 </View>
                 <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',}}>
                     <TouchableOpacity style={{flexDirection:'row',width:Halfbox,height:50,backgroundColor:'#F4F4F4',justifyContent:'space-between',alignItems:'center',overflow:'hidden',marginRight:5,paddingHorizontal:15,}}>
-                        <View style={{width:30,height:30,}}>
+                        <View style={{width:28,height:28,}}>
                             <Image
                             style={{resizeMode:'contain',width:'100%',height:'100%'}}
                             source={require('../images/ico_login01.png')}
                             />
                         </View>
-                        <Text style={{fontSize:15,fontFamily:'NotoSansKR-Medium',color:'#888'}}>네이버 로그인</Text>
+                        <Text style={{fontSize:14,fontFamily:'NotoSansKR-Medium',color:'#888'}}>네이버 로그인</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={{flexDirection:'row',width:Halfbox,height:50,backgroundColor:'#F4F4F4',justifyContent:'space-between',alignItems:'center',overflow:'hidden',marginLeft:5,paddingHorizontal:15,}}>
-                        <View style={{width:30,height:30,}}>
+                        <View style={{width:28,height:28,}}>
                             <Image
                             style={{resizeMode:'contain',width:'100%',height:'100%'}}
                             source={require('../images/ico_login02.png')}
                             />
                         </View>
-                        <Text style={{fontSize:15,fontFamily:'NotoSansKR-Medium',color:'#888'}}>애플 로그인</Text>
+                        <Text style={{fontSize:14,fontFamily:'NotoSansKR-Medium',color:'#888'}}>애플 로그인</Text>
                     </TouchableOpacity>
                 </View>
             </View>
