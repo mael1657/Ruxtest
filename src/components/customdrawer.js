@@ -5,7 +5,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {DrawerContentScrollView,} from '@react-navigation/drawer';
 import Backbutton from '../components/backbutton';
 
-const CustomDrawer = (props, {navigation}) => {
+const CustomDrawer = (props) => {
+    const {navigation} = props
     return(
         <>
              <DrawerContentScrollView {...props}>
@@ -19,6 +20,7 @@ const CustomDrawer = (props, {navigation}) => {
                         alignItems:'center'
                         }}>
                         <TouchableOpacity 
+                        onPress={() => navigation.navigate('Login')}
                         style={{
                             backgroundColor:'#477DD1',
                             borderRadius:8,
@@ -31,6 +33,7 @@ const CustomDrawer = (props, {navigation}) => {
                             <Text style={{fontSize:13,color:'#fff',fontFamily:'NotoSansKR-Regular',lineHeight:20}}>로그인</Text>
                         </TouchableOpacity>
                         <TouchableOpacity 
+                        onPress={() => navigation.navigate('RegisterAgree')}
                         style={{
                             backgroundColor:'#fff',
                             borderWidth:1,
@@ -44,7 +47,15 @@ const CustomDrawer = (props, {navigation}) => {
                         }}>
                             <Text style={{fontSize:13,color:'#477DD1',fontFamily:'NotoSansKR-Regular',lineHeight:20}}>회원가입</Text>
                         </TouchableOpacity>
-                        <Backbutton onPress={() => props.navigation.closeDrawer()}/>
+                        <TouchableOpacity 
+                            onPress={() => navigation.closeDrawer()}
+                            style={{
+                                position:'absolute',
+                                top:12,right:0,
+                            }}
+                            >
+                            <Icon name="ios-close-sharp" size={20} color="#D8D8D8"/>
+                        </TouchableOpacity>
                     </View>
                     {/* <DrawerItem 
                     label="WOMEN" 
@@ -58,6 +69,7 @@ const CustomDrawer = (props, {navigation}) => {
                     <DrawerItem label="KIDS" onPress={() => {}}/>
                     <DrawerItem label="UNISEX" onPress={() => {}}/> */}
                     <TouchableOpacity 
+                        onPress={() => navigation.navigate('Category')}
                         style={{
                             flexDirection:'row',
                             justifyContent:'space-between',
@@ -70,7 +82,7 @@ const CustomDrawer = (props, {navigation}) => {
                         <Icon name="ios-chevron-forward" size={20} color="#D8D8D8"/>
                     </TouchableOpacity>
                     <TouchableOpacity 
-                        onPress={() => {}}
+                        onPress={() => navigation.navigate('Category')}
                         style={{
                             flexDirection:'row',
                             justifyContent:'space-between',
@@ -83,7 +95,7 @@ const CustomDrawer = (props, {navigation}) => {
                         <Icon name="ios-chevron-forward" size={20} color="#D8D8D8"/>
                     </TouchableOpacity>
                     <TouchableOpacity 
-                        onPress={() => {}}
+                        onPress={() => navigation.navigate('Category')}
                         style={{
                             flexDirection:'row',
                             justifyContent:'space-between',
@@ -96,7 +108,7 @@ const CustomDrawer = (props, {navigation}) => {
                         <Icon name="ios-chevron-forward" size={20} color="#D8D8D8"/>
                     </TouchableOpacity>
                     <TouchableOpacity 
-                        onPress={() => {}}
+                        onPress={() => navigation.navigate('Category')}
                         style={{
                             flexDirection:'row',
                             justifyContent:'space-between',
@@ -111,6 +123,7 @@ const CustomDrawer = (props, {navigation}) => {
                 </View>
             </DrawerContentScrollView>
             <TouchableOpacity
+                onPress={() => navigation.navigate('FavoriteList')}
                 style={{
                     backgroundColor:'#477DD1',
                     height:62,

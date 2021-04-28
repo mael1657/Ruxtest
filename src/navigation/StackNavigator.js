@@ -14,6 +14,7 @@ import Bidding from '../screen/bidding';
 import BidFinish from '../screen/BidFinish';
 import EstDetail from '../screen/EstDetail';
 import EstCheck from '../screen/EstCheck';
+import EstCheck2 from '../screen/EstCheck2';
 import PurchaseOrder from '../screen/PurchaseOrder';
 import ChatDetail from '../screen/ChatDetail';
 import Review, { ReviewWrite, ReviewComplete, ReviewList } from '../screen/review';
@@ -42,16 +43,22 @@ import Register from '../screen/Register';
 import RegisterFinish from '../screen/RegisterFinish';
 import RegisteredProduct from '../screen/RegisteredProduct';
 import ReigsteredProductInfo from '../screen/ReigsteredProductInfo';
+import Category from '../screen/category';
+
+import CustomDrawer from '../components/customdrawer';
 
 const Stack = createStackNavigator();
 
 export const MainStack = () => {
     return(
         <Stack.Navigator
-              screenOptions={{
-                headerShown: false,
-              }}>
+          screenOptions={{
+            headerShown: false,
+          }}
+          initialRouteName="Main"
+          >
             <Stack.Screen name="Main" component={MainScreen}/>
+            <Stack.Screen name="CustomDrawer" component={CustomDrawer}/>
             <Stack.Screen name="PrdList" component={PrdList}/>
             <Stack.Screen name="PrdDetail" component={PrdDetail}/>
             <Stack.Screen name="Bidding" component={Bidding}/>
@@ -79,6 +86,21 @@ export const MainStack = () => {
             <Stack.Screen name="Tracking" component={Tracking}/>
             <Stack.Screen name="RegisteredProduct" component={RegisteredProduct}/>
             <Stack.Screen name="ReigsteredProductInfo" component={ReigsteredProductInfo}/>
+            <Stack.Screen name="Estimate" component={EstimateScreen}/>
+            <Stack.Screen name="EstDetail" component={EstDetail}/>
+            <Stack.Screen name="EstCheck" component={EstCheck}/>
+            <Stack.Screen name="Chat" component={ChatScreen}/>
+            <Stack.Screen name="ChatDetail" component={ChatDetail}/>
+            <Stack.Screen name="Mypage" component={MypageScreen}/>
+            <Stack.Screen name="FavoriteList" component={FavoriteList}/>
+            <Stack.Screen name="DeliveryCheck" component={DeliveryCheck}/>
+            <Stack.Screen name="Setting" component={Setting}/>
+            <Stack.Screen name="Useredit" component={Useredit}/>
+            <Stack.Screen name="CustomerCenter" component={CustomerCenter}/>
+            <Stack.Screen name="NotiSetting" component={NotiSetting}/>
+            <Stack.Screen name="KeywordSet" component={KeywordSet}/>
+            <Stack.Screen name="Transaction" component={Transaction}/>
+            <Stack.Screen name="Category" component={Category}/>
         </Stack.Navigator>
     );
 };
@@ -106,6 +128,7 @@ export const ChatStack = () => {
             <Stack.Screen name="Chat" component={ChatScreen}/>
             <Stack.Screen name="ChatDetail" component={ChatDetail}/>
             <Stack.Screen name="PurchaseOrder" component={PurchaseOrder}/>
+            <Stack.Screen name="EstCheck2" component={EstCheck2}/>
         </Stack.Navigator>
     );
 };

@@ -83,14 +83,7 @@ const MainScreen = ({navigation}) => {
               <MainReview/>
            </View>
         </View>
-        <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-          <TouchableOpacity 
-          onPress={() => navigation.navigate('Login')}
-          style={{backgroundColor:'#eee',width:200,height:50,justifyContent:'center',alignItems:'center',marginBottom:10,}}>
-            <Text style={{fontSize:15,}}>
-              로그인
-            </Text>
-          </TouchableOpacity>
+        <View style={{justifyContent:'center',alignItems:'center'}}>
           <TouchableOpacity 
           onPress={() => navigation.navigate('Tracking')}
           style={{backgroundColor:'#eee',width:200,height:50,justifyContent:'center',alignItems:'center',marginBottom:10,}}>

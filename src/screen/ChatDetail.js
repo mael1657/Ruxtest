@@ -39,7 +39,9 @@ const ChatDetail = ({navigation}) => {
                 />
             </View>
           </ScrollView>
-          <TouchableOpacity style={{height:48,backgroundColor: '#EBEBEB',justifyContent: 'center',alignItems:'center'}}>
+          <TouchableOpacity 
+          onPress={() => navigation.navigate('EstCheck2')}
+          style={{height:48,backgroundColor: '#EBEBEB',justifyContent: 'center',alignItems:'center'}}>
             <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold'}}>견적서 확인</Text>
           </TouchableOpacity>
           <View style={{backgroundColor: '#fff',flexDirection: 'row',justifyContent: 'space-between',paddingHorizontal: 20,paddingVertical: 12}}>

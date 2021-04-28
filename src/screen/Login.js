@@ -1,5 +1,6 @@
 import React from 'react';
 import {SafeAreaView,View,Text,Image,TouchableOpacity, Dimensions, TextInput} from 'react-native';
+import axios from 'axios';
 
 const Width = Dimensions.get('window').width;
 const Logo = (Width / 2) - 40;
