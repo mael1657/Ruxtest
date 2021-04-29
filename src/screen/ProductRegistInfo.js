@@ -39,6 +39,12 @@ const deliveryPicker = [
     {label: '무료 배송', value:'무료 배송'},
 ]
 
+var year_option = [];
+for (var i=2000;i<=2021;i++) { year_option[i] = { key: i, label: i+'년', value: i }; }
+
+var month_option = [];
+for (var i=1;i<=12;i++) { month_option[i] = { key: i, label: i+'월', value: i }; }
+
 
 
 const pakageitem = {
@@ -54,20 +60,6 @@ const dealtype= {
     courier: false,
     safe: false,
 }
-
-export const getYears = () => {
-    const today = new Date();
-    const start_year = 1920; //today.getFullYear() - 100; // 시작할 년도
-    const today_year = today.getFullYear(); //today.getFullYear() - 19;
-    let years = [];
-    for (let i = start_year; i <= today_year; i++) {
-      years.push(i.toString());
-    }
-    return years;
-  };
-
-
-
 
 const ProductRegistInfo = ({navigation}) => {
     const [pakage, setPakage] = useState(pakageitem);

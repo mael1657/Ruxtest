@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useEffect,useState} from 'react';
 import {SafeAreaView,View,Text,Image,TouchableOpacity, Dimensions, TextInput} from 'react-native';
 import axios from 'axios';
+import API_CALL from '../ApiCall';
+
 
 const Width = Dimensions.get('window').width;
 const Logo = (Width / 2) - 40;
@@ -10,6 +12,29 @@ const BoxHeight = (Dimensions.get('window').height) / 4;
 
 
 const Login = ({navigation}) => {
+
+    const [mt_id,setId] = useState('');
+    const [mt_pwd,setPwd] = useState('');
+
+    useEffect(()=>{
+        getUserData()
+    },[])
+
+    const getUserData = async () =>{
+        const form = new FormData()
+        form.append('method', 'proc_login_member')
+        form.append('mt_id', mt_id)
+        form.append('mt_pwd', mt_pwd)
+        form.append('mt_app_token', '')
+
+        const url = 'http://dmonster1566.cafe24.com/'
+
+        const api = await API_CALL(url, form, false)
+
+    }
+
+
+
     return(
         <SafeAreaView style={{flex:1,backgroundColor:'#fff'}}>
             <View style={{height:BoxHeight,paddingHorizontal:20,justifyContent:'center',alignItems:'center'}}>
@@ -25,12 +50,16 @@ const Login = ({navigation}) => {
                 style={{borderColor:'#eee',borderWidth:1,borderRadius:8,height:58,paddingLeft:20,fontSize:15,marginBottom:10,}}
                 placeholder="아이디"
                 placeholderTextColor="#C9C9C9"
+                value={mt_id}
+                onChangeText={text => setId(text)}
                 />
                 <TextInput
                 style={{borderColor:'#eee',borderWidth:1,borderRadius:8,height:58,paddingLeft:20,fontSize:15,marginBottom:20,}}
                 placeholder="비밀번호"
                 placeholderTextColor="#C9C9C9"
                 secureTextEntry={true}
+                value={mt_pwd}
+                onChangeText={text => setPwd(text)}
                 />
                 <TouchableOpacity 
                 style={{
@@ -38,7 +67,8 @@ const Login = ({navigation}) => {
                     justifyContent:'center',
                     alignItems:'center',
                     height:58,
-                    borderRadius:8,}}>
+                    borderRadius:8,}}
+                    onPress={()=> getUserData()}>
                     <Text style={{
                         fontSize:18,
                         fontFamily:'NotoSansKR-Medium',

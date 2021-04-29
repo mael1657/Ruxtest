@@ -1,10 +1,14 @@
-import React, {useState}from 'react';
+import React, {useEffect, useState}from 'react';
 import {SafeAreaView,ScrollView, View,Text,Image,TouchableOpacity, Dimensions, TextInput, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+// import Api, {API_CALL} from '../Api';
+import axios from 'axios';
+
 
 import {DefaultPicker} from '../components/Select';
 
 import {DetailHead} from '../components/header';
+import API_CALL from '../ApiCall';
 
 const classPicker = [
     {label:'개인', value:'개인'},
@@ -12,8 +16,98 @@ const classPicker = [
     {label:'개인', value:'개인'},
 ]
 
+
+
 const Register = ({navigation}) => {
     const [check, setCheck] = useState(false);
+
+    // JSON 데이터 상태값
+    const [mt_login_type,setLogin_type] = useState(1);
+    const [mt_seller, setSeller] = useState(false);
+    const [mt_id, setId] = useState('');
+    const [mt_name, setName] = useState('');
+    const [mt_nickname, setNickname] = useState('');
+    const [mt_pwd, setPwd] = useState(''); 
+    const [mt_pwd_re, setPwd_re] = useState(''); 
+    const [mt_zip, setZip] = useState('');
+    const [mt_add1, setAdd1] = useState('');
+    const [mt_add2, setAdd2] = useState('');
+    const [mt_hp, setHp] = useState('');
+    const [mt_level, setLevel] = useState([]);
+    const [mt_sms_certify, setSms_certify] = useState(false);
+    const [mt_company_name, setCompany_name] = useState('');
+    const [mt_business_type, setBusiness_type] = useState([]);
+    const [mt_business_number, setBusiness_number] = useState('');
+    const [mt_mail_number, setMail_number] = useState('');
+    const [mt_business_status, setBusiness_status] = useState('');
+    const [mt_ceo, setCeo] = useState('');
+    const [mt_business_tel, setBusiness_tel] = useState('');
+    const [mt_ceo_tel, setCeo_tel] = useState('');
+    const [mt_business_zip, setBusiness_zip] = useState('');
+    const [mt_business_add, setBusiness_add] = useState('');
+    const [mt_business_add2, setBusiness_add2] = useState('');
+    const [mt_invoice_email, setInvoice_email] = useState('');
+    const [mt_bank, setBank] = useState('');
+    const [mt_account, setAccount] = useState('');
+    const [mt_account_name, setAccount_name] = useState('');
+    const [mt_account_certify, setAccount_certify] = useState(false);
+    const [mt_image1, setImage1] = useState(false);
+    const [mt_license, setLicense] = useState(false);
+    
+
+
+
+
+    useEffect(()=>{
+        getTest()
+    },[])
+    
+    const getTest = async () => {
+        const form = new FormData()
+        form.append('method', 'proc_add_member')
+        form.append('mt_login_type', Number)
+        form.append('mt_seller', Boolean)
+        form.append('mt_id', '')
+        form.append('mt_name', '')
+        form.append('mt_nickname', '')
+        form.append('mt_pwd', '')
+        form.append('mt_pwd_re', '')
+        form.append('mt_zip', '')
+        form.append('mt_add1', '')
+        form.append('mt_add2', '')
+        form.append('mt_hp', '')
+        form.append('mt_level', Number)
+        form.append('mt_sms_certify', Boolean)
+        form.append('mt_company_name', '')
+        form.append('mt_business_type', '')
+        form.append('mt_business_number', '')
+        form.append('mt_mail_number', '')
+        form.append('mt_business_status', '')
+        form.append('mt_ceo', '')
+        form.append('mt_business_tel', '')
+        form.append('mt_ceo_tel', '')
+        form.append('mt_business_zip', '')
+        form.append('mt_business_add', '')
+        form.append('mt_business_add2', '')
+        form.append('mt_invoice_email', '')
+        form.append('mt_bank', '')
+        form.append('mt_account', '')
+        form.append('mt_account_name', '')
+        form.append('mt_account_certify', Boolean)
+        form.append('mt_image1', '')
+        form.append('mt_license', '')
+
+        const url ='http://dmonster1566.cafe24.com'
+
+       const api = await API_CALL(url, form, false)
+    // .then((response) => response.json())
+    // .then((json) => console.log(json));
+        
+       
+       
+    }
+    
+
     return(
         <SafeAreaView style={{flex:1,backgroundColor:'#fff'}}>
             <DetailHead title="회원가입"/>
@@ -26,6 +120,8 @@ const Register = ({navigation}) => {
                         style={styles.inputstyle}
                         placeholder="아이디"
                         placeholderTextColor="#C9C9C9"
+                        value={mt_id}
+                        onChangeText={text => setId(text)}
                         />
                     </View>
                     <View style={styles.contbox}>
@@ -35,15 +131,21 @@ const Register = ({navigation}) => {
                         placeholder="비밀번호"
                         placeholderTextColor="#C9C9C9"
                         secureTextEntry={true}
+                        value={mt_pwd}
+                        onChangeText={text => setPwd(text)}
                         />
                         <TextInput
                         style={styles.inputstyle}
                         placeholder="비밀번호 확인"
                         placeholderTextColor="#C9C9C9"
                         secureTextEntry={true}
+                        value={mt_pwd_re}
+                        onChangeText={text => setPwd_re(text)}
                         />
+                        
                         <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,color:'#aaa',paddingLeft:10,}}>비밀번호가 일치합니다.</Text>
                         <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,color:'#FC6060',paddingLeft:10,}}>비밀번호가 일치하지 않습니다.</Text>
+                        
                     </View>
                     <View style={styles.contbox}>
                         <Text style={styles.contitle}>주소</Text>

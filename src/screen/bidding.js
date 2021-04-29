@@ -1,8 +1,11 @@
 import React , {useState}from 'react';
 import {SafeAreaView, View, Text, Image, TouchableOpacity, Dimensions, TextInput,Modal } from 'react-native';
 
-import Icon from 'react-native-vector-icons/Ionicons'
+//패키지
 
+import Icon from 'react-native-vector-icons/Ionicons';
+
+//컴포넌트
 import Header, {DetailHead} from '../components/header';
 import Footer from '../components/footer';
 import {DefaultPicker} from '../components/Select';
