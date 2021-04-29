@@ -18,6 +18,7 @@ const classPicker = [
 
 
 
+
 const Register = ({navigation}) => {
     const [check, setCheck] = useState(false);
 
@@ -103,8 +104,18 @@ const Register = ({navigation}) => {
     // .then((response) => response.json())
     // .then((json) => console.log(json));
         
-       
-       
+    }
+
+    const ConfirmPwd = () => {
+        if(mt_pwd != mt_pwd_re) {
+            return(
+                <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,color:'#FC6060',paddingLeft:10,}}>비밀번호가 일치하지 않습니다.</Text>
+                )
+            }else{
+                return(
+                <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,color:'#aaa',paddingLeft:10,}}>비밀번호가 일치합니다.</Text>
+            )
+        }
     }
     
 
@@ -142,9 +153,9 @@ const Register = ({navigation}) => {
                         value={mt_pwd_re}
                         onChangeText={text => setPwd_re(text)}
                         />
-                        
-                        <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,color:'#aaa',paddingLeft:10,}}>비밀번호가 일치합니다.</Text>
-                        <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,color:'#FC6060',paddingLeft:10,}}>비밀번호가 일치하지 않습니다.</Text>
+                        <ConfirmPwd/>
+                        {/* <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,color:'#aaa',paddingLeft:10,}}>비밀번호가 일치합니다.</Text>
+                        <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,color:'#FC6060',paddingLeft:10,}}>비밀번호가 일치하지 않습니다.</Text> */}
                         
                     </View>
                     <View style={styles.contbox}>
