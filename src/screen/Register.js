@@ -1,8 +1,9 @@
 import React, {useEffect, useState}from 'react';
-import {SafeAreaView,ScrollView, View,Text,Image,TouchableOpacity, Dimensions, TextInput, StyleSheet} from 'react-native';
+import {SafeAreaView,ScrollView, View,Text,Image,TouchableOpacity, Dimensions, TextInput, StyleSheet,} from 'react-native';
+import ImagePicker from 'react-native-image-picker';
+import Toast from 'react-native-toast-message';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 // import Api, {API_CALL} from '../Api';
-import axios from 'axios';
 
 
 import {DefaultPicker} from '../components/Select';
@@ -11,20 +12,29 @@ import {DetailHead} from '../components/header';
 import API_CALL from '../ApiCall';
 
 const classPicker = [
-    {label:'개인', value:'개인'},
-    {label:'개인', value:'개인'},
-    {label:'개인', value:'개인'},
+    {label:'사업자 아님', value:'no'},
+    {label:'개인', value:'Private'},
+    {label:'법인', value:'Corporate'},
 ]
 
+const RegisterFailed =()=>{
+    useEffect(() => {
+        Toast.show({
+            type:'my_custom_type',
+            text1:'회원가입을 완료하지 못했습니다.',
+        })
+    }, [])
+}
 
 
 
 const Register = ({navigation}) => {
     const [check, setCheck] = useState(false);
+    const [response, setResponse] = useState(null);
 
     // JSON 데이터 상태값
     const [mt_login_type,setLogin_type] = useState(1);
-    const [mt_seller, setSeller] = useState(false);
+    const [mt_seller, setSeller] = useState('B');
     const [mt_id, setId] = useState('');
     const [mt_name, setName] = useState('');
     const [mt_nickname, setNickname] = useState('');
@@ -49,25 +59,25 @@ const Register = ({navigation}) => {
     const [mt_business_add2, setBusiness_add2] = useState('');
     const [mt_invoice_email, setInvoice_email] = useState('');
     const [mt_bank, setBank] = useState('');
-    const [mt_account, setAccount] = useState('');
+    const [mt_account, setAccount]= useState('');
     const [mt_account_name, setAccount_name] = useState('');
     const [mt_account_certify, setAccount_certify] = useState(false);
     const [mt_image1, setImage1] = useState(false);
-    const [mt_license, setLicense] = useState(false);
+    const [mt_license, setLicense] = useState('');
     
 
 
 
 
     useEffect(()=>{
-        getTest()
+        postInfo()
     },[])
     
-    const getTest = async () => {
+    const postInfo = async () => {
         const form = new FormData()
         form.append('method', 'proc_add_member')
         form.append('mt_login_type', Number)
-        form.append('mt_seller', Boolean)
+        form.append('mt_seller', '')
         form.append('mt_id', '')
         form.append('mt_name', '')
         form.append('mt_nickname', '')
@@ -99,24 +109,34 @@ const Register = ({navigation}) => {
         form.append('mt_license', '')
 
         const url ='http://dmonster1566.cafe24.com'
+        const params = '/json/proc_json.php'
 
-       const api = await API_CALL(url, form, false)
-    // .then((response) => response.json())
-    // .then((json) => console.log(json));
-        
+       const api = await API_CALL(url+params, form, false)
     }
 
+    
+    //패스워드 일치 확인
     const ConfirmPwd = () => {
-        if(mt_pwd != mt_pwd_re) {
+        if(mt_pwd <= 0) {
             return(
-                <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,color:'#FC6060',paddingLeft:10,}}>비밀번호가 일치하지 않습니다.</Text>
-                )
-            }else{
-                return(
-                <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,color:'#aaa',paddingLeft:10,}}>비밀번호가 일치합니다.</Text>
+                <></>
             )
+        }else if(mt_pwd == mt_pwd_re) {
+            return(
+                <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,color:'#aaa',paddingLeft:10,}}>비밀번호가 일치합니다.</Text>
+                )
+        }else{
+            return(
+            <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,color:'#FC6060',paddingLeft:10,}}>비밀번호가 일치하지 않습니다.</Text>
+        )
         }
     }
+    const options = {
+        storageOptions: {
+          skipBackup: true,
+          path: 'images',
+        },
+      };
     
 
     return(
@@ -127,13 +147,51 @@ const Register = ({navigation}) => {
                     {/* 회원 정보 */}
                     <View style={styles.contbox}>
                         <Text style={styles.contitle}>아이디 <Text style={styles.seltext}>(필수)</Text></Text>
-                        <TextInput
-                        style={styles.inputstyle}
-                        placeholder="아이디"
-                        placeholderTextColor="#C9C9C9"
-                        value={mt_id}
-                        onChangeText={text => setId(text)}
-                        />
+                        <View style={{flexDirection:'row'}}>
+                            <TextInput
+                            style={styles.inputstyle}
+                            placeholder="아이디"
+                            placeholderTextColor="#C9C9C9"
+                            value={mt_id}
+                            onChangeText={text => setId(text)}
+                            />
+                            <TouchableOpacity 
+                            style={{
+                                backgroundColor:'#447DD1',
+                                height:35,
+                                borderRadius:8,
+                                justifyContent:'center',
+                                alignItems:'center',
+                                width:100,
+                                marginLeft:5,
+                            }}>
+                                <Text style={{fontSize:13,color:'#fff',fontFamily:'NotoSansKR-Medium',lineHeight:20,}}>중복확인</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    <View style={styles.contbox}>
+                        <Text style={styles.contitle}>닉네임 <Text style={styles.seltext}>(필수)</Text></Text>
+                        <View style={{flexDirection:'row'}}>
+                            <TextInput
+                            style={styles.inputstyle}
+                            placeholder="아이디"
+                            placeholderTextColor="#C9C9C9"
+                            value={mt_nickname}
+                            onChangeText={text => setNickname(text)}
+                            />
+                            <TouchableOpacity 
+                            style={{
+                                backgroundColor:'#447DD1',
+                                height:35,
+                                borderRadius:8,
+                                justifyContent:'center',
+                                alignItems:'center',
+                                width:100,
+                                marginLeft:5,
+                            }}>
+                                <Text style={{fontSize:13,color:'#fff',fontFamily:'NotoSansKR-Medium',lineHeight:20,}}>중복확인</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                     <View style={styles.contbox}>
                         <Text style={styles.contitle}>비밀번호 <Text style={styles.seltext}>(필수)</Text></Text>
@@ -165,18 +223,26 @@ const Register = ({navigation}) => {
                             style={[styles.inputstyle, {flex:1}]}
                             placeholder="주소를 입력해주세요."
                             placeholderTextColor="#C9C9C9"
+                            editable={false}
+                            value={mt_zip}
+                            onChangeText={text => setZip(text)}
                         />
                         <TouchableOpacity style={{height:35,width:100,backgroundColor: '#477DD1',borderRadius:8,justifyContent: 'center',alignItems: 'center',marginLeft:5,}}>
-                            <Text style={{color:'#fff',fontSize:13,fontWeight:'bold',}}>주소 찾기</Text>
+                            <Text style={{color:'#fff',fontSize:13,lineHeight:20,fontFamily:'NotoSansKR-Medium',}}>주소 찾기</Text>
                         </TouchableOpacity>
                         </View>
                         <TextInput
                         style={styles.inputstyle}
+                        editable={false}
+                        value={mt_add1}
+                        onChangeText={text => setAdd1(text)}
                         />
                         <TextInput
                         style={styles.inputstyle}
                         placeholder="상세주소"
                         placeholderTextColor="#C9C9C9"
+                        value={mt_add2}
+                        onChangeText={text => setAdd2(text)}
                         />
                     </View>
                     <View style={styles.contbox}>
@@ -186,6 +252,8 @@ const Register = ({navigation}) => {
                         style={styles.inputstyle}
                         placeholder="휴대폰 번호"
                         placeholderTextColor="#C9C9C9"
+                        value={mt_hp}
+                        onChangeText={text => setHp(text)}
                         />
                         <TouchableOpacity 
                          style={{
@@ -208,20 +276,26 @@ const Register = ({navigation}) => {
                         <Text style={styles.contitle}>계좌</Text>
                         <Text style={{position:'absolute',top:2,right:5,fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,color:'#447DD1'}}>인증완료</Text>
                         <TextInput
-                        style={styles.inputstyle}
+                        style={styles.inputstyle} 
                         placeholder="은행명"
                         placeholderTextColor="#C9C9C9"
+                        value={mt_bank}
+                        onChangeText={text => setBank(text)}
                         />
                         <TextInput
                         style={styles.inputstyle}
                         placeholder="계좌번호"
                         placeholderTextColor="#C9C9C9"
                         keyboardType="numeric"
+                        value={mt_account}
+                        onChangeText={text => setAccount(text)}
                         />
                         <TextInput
                         style={styles.inputstyle}
                         placeholder="예금주"
                         placeholderTextColor="#C9C9C9"
+                        value={mt_account_name}
+                        onChangeText={text => setAccount_name(text)}
                         />
                         <TouchableOpacity 
                          style={{
@@ -241,7 +315,7 @@ const Register = ({navigation}) => {
                     <View style={styles.contbox}>
                         <Text style={styles.contitle}>구분</Text>
                         <View>
-                            <DefaultPicker placeholder="개인" picker={classPicker}/>
+                            <DefaultPicker placeholder="사업자 구분" picker={classPicker}/>
                         </View>
                     </View>
                     <View style={styles.contbox}>
@@ -250,6 +324,8 @@ const Register = ({navigation}) => {
                         style={styles.inputstyle}
                         placeholder="사업자 등록 번호"
                         placeholderTextColor="#C9C9C9"
+                        value={mt_business_number}
+                        onChangeText={text => setBusiness_number(text)}
                         />
                     </View>
                     <View style={styles.contbox}>
@@ -259,8 +335,12 @@ const Register = ({navigation}) => {
                             style={[styles.inputstyle, {flex:1,marginBottom:0,}]}
                             placeholder="사업자 등록 번호"
                             placeholderTextColor="#C9C9C9"
+                            editable={false}
+                            value={mt_license}
+                            onChangeText={text => setLicense(text)}
                             />
-                            <TouchableOpacity style={{
+                            <TouchableOpacity 
+                            style={{
                                 backgroundColor:'#447DD1',
                                 borderRadius:8,
                                 height:35,
@@ -279,6 +359,8 @@ const Register = ({navigation}) => {
                         style={styles.inputstyle}
                         placeholder="통신 판매업 번호"
                         placeholderTextColor="#C9C9C9"
+                        value={mt_mail_number}
+                        onChangeText={text => setMail_number(text)}
                         />
                     </View>
                     <View style={styles.contbox}>
@@ -287,6 +369,8 @@ const Register = ({navigation}) => {
                         style={styles.inputstyle}
                         placeholder="업태/업종"
                         placeholderTextColor="#C9C9C9"
+                        value={mt_business_status}
+                        onChangeText={text => setBusiness_status(text)}
                         />
                     </View>
                     <View style={styles.contbox}>
@@ -295,6 +379,8 @@ const Register = ({navigation}) => {
                         style={styles.inputstyle}
                         placeholder="대표자명"
                         placeholderTextColor="#C9C9C9"
+                        value={mt_ceo}
+                        onChangeText={text => setCeo(text)}
                         />
                     </View>
                     <View style={styles.contbox}>
@@ -303,6 +389,9 @@ const Register = ({navigation}) => {
                         style={styles.inputstyle}
                         placeholder="사업장 연락처"
                         placeholderTextColor="#C9C9C9"
+                        value={mt_business_tel}
+                        onChangeText={text => setBusiness_tel(text)}
+
                         />
                     </View>
                     <View style={styles.contbox}>
@@ -311,6 +400,8 @@ const Register = ({navigation}) => {
                         style={styles.inputstyle}
                         placeholder="대표자 연락처"
                         placeholderTextColor="#C9C9C9"
+                        value={mt_ceo_tel}
+                        onChangeText={text => setCeo_tel(text)}
                         />
                     </View>
                     <View style={styles.contbox}>
@@ -319,6 +410,8 @@ const Register = ({navigation}) => {
                         style={styles.inputstyle}
                         placeholder="이메일 주소"
                         placeholderTextColor="#C9C9C9"
+                        value={mt_invoice_email}
+                        onChangeText={text => setInvoice_email(text)}
                         />
                     </View>
                     <View style={styles.contbox}>
@@ -328,6 +421,9 @@ const Register = ({navigation}) => {
                             style={[styles.inputstyle, {flex:1}]}
                             placeholder="주소를 입력해주세요."
                             placeholderTextColor="#C9C9C9"
+                            editable={false}
+                            value={mt_business_zip}
+                            onChangeText={text => setBusiness_zip(text)}
                         />
                         <TouchableOpacity style={{height:35,width:100,backgroundColor: '#477DD1',borderRadius:8,justifyContent: 'center',alignItems: 'center',marginLeft:5,}}>
                             <Text style={{color:'#fff',fontSize:13,fontWeight:'bold',}}>주소 찾기</Text>
@@ -335,16 +431,22 @@ const Register = ({navigation}) => {
                         </View>
                         <TextInput
                         style={styles.inputstyle}
+                        editable={false}
+                        value={mt_business_add}
+                        onChangeText={text => setBusiness_add(text)}
                         />
                         <TextInput
                         style={styles.inputstyle}
                         placeholder="상세주소"
                         placeholderTextColor="#C9C9C9"
+                        value={mt_business_add2}
+                        onChangeText={text => setBusiness_add2(text)}
                         />
                     </View>
                 </View>
                 <View style={{paddingHorizontal:20,paddingBottom:20,}}>
                     <TouchableOpacity 
+                    onPress={() => navigation.navigate('PrivacyPolicy')}
                     style={{
                         flexDirection:'row',
                         justifyContent:'space-between',
@@ -358,6 +460,7 @@ const Register = ({navigation}) => {
                         <Icon name="arrow-forward-ios" size={20} color="#aaa"/>
                     </TouchableOpacity>
                     <TouchableOpacity 
+                    onPress={() => navigation.navigate('TermsOfService')}
                     style={{
                         flexDirection:'row',
                         justifyContent:'space-between',
@@ -425,6 +528,7 @@ const styles = StyleSheet.create({
         paddingLeft:10,
         paddingVertical:0,
         marginBottom:5,
+        flex:1,
     },
     graybox: {
         backgroundColor: '#EBEBEB',

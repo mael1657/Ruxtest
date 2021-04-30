@@ -27,9 +27,10 @@ const Login = ({navigation}) => {
         form.append('mt_pwd', mt_pwd)
         form.append('mt_app_token', '')
 
-        const url = 'http://dmonster1566.cafe24.com/'
+        const url = 'http://dmonster1566.cafe24.com'
+        const params = '/json/proc_json.php'
 
-        const api = await API_CALL(url, form, false)
+        const api = await API_CALL(url+params, form, false)
 
     }
 

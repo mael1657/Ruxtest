@@ -44,6 +44,8 @@ import RegisterFinish from '../screen/RegisterFinish';
 import RegisteredProduct from '../screen/RegisteredProduct';
 import ReigsteredProductInfo from '../screen/ReigsteredProductInfo';
 import Category from '../screen/category';
+import TermsOfService from '../screen/TermsOfService';
+import PrivacyPolicy from '../screen/PrivacyPolicy';
 
 import CustomDrawer from '../components/customdrawer';
 
@@ -101,6 +103,8 @@ export const MainStack = () => {
             <Stack.Screen name="KeywordSet" component={KeywordSet}/>
             <Stack.Screen name="Transaction" component={Transaction}/>
             <Stack.Screen name="Category" component={Category}/>
+            <Stack.Screen name="TermsOfService" component={TermsOfService}/>
+            <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy}/>
         </Stack.Navigator>
     );
 };
