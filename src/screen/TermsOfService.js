@@ -6,7 +6,6 @@ import API_CALL from '../ApiCall';
 import {DetailHead} from '../components/header';
 
 const TermsOfService = () => {
-    const contentWidth = Dimensions.get('window').width;
 
     const [item, setItem] = useState('')
     useEffect(()=>{

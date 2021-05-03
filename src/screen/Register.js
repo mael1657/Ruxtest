@@ -1,6 +1,6 @@
 import React, {useEffect, useState}from 'react';
 import {SafeAreaView,ScrollView, View,Text,Image,TouchableOpacity, Dimensions, TextInput, StyleSheet,} from 'react-native';
-import ImagePicker from 'react-native-image-picker';
+import {Formik} from 'formik';
 import Toast from 'react-native-toast-message';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 // import Api, {API_CALL} from '../Api';
@@ -29,6 +29,7 @@ const RegisterFailed =()=>{
 
 
 const Register = ({navigation}) => {
+
     const [check, setCheck] = useState(false);
     const [response, setResponse] = useState(null);
 
@@ -123,7 +124,7 @@ const Register = ({navigation}) => {
             )
         }else if(mt_pwd == mt_pwd_re) {
             return(
-                <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,color:'#aaa',paddingLeft:10,}}>비밀번호가 일치합니다.</Text>
+                <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,color:'#447DD1',paddingLeft:10,}}>비밀번호가 일치합니다.</Text>
                 )
         }else{
             return(
@@ -131,12 +132,7 @@ const Register = ({navigation}) => {
         )
         }
     }
-    const options = {
-        storageOptions: {
-          skipBackup: true,
-          path: 'images',
-        },
-      };
+
     
 
     return(
@@ -174,7 +170,7 @@ const Register = ({navigation}) => {
                         <View style={{flexDirection:'row'}}>
                             <TextInput
                             style={styles.inputstyle}
-                            placeholder="아이디"
+                            placeholder="닉네임"
                             placeholderTextColor="#C9C9C9"
                             value={mt_nickname}
                             onChangeText={text => setNickname(text)}
@@ -202,6 +198,7 @@ const Register = ({navigation}) => {
                         secureTextEntry={true}
                         value={mt_pwd}
                         onChangeText={text => setPwd(text)}
+                        maxLength={12}
                         />
                         <TextInput
                         style={styles.inputstyle}
@@ -210,6 +207,7 @@ const Register = ({navigation}) => {
                         secureTextEntry={true}
                         value={mt_pwd_re}
                         onChangeText={text => setPwd_re(text)}
+                        maxLength={12}
                         />
                         <ConfirmPwd/>
                         {/* <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:20,color:'#aaa',paddingLeft:10,}}>비밀번호가 일치합니다.</Text>
@@ -256,14 +254,14 @@ const Register = ({navigation}) => {
                         onChangeText={text => setHp(text)}
                         />
                         <TouchableOpacity 
-                         style={{
+                        style={{
                             backgroundColor:'#447DD1',
                             width:'100%',
                             height:35,
                             justifyContent:'center',
                             alignItems:'center',
                             borderRadius:8,
-                         }}>
+                        }}>
                             <Text style={{fontSize:15,color:'#fff',fontFamily:'NotoSansKR-Medium',lineHeight:20,}}>휴대폰 인증</Text>
                         </TouchableOpacity>
                     </View>
@@ -298,14 +296,14 @@ const Register = ({navigation}) => {
                         onChangeText={text => setAccount_name(text)}
                         />
                         <TouchableOpacity 
-                         style={{
+                        style={{
                             backgroundColor:'#447DD1',
                             width:'100%',
                             height:35,
                             justifyContent:'center',
                             alignItems:'center',
                             borderRadius:8,
-                         }}>
+                        }}>
                             <Text style={{fontSize:15,color:'#fff',fontFamily:'NotoSansKR-Medium',lineHeight:20,}}>계좌 인증</Text>
                         </TouchableOpacity>
                     </View>
@@ -494,8 +492,7 @@ const Register = ({navigation}) => {
                         alignItems:'center',
                         borderRadius:8,
                     }}
-                    onPress={check === false ? null : () => navigation.navigate('RegisterFinish')}
-                    
+                    onPress={check === false ? null : () => postInfo()}
                     >
                         <Text style={{
                             fontSize:16,

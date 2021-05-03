@@ -46,7 +46,13 @@ const toastConfig = {
         <Icon name="alert-circle" size={24} color="#ff0000"/>
         <Text style={{fontFamily:'NotoSansKR-Medium',marginLeft:10,}}>{text1}</Text>
       </View>
-  )
+  ),
+
+  'custom_type': (internalState) => (
+    <View style={{ width: '90%', backgroundColor: '#000000e0', borderRadius: 50, paddingHorizontal: 16, paddingVertical: 17 }}>
+      <Text style={{textAlign: 'center', color: '#fff', fontSize: 11.5}}>{internalState.text1}</Text>
+    </View>
+    )
 }
 
 const App = () => {

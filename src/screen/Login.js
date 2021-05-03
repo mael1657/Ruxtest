@@ -36,6 +36,7 @@ const Login = ({navigation}) => {
 
 
 
+
     return(
         <SafeAreaView style={{flex:1,backgroundColor:'#fff'}}>
             <View style={{height:BoxHeight,paddingHorizontal:20,justifyContent:'center',alignItems:'center'}}>
