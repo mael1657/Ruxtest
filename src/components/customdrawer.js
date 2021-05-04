@@ -1,11 +1,41 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View,TouchableOpacity,Text,} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import API_CALL from '../ApiCall';
 
 import {DrawerContentScrollView,} from '@react-navigation/drawer';
-import Backbutton from '../components/backbutton';
 
 const CustomDrawer = (props) => {
+    const [ct_id, setId] = useState('')
+    const [ct_name, setName] = useState('')
+
+    const [item, setItem] = useState()
+
+    const [menuArr, setMenuArr] = useState([
+        {name:ct_name, id:ct_id, params: null},
+    ])
+    useEffect(()=>{
+        getCate()
+    },[])
+
+    const getCate = async () =>{
+        const form = new FormData();
+        form.append('method', 'proc_category_list')
+        form.append('ct_id',ct_id)
+        form.append('ct_name',ct_name)
+
+        const url = 'http://dmonster1566.cafe24.com'
+        const path = '/json/proc_json.php'
+
+        const api = await API_CALL(url+path, form, true)
+        console.log(api)
+        const { data : { method, result, message, count, item} } = api;
+
+        setItem(item)
+
+    }
+    console.log('item', item)
+
     const {navigation} = props
     return(
         <>
@@ -57,17 +87,6 @@ const CustomDrawer = (props) => {
                             <Icon name="ios-close-sharp" size={20} color="#D8D8D8"/>
                         </TouchableOpacity>
                     </View>
-                    {/* <DrawerItem 
-                    label="WOMEN" 
-                    onPress={() => {}}
-                    
-                    >
-                        <Text>WOMEN</Text>
-                        <Icon name="ios-chevron-forward" size={20} color="#eee"/>
-                    </DrawerItem>
-                    <DrawerItem label="MEN" onPress={() => {}}/>
-                    <DrawerItem label="KIDS" onPress={() => {}}/>
-                    <DrawerItem label="UNISEX" onPress={() => {}}/> */}
                     <TouchableOpacity 
                         onPress={() => navigation.navigate('Category')}
                         style={{
@@ -120,6 +139,23 @@ const CustomDrawer = (props) => {
                         <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>UNISEX</Text>
                         <Icon name="ios-chevron-forward" size={20} color="#D8D8D8"/>
                     </TouchableOpacity>
+                    
+                    {/* {menuArr.map((arr, i) => <TouchableOpacity 
+                        onPress={() => navigation.navigate('Category')}
+                        style={{
+                            flexDirection:'row',
+                            justifyContent:'space-between',
+                            alignItems:'center',
+                            paddingVertical:20,
+                            borderBottomWidth:1,
+                            borderBottomColor:'#eee',
+                        }}
+                        key={i}
+                        >
+                        <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>{arr.name}</Text>
+                        <Icon name="ios-chevron-forward" size={20} color="#D8D8D8"/>
+                    </TouchableOpacity>)} */}
+
                 </View>
             </DrawerContentScrollView>
             <TouchableOpacity

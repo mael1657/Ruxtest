@@ -110,9 +110,9 @@ const Register = ({navigation}) => {
         form.append('mt_license', '')
 
         const url ='http://dmonster1566.cafe24.com'
-        const params = '/json/proc_json.php'
+        const path = '/json/proc_json.php'
 
-       const api = await API_CALL(url+params, form, false)
+       const api = await API_CALL(url+path, form, false)
     }
 
     

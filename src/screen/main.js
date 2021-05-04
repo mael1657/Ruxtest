@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -25,7 +25,6 @@ export const Boxwidth = Width / 2 - 30;
 export const Boxheight = Boxwidth * 1.4;
 
 const MainScreen = ({navigation}) => {
-
     return (
     <View style={styles.container}>
         <Header/>

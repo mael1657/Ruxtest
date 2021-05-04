@@ -1,39 +1,34 @@
 import axios, {AxiosResponse} from "axios";
 
-const form = new FormData();
+// const form = new FormData();
 
-export interface APIProps<T = any> {
-    result : string,
-    msg : string,
-    iat: number,
-    jti: string,
-    iss: string,
-    nbf: number,
-    exp: number,
-    data : T[] | T
-}
+// export interface APIProps<T = any> {
+//     result : string,
+//     msg : string,
+//     iat: number,
+//     jti: string,
+//     iss: string,
+//     nbf: number,
+//     exp: number,
+//     data : T[] | T
+// }
 
-export interface ResType<T = any> {
-    data : T | T[] ,
-    result : boolean,
-    msg : string;
-}
+// export interface ResType<T = any> {
+//     data : T | T[] ,
+//     result : boolean,
+//     msg : string;
+// }
 
-export const debugToken = 'MT_bnLtTcP'
-export const decodeToken = '1111882EAD94E9C493CEF089E1B023A2122BA778'
+// export const debugToken = 'MT_bnLtTcP'
+// export const decodeToken = '1111882EAD94E9C493CEF089E1B023A2122BA778'
 
-const API_CALL = async ( url : string, params : any, list : boolean, headerSetting? : string  ) =>{
+
+const API_CALL = async ( url : string, params : any, list : boolean,) =>{
     try{
 
         let headers = {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'multipart/form-data'
         };
-
-        if(headerSetting){
-            headers = {
-                'Content-Type': 'multipart/form-data'
-            }
-        }
 
         const api : any = await axios.post(url, params, {
             headers
