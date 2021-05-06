@@ -18,6 +18,7 @@ const Category = (props) => {
     const [isVisible, setIsVisible] = useState(defaultIsVisible); 
     console.log(params)
     const [ct_id, setId] = useState(params.ct_id)
+    const [ct_name, setName] = useState(params.ct_name)
     const [ct_id2, setId2] = useState('')
     const [ct_name2, setName2] = useState('')
     const [ct_id3, setId3] = useState('')
@@ -68,7 +69,7 @@ const Category = (props) => {
                     onPress={() => navigation.goBack()}>
                     <Icon name="arrow-back" size={30} color="#aaa"/>
                 </TouchableOpacity>
-                <Text style={{fontSize:18,fontFamily:'NotoSansKR-Bold'}}>카테고리 선택</Text>
+                <Text style={{fontSize:18,fontFamily:'NotoSansKR-Bold'}}>{ct_name}</Text>
                 <TouchableOpacity 
                 style={{}}
                 onPress={() => navigation.navigate('Main')}>

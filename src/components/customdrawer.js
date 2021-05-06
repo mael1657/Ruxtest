@@ -138,7 +138,7 @@ const CustomDrawer = (props) => {
                     </TouchableOpacity> */}
                     
                     {item.map((item, i) => <TouchableOpacity 
-                        onPress={() => navigation.navigate('Category',{ct_id:item.ct_id})}
+                        onPress={() => navigation.navigate('Category',{ct_id:item.ct_id, ct_name:item.ct_name})}
                         style={{
                             flexDirection:'row',
                             justifyContent:'space-between',
