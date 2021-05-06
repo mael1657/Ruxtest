@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import {ScrollView, SafeAreaView, View, Text, TouchableOpacity, StyleSheet,} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import API_CALL from '../ApiCall';
+
 
 const defaultIsVisible = {
     clothes: false,
@@ -9,8 +11,56 @@ const defaultIsVisible = {
     acc: false,
 }
 
-const Category = ({navigation}) => {
+const Category = (props) => {
+    const { route} = props
+    const {navigation} = props
+    const {params} = route
     const [isVisible, setIsVisible] = useState(defaultIsVisible); 
+    console.log(params)
+    const [ct_id, setId] = useState(params.ct_id)
+    const [ct_id2, setId2] = useState('')
+    const [ct_name2, setName2] = useState('')
+    const [ct_id3, setId3] = useState('')
+    const [ct_name3, setName3] = useState('')
+
+    const [categories, setCategories] = useState([]);
+
+    const [isClicked, setIsClicked] = useState('');
+
+    const onPressToggle = (val) => {
+        if (isClicked === val) {
+          setIsClicked('');
+        } else {
+          setIsClicked(val);
+        }
+      }
+    
+      useEffect(()=> {
+          getList();
+      },[])
+
+    const getList = async () => {
+        const form = new FormData()
+        form.append('method', 'proc_category_list2')
+        form.append('ct_id',ct_id)
+        form.append('ct_id2',ct_id2)
+        form.append('ct_name2',ct_name2)
+        form.append('ct_id3',ct_id3)
+        form.append('ct_name3',ct_name3)
+
+        const url = 'http://dmonster1566.cafe24.com'
+        const path = '/json/proc_json.php'
+
+        const api = await API_CALL(url+path, form, true)
+        console.log(api)
+        const { data : { method, result, message,  count, item} } = api;
+
+        setCategories(item)
+        console.log(item)
+    }
+    console.log('item', categories)
+
+
     return(
         <SafeAreaView style={{flex:1,backgroundColor:'#fff'}}>
             <View style={{flexDirection:'row',height:60,justifyContent:'space-between',alignItems:'center',borderBottomColor:'#EEEEEE',borderBottomWidth:1,paddingHorizontal:20,}}>
@@ -27,7 +77,29 @@ const Category = ({navigation}) => {
             </View>
             <ScrollView>
                 <View>
-                    <TouchableOpacity 
+                    {categories.map((arr,i) => 
+                    (<View key={i}>
+                        <TouchableOpacity 
+                        onPress={() => onPressToggle(i)}
+                        style={styles.depth1}>
+                        <Text style={styles.depth1_txt}>{arr.ct_name2}</Text>
+                        { isClicked !== i ? <Icon name="add" size={20} color="#aaa"/>  : <Icon name="remove" size={20} color="#aaa"/>}
+                        </TouchableOpacity>
+                        {isClicked === i ? 
+                        <View>
+                            {arr.ct_name2 ?
+                            arr.ct3_list.map((arr2, i2) => 
+                            (arr2.ct_name3 ? <TouchableOpacity key={i2} style={styles.depth2} onPress={() => navigation.navigate('PrdList', {ct_id: item.ct_id, ct_id2: item.ct_id2, ct_id3: item.ct_id3})}>
+                                <Text style={styles.depth2_txt}>{arr2.ct_name3}</Text>
+                                <Icon name="ios-chevron-forward" size={20} color="#aaa"/>
+                            </TouchableOpacity>: null )) : null }
+                        </View> : null}
+                        {console.log(arr.ct_name2)}
+                    </View>
+                    ))}
+
+
+                    {/* <TouchableOpacity 
                         onPress={() => setIsVisible({...isVisible, clothes: !isVisible.clothes})}
                         style={styles.depth1}>
                         <Text style={styles.depth1_txt}>의류</Text>
@@ -217,7 +289,7 @@ const Category = ({navigation}) => {
                                 <Text style={styles.depth2_txt}>기타</Text>
                                 <Icon name="ios-chevron-forward" size={20} color="#aaa"/>
                             </TouchableOpacity>
-                        </View>}
+                        </View>} */}
                 </View>
             </ScrollView>
         </SafeAreaView>

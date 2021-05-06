@@ -22,23 +22,24 @@ const MainComp = () => {
 
 
 
-function NewItem({item : getNewItem}){
+function NewItem({item}){
+    console.log(item)
     const navigation = useNavigation(); 
     return(
         <TouchableOpacity 
            style={styles.prdRow} 
            onPress={()=> navigation.navigate('PrdDetail')}>
               <View style={{width:155,height:155,borderColor:'#e3e3e3',borderWidth:1,borderRadius:15,justifyContent:'center',alignItems:'center',marginBottom:10,overflow:'hidden'}}>
-                 <Image style={{resizeMode:'contain',width:'80%'}}
-                    source={getNewItem.image}
+                 <Image style={{resizeMode:'contain',width:'100%'}}
+                    source = {{uri:item.pt_image1}}
                  />
               </View>
-              <View>
-                  <Text style={{fontSize:17,fontFamily:'NotoSansKR-Bold',lineHeight:25,}}>{getNewItem.name}</Text>
+              <View style={{width:155}}>
+                  <Text style={{fontSize:17,fontFamily:'NotoSansKR-Bold',lineHeight:25,}} numberOfLines={1} ellipsizeMode='tail'>{item.pt_title}</Text>
                   <Text style={{fontFamily:'NotoSansKR-Medium',fontSize:13,lineHeight:18}}>입찰기간</Text>
                   <View style={{flexDirection:'row',justifyContent:'space-between',}}>
-                      <Text style={{fontFamily:'NotoSansKR-Regular',fontSize:13,lineHeight:18}}>{getNewItem.datea}</Text>
-                      <Text style={{justifyContent:'center',alignItems:'center',borderRadius:10,paddingLeft:8,paddingRight:8,backgroundColor:'#477DD1',fontSize:12,color:'#fff',fontFamily:'NotoSansKR-Regular',lineHeight:18,}}>{getNewItem.dateb}</Text>
+                      <Text style={{fontFamily:'NotoSansKR-Regular',fontSize:13,lineHeight:18}}>{item.pt_selling_edate}</Text>
+                      <Text style={{justifyContent:'center',alignItems:'center',borderRadius:10,paddingLeft:8,paddingRight:8,backgroundColor:'#477DD1',fontSize:12,color:'#fff',fontFamily:'NotoSansKR-Regular',lineHeight:18,}}>{item.dday}</Text>
                   </View>
               </View>
            </TouchableOpacity>
@@ -54,10 +55,7 @@ export const NewPrd = () => {
     const [dday, setDday] = useState('')
     const [idx, setIdx] = useState(Number)
 
-    const [newItem, setNewItem] = useState();
-    const [newArr, setNewArr] = useState([
-        {id:idx, image:pt_image1, name: pt_title, datea: pt_selling_edate, dateb:dday},
-    ])
+    const [item, setItem] = useState([]);
 
     useEffect(()=>{
         getNewItem()
@@ -79,17 +77,18 @@ export const NewPrd = () => {
         console.log(api)
         const { data : { method, result, message, count, item} } = api;
 
-        setNewItem(newItem)
+        setItem(item)
+        console.log(item)
 
     }
-    console.log('newItem', newItem)
+    console.log('item', item)
     
     return(
         <FlatList
-            data={newArr}
+            data={item}
             style={{flex:1,}}
             renderItem={({item, index} ) => <NewItem item={item}/>}
-            keyExtractor={(item) => `${item.id}`}
+            keyExtractor={(item) => `${item.idx}`}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
         />

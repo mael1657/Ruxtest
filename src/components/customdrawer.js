@@ -9,11 +9,8 @@ const CustomDrawer = (props) => {
     const [ct_id, setId] = useState('')
     const [ct_name, setName] = useState('')
 
-    const [item, setItem] = useState()
+    const [item, setItem] = useState([]);
 
-    const [menuArr, setMenuArr] = useState([
-        {name:ct_name, id:ct_id, params: null},
-    ])
     useEffect(()=>{
         getCate()
     },[])
@@ -87,7 +84,7 @@ const CustomDrawer = (props) => {
                             <Icon name="ios-close-sharp" size={20} color="#D8D8D8"/>
                         </TouchableOpacity>
                     </View>
-                    <TouchableOpacity 
+                    {/* <TouchableOpacity 
                         onPress={() => navigation.navigate('Category')}
                         style={{
                             flexDirection:'row',
@@ -138,10 +135,10 @@ const CustomDrawer = (props) => {
                         }}>
                         <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>UNISEX</Text>
                         <Icon name="ios-chevron-forward" size={20} color="#D8D8D8"/>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                     
-                    {/* {menuArr.map((arr, i) => <TouchableOpacity 
-                        onPress={() => navigation.navigate('Category')}
+                    {item.map((item, i) => <TouchableOpacity 
+                        onPress={() => navigation.navigate('Category',{ct_id:item.ct_id})}
                         style={{
                             flexDirection:'row',
                             justifyContent:'space-between',
@@ -152,9 +149,9 @@ const CustomDrawer = (props) => {
                         }}
                         key={i}
                         >
-                        <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>{arr.name}</Text>
+                        <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>{item.ct_name}</Text>
                         <Icon name="ios-chevron-forward" size={20} color="#D8D8D8"/>
-                    </TouchableOpacity>)} */}
+                    </TouchableOpacity>)}
 
                 </View>
             </DrawerContentScrollView>
