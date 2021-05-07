@@ -25,7 +25,7 @@ const Login = ({navigation}) => {
         form.append('method', 'proc_login_member')
         form.append('mt_id', mt_id)
         form.append('mt_pwd', mt_pwd)
-        form.append('mt_app_token', '')
+        form.append('mt_app_token', 1)
 
         const url = 'http://dmonster1566.cafe24.com'
         const params = '/json/proc_json.php'

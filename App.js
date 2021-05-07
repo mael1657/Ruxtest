@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {View, Text, StatusBar,Dimensions} from 'react-native';
 
 
 import {NavigationContainer} from '@react-navigation/native';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch, useSelector, Provider} from 'react-redux';
 
 import DrawerNavigator from './src/navigation/DrawerNavigator';
 import {navigationRef} from './src/navigation/RootNavigation';
 
 import Icon from 'react-native-vector-icons/Ionicons'
 import Toast, {BaseToast} from 'react-native-toast-message';
+import store from './src/redux/store';
 
 const Width = Dimensions.get('window').width;
 const ToastWidth = Width - 40;
@@ -56,16 +57,16 @@ const toastConfig = {
 }
 
 const App = () => {
-  
+
 
   return (
-    <>
+    <Provider store={store}>
       <StatusBar hidden={false} />
       <NavigationContainer ref={navigationRef}>
         <DrawerNavigator />
       </NavigationContainer>
       <Toast config={toastConfig} ref={(ref) => Toast.setRef(ref)} />
-    </>
+    </Provider>
   );
 };
 

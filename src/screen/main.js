@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback } from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   View,
   Text,
@@ -25,6 +26,33 @@ export const Boxwidth = Width / 2 - 30;
 export const Boxheight = Boxwidth * 1.4;
 
 const MainScreen = ({navigation}) => {
+
+
+
+  const dispatch = useDispatch()
+
+  
+  const {user} = useSelector(state => state.users)
+
+  console.log(user)
+  
+
+  useEffect(()=>{
+    dispatch({
+      type : 'user',
+      payload : 'username'
+    })
+  },[])
+
+
+  const test = useCallback(()=>{
+    dispatch({
+      type : 'user',
+      payload : 'username'
+    })
+  },[dispatch])
+
+
     return (
     <View style={styles.container}>
         <Header/>

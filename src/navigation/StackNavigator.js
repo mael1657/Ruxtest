@@ -138,6 +138,8 @@ export const ChatStack = () => {
 };
 
 export const MypageStack = () => {
+
+  // navigation.navigate('name', {screen : 'from', params: '', initial : false })
     return(
         <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name="Mypage" component={MypageScreen}/>

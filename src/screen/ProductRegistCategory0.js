@@ -106,7 +106,7 @@ const ProductRegistCategory = ({navigation}) => {
                 <Icon name="ios-chevron-forward" size={20} color="#D8D8D8"/>
             </TouchableOpacity> */}
             {item.map((item, i) => <TouchableOpacity 
-                onPress={() => navigation.navigate('ProductRegistCategory1')}
+                onPress={() => navigation.navigate('ProductRegistCategory1', {ct_id:item.ct_id, ct_name: item.ct_name})}
                 style={{
                     flexDirection:'row',
                     justifyContent:'space-between',
