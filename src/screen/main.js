@@ -16,7 +16,7 @@ import styles from '../style/style';
 import Header from '../components/header';
 // import Footer from '../components/footer';
 import MainSlide from '../components/main_slide';
-import MainComp, {NewPrd, MainReview} from '../components/maincomp';
+import {NewPrd, MainReview} from '../components/maincomp';
 
 
 import Icon from 'react-native-vector-icons/MaterialIcons';

@@ -1,11 +1,11 @@
-const initailstate = {
+const initialstate = {
     user: '',
-    token : '',
-    isAuth : false
+    token:'',
+    isLoggedin:false,
 }
 
 
-function userReducer(state = initailstate, action){
+function userReducer(state = initialstate, action){
     switch(action.type){
         case 'user':
            return  {
@@ -16,7 +16,7 @@ function userReducer(state = initailstate, action){
             return  {
                 ...state,
                 token : action.payload,
-                isAuth :true
+                isLoggedin :true
             }
         default:
             return {

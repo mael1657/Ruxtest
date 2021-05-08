@@ -1,6 +1,5 @@
 import React, {useEffect,useState} from 'react';
 import {SafeAreaView,View,Text,Image,TouchableOpacity, Dimensions, TextInput} from 'react-native';
-import axios from 'axios';
 import API_CALL from '../ApiCall';
 
 

@@ -35,7 +35,7 @@ const Register = ({navigation}) => {
 
     // JSON 데이터 상태값
     const [mt_login_type,setLogin_type] = useState(1);
-    const [mt_seller, setSeller] = useState('B');
+    const [mt_seller, setSeller] = useState(false);
     const [mt_id, setId] = useState('');
     const [mt_name, setName] = useState('');
     const [mt_nickname, setNickname] = useState('');
@@ -45,7 +45,7 @@ const Register = ({navigation}) => {
     const [mt_add1, setAdd1] = useState('');
     const [mt_add2, setAdd2] = useState('');
     const [mt_hp, setHp] = useState('');
-    const [mt_level, setLevel] = useState([]);
+    const [mt_level, setLevel] = useState(2);
     const [mt_sms_certify, setSms_certify] = useState(false);
     const [mt_company_name, setCompany_name] = useState('');
     const [mt_business_type, setBusiness_type] = useState([]);
@@ -63,7 +63,7 @@ const Register = ({navigation}) => {
     const [mt_account, setAccount]= useState('');
     const [mt_account_name, setAccount_name] = useState('');
     const [mt_account_certify, setAccount_certify] = useState(false);
-    const [mt_image1, setImage1] = useState(false);
+    const [mt_image1, setImage1] = useState('');
     const [mt_license, setLicense] = useState('');
     
 
@@ -77,37 +77,37 @@ const Register = ({navigation}) => {
     const postInfo = async () => {
         const form = new FormData()
         form.append('method', 'proc_add_member')
-        form.append('mt_login_type', Number)
-        form.append('mt_seller', '')
-        form.append('mt_id', '')
-        form.append('mt_name', '')
-        form.append('mt_nickname', '')
-        form.append('mt_pwd', '')
-        form.append('mt_pwd_re', '')
-        form.append('mt_zip', '')
-        form.append('mt_add1', '')
-        form.append('mt_add2', '')
-        form.append('mt_hp', '')
-        form.append('mt_level', Number)
-        form.append('mt_sms_certify', Boolean)
-        form.append('mt_company_name', '')
-        form.append('mt_business_type', '')
-        form.append('mt_business_number', '')
-        form.append('mt_mail_number', '')
-        form.append('mt_business_status', '')
-        form.append('mt_ceo', '')
-        form.append('mt_business_tel', '')
-        form.append('mt_ceo_tel', '')
-        form.append('mt_business_zip', '')
-        form.append('mt_business_add', '')
-        form.append('mt_business_add2', '')
-        form.append('mt_invoice_email', '')
-        form.append('mt_bank', '')
-        form.append('mt_account', '')
-        form.append('mt_account_name', '')
-        form.append('mt_account_certify', Boolean)
-        form.append('mt_image1', '')
-        form.append('mt_license', '')
+        form.append('mt_login_type', mt_login_type)
+        form.append('mt_seller', mt_seller)
+        form.append('mt_id', mt_id)
+        form.append('mt_name', mt_name)
+        form.append('mt_nickname', mt_nickname)
+        form.append('mt_pwd', mt_pwd)
+        form.append('mt_pwd_re', mt_pwd_re)
+        form.append('mt_zip', mt_zip)
+        form.append('mt_add1', mt_add1)
+        form.append('mt_add2', mt_add2)
+        form.append('mt_hp', mt_hp)
+        form.append('mt_level', mt_level)
+        form.append('mt_sms_certify', mt_sms_certify)
+        form.append('mt_company_name', mt_company_name)
+        form.append('mt_business_type', mt_business_type)
+        form.append('mt_business_number', mt_business_number)
+        form.append('mt_mail_number', mt_mail_number)
+        form.append('mt_business_status', mt_business_status)
+        form.append('mt_ceo', mt_ceo)
+        form.append('mt_business_tel', mt_business_tel)
+        form.append('mt_ceo_tel', mt_ceo_tel)
+        form.append('mt_business_zip', mt_business_zip)
+        form.append('mt_business_add', mt_business_add)
+        form.append('mt_business_add2', mt_business_add2)
+        form.append('mt_invoice_email', mt_invoice_email)
+        form.append('mt_bank', mt_bank)
+        form.append('mt_account', mt_account)
+        form.append('mt_account_name', mt_account_name)
+        form.append('mt_account_certify', mt_account_certify)
+        form.append('mt_image1', mt_image1)
+        form.append('mt_license', mt_license)
 
         const url ='http://dmonster1566.cafe24.com'
         const path = '/json/proc_json.php'
