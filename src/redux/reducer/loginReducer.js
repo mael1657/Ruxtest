@@ -1,4 +1,93 @@
 const initialstate = {
+    member :  {
+        idx:'',
+        mt_login_type:'',
+        mt_id:'',
+        mt_pwd:'',
+        mt_level:2,
+        mt_name:'',
+        mt_nickname:'',
+        mt_birth:'',
+        mt_image1:'',
+        mt_license:'',
+        mt_gender:false,
+        mt_ages:'',
+        mt_point:'',
+        mt_email:'',
+        mt_app_token:'',
+        mt_hp:'',
+        mt_tel:'',
+        mt_zip:'',
+        mt_add1:'',
+        mt_add2:'',
+        mt_company_name:'',
+        mt_business_type:'',
+        mt_business_number:'',
+        mt_mail_number:'',
+        mt_business_status:'',
+        mt_ceo:'',
+        mt_business_tel:'',
+        mt_ceo_tel:'',
+        mt_business_zip:'',
+        mt_business_add:'',
+        mt_business_add2:'',
+        mt_invoice_email:'',
+        mt_bank:'',
+        mt_account:'',
+        mt_account_name:'',
+        mt_account_certify:true,
+        mt_account_date:'',
+        mt_grade:1,
+        mt_sn:'',
+        mt_recommend:'',
+        mt_lang:null,
+        mt_email_certify:'',
+        mt_email_certify2:'',
+        mt_sms_certify:'',
+        mt_sms_certify_date:'',
+        mt_smsing:false,
+        mt_mailing:false,
+        mt_pushing:false,
+        mt_pushing1:false,
+        mt_pushing2:false,
+        mt_pushing3:false,
+        mt_pushing4:false,
+        mt_pushing5:false,
+        mt_pushing6:false,
+        mt_pushing7:false,
+        mt_status:'',
+        mt_seller:'',
+        mt_wdate:'',
+        mt_ldate:'',
+        mt_lgdate:'',
+        mt_sldate:'',
+        mt_rdate:'',
+        mt_retire_memo:'',
+        mt_memo:'',
+        mt_manage_menu:'',
+        mt_idx:'',
+        mb_type:'B',
+    }
+}
+
+function loginReducer (state = initialstate, action){
+    switch(action.type){
+        case 'LOGIN' :
+            return{
+                ...state,
+                member :  action.payload
+            }
+        default:
+            return{
+                ...state
+            }
+
+    }
+}
+
+
+
+export const memberInitial = {
     idx:'',
     mt_login_type:'',
     mt_id:'',
@@ -66,87 +155,6 @@ const initialstate = {
     mt_manage_menu:'',
     mt_idx:'',
     mb_type:'B',
-}
-
-function loginReducer (state = initialstate, action){
-    switch(action.type){
-        case 'LOGIN' :
-            return{
-                ...state,
-                idx: action.payload,
-                mt_login_type: action.payload,
-                mt_id: action.payload,
-                mt_pwd: action.payload,
-                mt_level: action.payload,
-                mt_name: action.payload,
-                mt_nickname: action.payload,
-                mt_birth: action.payload,
-                mt_image1: action.payload,
-                mt_license: action.payload,
-                mt_gender: action.payload,
-                mt_ages: action.payload,
-                mt_point: action.payload,
-                mt_email: action.payload,
-                mt_app_token: action.payload,
-                mt_hp: action.payload,
-                mt_tel: action.payload,
-                mt_zip: action.payload,
-                mt_add1: action.payload,
-                mt_add2: action.payload,
-                mt_company_name: action.payload,
-                mt_business_type: action.payload,
-                mt_business_number: action.payload,
-                mt_mail_number: action.payload,
-                mt_business_status: action.payload,
-                mt_ceo: action.payload,
-                mt_business_tel: action.payload,
-                mt_ceo_tel: action.payload,
-                mt_business_zip: action.payload,
-                mt_business_add: action.payload,
-                mt_business_add2: action.payload,
-                mt_invoice_email: action.payload,
-                mt_bank: action.payload,
-                mt_account: action.payload,
-                mt_account_name: action.payload,
-                mt_account_certify: action.payload,
-                mt_account_date: action.payload,
-                mt_grade: action.payload,
-                mt_sn: action.payload,
-                mt_recommend: action.payload,
-                mt_lang: action.payload,
-                mt_email_certify: action.payload,
-                mt_email_certify2: action.payload,
-                mt_sms_certify: action.payload,
-                mt_sms_certify_date: action.payload,
-                mt_smsing: action.payload,
-                mt_mailing: action.payload,
-                mt_pushing: action.payload,
-                mt_pushing1: action.payload,
-                mt_pushing2: action.payload,
-                mt_pushing3: action.payload,
-                mt_pushing4: action.payload,
-                mt_pushing5: action.payload,
-                mt_pushing6: action.payload,
-                mt_pushing7: action.payload,
-                mt_status: action.payload,
-                mt_seller: action.payload,
-                mt_wdate: action.payload,
-                mt_ldate: action.payload,
-                mt_lgdate: action.payload,
-                mt_sldate: action.payload,
-                mt_rdate: action.payload,
-                mt_retire_memo: action.payload,
-                mt_memo: action.payload,
-                mt_manage_menu: action.payload,
-                mt_idx: action.payload,
-                mb_type: action.payload,
-            }
-        default:
-            return{
-                ...state
-            }
-
-    }
 } 
 
 export default loginReducer;

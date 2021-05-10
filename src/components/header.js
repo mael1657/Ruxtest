@@ -512,12 +512,12 @@ export const DefaultHead = () => {
   return(
     <>
     <View style={styles.header01}>
-        <TouchableOpacity>
+        <View>
             <Image
             style={{width:120,height:60,resizeMode:'contain',}}
             source={require('../images/logo01.png')}
             />
-        </TouchableOpacity>
+        </View>
         <View style={{width:70,height:50,justifyContent:'space-between',flexDirection:'row',paddingTop:10,}}>
             <TouchableOpacity 
             style={{width:30,height:30}}

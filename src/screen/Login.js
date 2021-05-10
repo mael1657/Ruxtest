@@ -1,7 +1,10 @@
-import React, {useEffect,useState} from 'react';
-import {SafeAreaView,View,Text,Image,TouchableOpacity, Dimensions, TextInput} from 'react-native';
+import React, {useEffect,useState,useCallback} from 'react';
+import {SafeAreaView,View,Text,Image,TouchableOpacity, Dimensions, TextInput, Alert} from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import API_CALL from '../ApiCall';
+import AsyncStorage from "@react-native-community/async-storage"
 
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
 const Width = Dimensions.get('window').width;
 const Logo = (Width / 2) - 40;
@@ -12,29 +15,66 @@ const BoxHeight = (Dimensions.get('window').height) / 4;
 
 const Login = ({navigation}) => {
 
-    const [mt_id,setId] = useState('');
-    const [mt_pwd,setPwd] = useState('');
+    const [autocheck, setAutocheck] = useState(false);
 
-    useEffect(()=>{
-        getUserData()
-    },[])
+    const dispatch = useDispatch()
 
+    const { member } = useSelector(state => state.login)
+    const {isLoggedin} = useSelector(state => state.users)
+
+    const [mt_id ,setId] = useState('');
+    const [mt_pwd ,setPwd] = useState('');
+    const [mt_app_token ,setApp_token] = useState('');
+
+    console.log('isLoggedin',isLoggedin)
     const getUserData = async () =>{
         const form = new FormData()
         form.append('method', 'proc_login_member')
+
         form.append('mt_id', mt_id)
         form.append('mt_pwd', mt_pwd)
+
         form.append('mt_app_token', 1)
+
+        
 
         const url = 'http://dmonster1566.cafe24.com'
         const params = '/json/proc_json.php'
+        try{
 
-        const api = await API_CALL(url+params, form, false)
+        
+            const api = await API_CALL(url+params, form, false)
+            console.log(api)
+            const { data } = api;
+            const { item, result } = data;
+            if(result === "0") return Alert.alert('제목', "로그인에 실패했습니다.")
+            if(result === "1" && item){
+                console.log(item)
+                dispatch({
+                    type : 'LOGIN',
+                    payload : item[0]
+                })
+                // TODO: 토큰값 넣기 
+                dispatch({
+                    type : 'auth'
+                })
+                
+                const saveLogin = { method : 'proc_login_member', mt_id, mt_pwd, mt_app_token : 1 }
+                autocheck === false 
+                ? null
+                : await AsyncStorage.setItem('saveUser', JSON.stringify(saveLogin))
+                Alert.alert('제목', "로그인되었습니다")
+                navigation.navigate('Home')    
 
+            }
+        }catch(e){
+            console.log(e)
+            Alert.alert('제목', "로그인에 실패했습니다. 에러")    
+        }
     }
 
 
-
+    console.log("mem", member)
 
     return(
         <SafeAreaView style={{flex:1,backgroundColor:'#fff'}}>
@@ -46,7 +86,7 @@ const Login = ({navigation}) => {
                     />
                 </View>
             </View>
-            <View style={{height:BoxHeight,paddingHorizontal:20}}>
+            <View style={{height:BoxHeight,paddingHorizontal:20,marginBottom:20}}>
                 <TextInput
                 style={{borderColor:'#eee',borderWidth:1,borderRadius:8,height:58,paddingLeft:20,fontSize:15,marginBottom:10,}}
                 placeholder="아이디"
@@ -55,14 +95,24 @@ const Login = ({navigation}) => {
                 onChangeText={text => setId(text)}
                 />
                 <TextInput
-                style={{borderColor:'#eee',borderWidth:1,borderRadius:8,height:58,paddingLeft:20,fontSize:15,marginBottom:20,}}
+                style={{borderColor:'#eee',borderWidth:1,borderRadius:8,height:58,paddingLeft:20,fontSize:15,marginBottom:10,}}
                 placeholder="비밀번호"
                 placeholderTextColor="#C9C9C9"
                 secureTextEntry={true}
                 value={mt_pwd}
                 onChangeText={text => setPwd(text)}
                 />
-                <TouchableOpacity 
+                <TouchableOpacity
+                    onPress={()=> setAutocheck(!autocheck)}
+                    style={{flexDirection:'row',alignItems:'center',marginBottom:10,}}
+                >
+                    {autocheck === false 
+                    ? <Icon name="check-box-outline-blank" size={24} color='#eee' />
+                    : <Icon name="check-box" size={24} color="#447DD1"/>}
+                    
+                    <Text style={{marginLeft:4,fontFamily:'NotoSansKR-Medium',lineHeight:20,color:'#888'}}>자동 로그인</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
                 style={{
                     backgroundColor:'#447DD1',
                     justifyContent:'center',
@@ -106,6 +156,7 @@ const Login = ({navigation}) => {
                                 color:'#888888'
                             }}>비밀번호 찾기</Text>
                         </TouchableOpacity>
+                       
                 </View>
             </View>
             <View style={{height:BoxHeight,paddingHorizontal:20,justifyContent:'center',alignItems:'center'}}>

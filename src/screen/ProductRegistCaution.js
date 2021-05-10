@@ -62,7 +62,7 @@ const ProductRegistCaution = ({navigation}) => {
                     onPress={() => setCheck(!check)}
                     style={{flexDirection:'row',flex:1,justifyContent:'center',alignItems:'center',marginBottom:15,}}>
                             {check === false ? <Icon name="check-box-outline-blank" size={24} color="#eee"/>
-                                            : <Icon name="check-box" size={24} color="#447DD1"/> }
+                                             : <Icon name="check-box" size={24} color="#447DD1"/> }
                             
                             <Text style={{
                                 fontSize:13,

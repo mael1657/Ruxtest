@@ -1,11 +1,17 @@
 import React, {useState, useEffect} from 'react';
-import {View,TouchableOpacity,Text,} from 'react-native';
+import {View,TouchableOpacity,Text, Alert,} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import API_CALL from '../ApiCall';
+import {useSelector, useDispatch} from 'react-redux';
 
 import {DrawerContentScrollView,} from '@react-navigation/drawer';
-
+import AsyncStorage from "@react-native-community/async-storage"
+import { memberInitial } from '../redux/reducer/loginReducer';
 const CustomDrawer = (props) => {
+    
+    const {member} = useSelector(state => state.login)
+    const dispatch = useDispatch()
+    const {isLoggedin} = useSelector(state => state.users)
     const [ct_id, setId] = useState('')
     const [ct_name, setName] = useState('')
 
@@ -33,12 +39,52 @@ const CustomDrawer = (props) => {
     }
     console.log('item', item)
 
+
+    useEffect(() => {
+       
+    },[])
+    
+    const setLogout = async () => {
+        const form = new FormData()
+        form.append('method', 'proc_logout_member')
+        form.append('mt_id', member.mt_id)
+        
+        const url = 'http://dmonster1566.cafe24.com'
+        const params = '/json/proc_json.php'
+        try{
+            const api = await API_CALL(url+params, form, false)
+            const { data } = api;
+            const { result } = data;
+            if(result === "1"){
+                await AsyncStorage.removeItem('saveUser')
+                dispatch({
+                    type : 'logout'
+                })
+                dispatch({
+                    type : 'LOGIN',
+                    payload : memberInitial
+                })
+            }
+            Alert.alert("제목","로그아웃되었습니다.")
+            navigation.navigate('Home')
+            console.log(api)
+        }
+        catch(e){
+            console.log(e)
+            Alert.alert("제목","로그아웃에 실패했습니다.")
+        }
+    } 
+
+   
+    
+    
+
     const {navigation} = props
     return(
         <>
              <DrawerContentScrollView {...props}>
                 <View style={{paddingHorizontal:10,flex:1}}>
-                    <View style={{
+                    {isLoggedin === false ? <View style={{
                         flexDirection:'row',
                         paddingTop:5,
                         borderBottomWidth:1,
@@ -83,60 +129,50 @@ const CustomDrawer = (props) => {
                             >
                             <Icon name="ios-close-sharp" size={20} color="#D8D8D8"/>
                         </TouchableOpacity>
+                    </View> 
+                    : <View style={{
+                        paddingVertical:20,
+                        borderBottomWidth:1,
+                        borderBottomColor:'#eee',
+                        }}>
+                        <View style={{marginBottom:20}}>
+                            <Text style={{fontSize:20,fontFamily:'NotoSansKR-Medium',lineHeight:30}}>안녕하세요.</Text>
+                            <Text style={{fontSize:20,fontFamily:'NotoSansKR-Bold',lineHeight:30}}>{member.mt_nickname}님</Text>
+                        </View>
+                        <TouchableOpacity
+                            onPress={() => setLogout()} 
+                            style={{
+                                backgroundColor:'#fff',
+                                borderWidth:1,
+                                borderColor:'#447DD1',
+                                borderRadius:8,
+                                width:90,
+                                height:35,
+                                justifyContent:'center',
+                                alignItems:'center',
+                            }}
+                        >
+                            <Text 
+                            style={{
+                                color:'#447DD1',
+                                fontFamily:'NotoSansKR-Medium',
+                                lineHeight:20,
+                                }}>
+                                로그아웃
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                            onPress={() => navigation.closeDrawer()}
+                            style={{
+                                position:'absolute',
+                                top:12,right:0,
+                            }}
+                            >
+                            <Icon name="ios-close-sharp" size={20} color="#D8D8D8"/>
+                        </TouchableOpacity>
                     </View>
-                    {/* <TouchableOpacity 
-                        onPress={() => navigation.navigate('Category')}
-                        style={{
-                            flexDirection:'row',
-                            justifyContent:'space-between',
-                            alignItems:'center',
-                            paddingVertical:20,
-                            borderBottomWidth:1,
-                            borderBottomColor:'#eee',
-                        }}>
-                        <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>WOMEN</Text>
-                        <Icon name="ios-chevron-forward" size={20} color="#D8D8D8"/>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                        onPress={() => navigation.navigate('Category')}
-                        style={{
-                            flexDirection:'row',
-                            justifyContent:'space-between',
-                            alignItems:'center',
-                            paddingVertical:20,
-                            borderBottomWidth:1,
-                            borderBottomColor:'#eee',
-                        }}>
-                        <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>MEN</Text>
-                        <Icon name="ios-chevron-forward" size={20} color="#D8D8D8"/>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                        onPress={() => navigation.navigate('Category')}
-                        style={{
-                            flexDirection:'row',
-                            justifyContent:'space-between',
-                            alignItems:'center',
-                            paddingVertical:20,
-                            borderBottomWidth:1,
-                            borderBottomColor:'#eee',
-                        }}>
-                        <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>KIDS</Text>
-                        <Icon name="ios-chevron-forward" size={20} color="#D8D8D8"/>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                        onPress={() => navigation.navigate('Category')}
-                        style={{
-                            flexDirection:'row',
-                            justifyContent:'space-between',
-                            alignItems:'center',
-                            paddingVertical:20,
-                            borderBottomWidth:1,
-                            borderBottomColor:'#eee',
-                        }}>
-                        <Text style={{fontSize:16,fontFamily:'NotoSansKR-Bold',lineHeight:20,}}>UNISEX</Text>
-                        <Icon name="ios-chevron-forward" size={20} color="#D8D8D8"/>
-                    </TouchableOpacity> */}
                     
+                    }
                     {item.map((item, i) => <TouchableOpacity 
                         onPress={() => navigation.navigate('Category',{ct_id:item.ct_id, ct_name:item.ct_name})}
                         style={{

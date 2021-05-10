@@ -17,9 +17,11 @@ import Header from '../components/header';
 // import Footer from '../components/footer';
 import MainSlide from '../components/main_slide';
 import {NewPrd, MainReview} from '../components/maincomp';
-
+import API_CALL from '../ApiCall'
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import AsyncStorage from "@react-native-community/async-storage"
 
 export const Width = Dimensions.get('window').width;
 export const Boxwidth = Width / 2 - 30;
@@ -33,24 +35,61 @@ const MainScreen = ({navigation}) => {
 
   
   const {user} = useSelector(state => state.users)
+  const {isLoggedin} = useSelector(state => state.users)
 
   console.log(user)
   
 
   useEffect(()=>{
-    dispatch({
-      type : 'user',
-      payload : 'username'
-    })
+    setLogin()
   },[])
 
 
-  const test = useCallback(()=>{
-    dispatch({
-      type : 'user',
-      payload : 'username'
-    })
-  },[dispatch])
+    const setLogin = async () => {
+
+      const saveLogin = await AsyncStorage.getItem('saveUser')
+      if(saveLogin){
+          const dataLogin = JSON.parse(saveLogin);
+          const form = new FormData()
+          form.append('method', 'proc_login_member')
+
+          form.append('mt_id' ,dataLogin.mt_id)
+          form.append('mt_pwd', dataLogin.mt_pwd)
+          form.append('mt_app_token', '2')
+          const url = 'http://dmonster1566.cafe24.com'
+          const params = '/json/proc_json.php'
+          try{
+          
+              const api = await API_CALL(url+params, form, false)
+              console.log(api)
+              const { data } = api;
+              const { item, result } = data;
+              if(result === "0") return Alert.alert('제목', "로그인 실패")
+              if(result === "1" && item){
+                  console.log(item)
+                  dispatch({
+                      type : 'LOGIN',
+                      payload : item[0]
+                  })
+                  // TODO: 토큰값 넣기 
+                  dispatch({
+                      type : 'auth'
+                  })
+                  
+                  const saveLogin = { method : 'proc_login_member', mt_id : dataLogin.mt_id, mt_pwd : dataLogin.mt_pwd, mt_app_token : 1 }
+                  await AsyncStorage.setItem('saveUser', JSON.stringify(saveLogin))
+                
+                  navigation.navigate('Home')    
+  
+              }
+          }catch(e){
+              console.log(e)
+              
+          }
+      }
+    } 
+
+
 
 
     return (
@@ -60,7 +99,9 @@ const MainScreen = ({navigation}) => {
         <MainSlide/>
         <TouchableOpacity 
           style={{backgroundColor:'#EBEBEB',borderRadius:10,marginHorizontal:20,flexDirection:'row',justifyContent:'space-between',alignItems:'center',padding:15,}}
-          onPress={() => navigation.navigate('ProductRegistCaution')}>
+          onPress={() => isLoggedin === false 
+          ? navigation.navigate('Login') 
+          : navigation.navigate('ProductRegistCaution')}>
           <Text style={{color:'#333',fontSize:17,fontFamily:'NotoSansKR-Medium',lineHeight:20,}}>내 상품 등록하기</Text>
           <Image
            style={{}}
@@ -68,7 +109,9 @@ const MainScreen = ({navigation}) => {
           />
         </TouchableOpacity>
         <TouchableOpacity 
-        onPress={() => navigation.navigate('AppraiseWrite')}
+        onPress={() => isLoggedin === false 
+          ? navigation.navigate('Login')
+          : navigation.navigate('AppraiseWrite')}
         style={{padding:15,width:Width}}>
           <Image 
             style={{resizeMode:'contain',width:'100%',height:100}} 

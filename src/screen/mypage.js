@@ -1,6 +1,6 @@
 import React from 'react';
 import {SafeAreaView, View, Text, ScrollView, Image, TouchableOpacity, Dimensions} from 'react-native';
-
+import { useDispatch, useSelector } from 'react-redux';
 import styles from '../style/style';
 import Header, {MypageHeader} from '../components/header';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -9,6 +9,10 @@ import BotLine from '../components/bottomline';
 export const Width = Dimensions.get('window').width / 4 - 20
 
 const MypageScreen = ({navigation}) => { 
+
+    const { member } = useSelector(state => state.login)
+
+
     return(
     <SafeAreaView style={{flex:1,backgroundColor:'#fff'}}> 
         <MypageHeader/>
@@ -24,7 +28,7 @@ const MypageScreen = ({navigation}) => {
                     <View style={{paddingLeft:20,}}>
                         <Text style={{fontSize:13,fontFamily:'NotoSansKR-Regular',lineHeight:15,color:"#b9b9b9",}}>샤넬 종로점</Text>
                         <View style={{flexDirection:'row',alignItems:'center',paddingBottom:6,}}>
-                            <Text style={{fontSize:16,fontFamily:'NotoSansKR-Medium',lineHeight:20,color:'#5E5E5E',fontWeight:'bold',paddingRight:10,}}>nappeni</Text>
+                            <Text style={{fontSize:16,fontFamily:'NotoSansKR-Medium',lineHeight:20,color:'#5E5E5E',fontFamily:'NotoSansKR-Bold',paddingRight:10,}}>{member.mt_nickname}</Text>
                             <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',paddingRight:10,}}>
                                 <Icon name="star" size={23} color="#477DD1"/>
                                 <Icon name="star" size={23} color="#477DD1"/>

@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import {createStackNavigator,TransitionPresets} from '@react-navigation/stack';
+import {createStackNavigator} from '@react-navigation/stack';
+import { useSelector } from 'react-redux';
 
 
 import Header from '../components/header';
@@ -52,6 +53,9 @@ import CustomDrawer from '../components/customdrawer';
 const Stack = createStackNavigator();
 
 export const MainStack = () => {
+
+  const {isLoggedin} = useSelector(state => state.users)
+
     return(
         <Stack.Navigator
           screenOptions={{
@@ -81,7 +85,8 @@ export const MainStack = () => {
             <Stack.Screen name="Appraise" component={Appraise}/>
             <Stack.Screen name="AppraiseWrite" component={AppraiseWrite}/>
             <Stack.Screen name="AppraiseWriteComplete" component={AppraiseWriteComplete}/>
-            <Stack.Screen name="Login" component={Login}/>
+            {!isLoggedin &&  <Stack.Screen name="Login" component={Login}/>}
+            
             <Stack.Screen name="RegisterAgree" component={RegisterAgree}/>
             <Stack.Screen name="Register" component={Register}/>
             <Stack.Screen name="RegisterFinish" component={RegisterFinish}/>
@@ -139,10 +144,13 @@ export const ChatStack = () => {
 
 export const MypageStack = () => {
 
+  const {isLoggedin} = useSelector(state => state.users)
+
   // navigation.navigate('name', {screen : 'from', params: '', initial : false })
     return(
         <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name="Mypage" component={MypageScreen}/>
+          {isLoggedin === false ? <Stack.Screen name="Login" component={Login}/> :
+            <Stack.Screen name="Mypage" component={MypageScreen}/>}
             <Stack.Screen name="FavoriteList" component={FavoriteList}/>
             <Stack.Screen name="PrdDetail" component={PrdDetail}/>
             <Stack.Screen name="DeliveryCheck" component={DeliveryCheck}/>

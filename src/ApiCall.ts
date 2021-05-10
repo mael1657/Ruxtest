@@ -35,6 +35,8 @@ const API_CALL = async ( url : string, params : any, list : boolean,) =>{
         });
 
         console.log(api)
+
+        
         return api
         
     }

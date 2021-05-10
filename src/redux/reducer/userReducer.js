@@ -12,12 +12,18 @@ function userReducer(state = initialstate, action){
                 ...state,
                 user : action.payload
             }
-        case 'login':
+        case 'auth':
             return  {
                 ...state,
-                token : action.payload,
+               // token : action.payload,
                 isLoggedin :true
             }
+            case 'logout':
+                return {
+                    ...state,
+                    // token : action.payload,
+                     isLoggedin :false
+                }
         default:
             return {
                 ...state
