@@ -134,8 +134,11 @@ const CustomDrawer = (props) => {
                         paddingVertical:20,
                         borderBottomWidth:1,
                         borderBottomColor:'#eee',
+                        flexDirection:'row',
+                        justifyContent:'space-between',
+                        alignItems:'flex-end'
                         }}>
-                        <View style={{marginBottom:20}}>
+                        <View style={{}}>
                             <Text style={{fontSize:20,fontFamily:'NotoSansKR-Medium',lineHeight:30}}>안녕하세요.</Text>
                             <Text style={{fontSize:20,fontFamily:'NotoSansKR-Bold',lineHeight:30}}>{member.mt_nickname}님</Text>
                         </View>
@@ -146,8 +149,8 @@ const CustomDrawer = (props) => {
                                 borderWidth:1,
                                 borderColor:'#447DD1',
                                 borderRadius:8,
-                                width:90,
-                                height:35,
+                                width:70,
+                                height:32,
                                 justifyContent:'center',
                                 alignItems:'center',
                             }}
@@ -157,6 +160,7 @@ const CustomDrawer = (props) => {
                                 color:'#447DD1',
                                 fontFamily:'NotoSansKR-Medium',
                                 lineHeight:20,
+                                fontSize:12,
                                 }}>
                                 로그아웃
                             </Text>

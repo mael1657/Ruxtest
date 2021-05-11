@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
   Modal,
   Dimensions,
   ScrollView,
+  Alert,
 } from 'react-native';
 import styles from '../style/style';
 import {DefaultPicker, DealType2, ReviewSelect} from './Select';
@@ -16,7 +17,10 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Search from './search';
 // import PrdFilter from './filter';
 import {FtrBrand, FtrCategory, FtrType, FtrPrice} from './filterItem';
-
+import {useSelector,useDispatch} from 'react-redux';
+import AsyncStorage from '@react-native-community/async-storage';
+import API_CALL from '../ApiCall';
+ 
 const prdPicker= [
   {label:'인기상품순' , value:'인기상품순'},
   {label:'인기상품순' , value:'인기상품순'},
@@ -41,7 +45,56 @@ const Height = Dimensions.get('window').height - 70;
 const Header = () => {
   const navigation = useNavigation(); 
 
+  const dispatch = useDispatch();
+
   const [tab, setTab] = useState('buyer');
+  const {member} = useSelector(state => state.login)
+  console.log('before', member)
+  const [mb_type,setMb_type] = useState('B')
+
+  useEffect(()=>{
+   
+  },[])
+  
+
+
+  
+
+
+  const setMemType = async (mb_type) => {
+    console.log("m", member)
+    console.log(mb_type)
+    const form = new FormData
+    form.append('method','proc_seller_change')
+    form.append('mt_idx',member.mt_idx)
+    form.append('mb_type','B')
+    const url = 'http://dmonster1566.cafe24.com'
+    const params = '/json/proc_json.php'
+    try{
+      const api = await API_CALL(url+params, form, false)
+      console.log(api)
+      const { data } = api;
+      const { item, result } = data;
+      if(result === '0') return Alert.alert("제목","전환 실패")
+      if(result === '1') {
+        console.log("item", item[0])
+        // const memberConvert = Object.assign( member , {})
+        // dispatch({
+        //   type:'LOGIN',
+        //   payload: item[0]
+        // })
+
+        const saveType = {mathod: 'proc_seller_change', mt_idx: member.mt_idx , mb_type }
+        await AsyncStorage.setItem('saveType', JSON.stringify(saveType))
+        setMb_type(mb_type)
+      }
+    }
+    catch(e){
+      console.log(e)
+      Alert.alert("제목","전환 실패 에러")
+    }
+  
+  }
 
   return(
 
@@ -60,14 +113,14 @@ const Header = () => {
             </TouchableOpacity>
             <View style={{flexDirection:'row',backgroundColor:'#DEDEDE',borderRadius:8,width:120,height:40,justifyContent:'space-between',alignItems:'center'}}>
                 <TouchableOpacity
-                onPress ={ () => setTab('buyer')}
-                style={{backgroundColor: tab === 'buyer' ? '#477DD1' : '#DEDEDE',width:60,height:40,borderRadius:8,justifyContent:'center',alignItems:'center',}}>
-                    <Text style={{color: tab === 'buyer' ? '#fff' : '#999' ,fontFamily:'NotoSansKR-Medium',}}>구매자</Text>
+                onPress ={ () => setMemType('b')}
+                style={{backgroundColor: mb_type === 'b' ? '#477DD1' : '#DEDEDE',width:60,height:40,borderRadius:8,justifyContent:'center',alignItems:'center',}}>
+                    <Text style={{color: mb_type === 'b' ? '#fff' : '#999' ,fontFamily:'NotoSansKR-Medium',}}>구매자</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                onPress ={ () => setTab('seller')}
-                style={{backgroundColor: tab === 'seller' ? '#477DD1' : '#DEDEDE',width:60,height:40,borderRadius:8,justifyContent:'center',alignItems:'center',}}>
-                    <Text style={{color: tab === 'seller' ? '#fff' : '#999' ,fontFamily:'NotoSansKR-Medium',}}>판매자</Text>
+                onPress ={ () => setMemType('s')}
+                style={{backgroundColor: mb_type === 's' ? '#477DD1' : '#DEDEDE',width:60,height:40,borderRadius:8,justifyContent:'center',alignItems:'center',}}>
+                    <Text style={{color: mb_type === 's' ? '#fff' : '#999' ,fontFamily:'NotoSansKR-Medium',}}>판매자</Text>
                 </TouchableOpacity>
             </View>
         </View>

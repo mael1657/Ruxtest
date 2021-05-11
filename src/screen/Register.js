@@ -1,9 +1,10 @@
 import React, {useEffect, useState}from 'react';
-import {SafeAreaView,ScrollView, View,Text,Image,TouchableOpacity, Dimensions, TextInput, StyleSheet,} from 'react-native';
+import {SafeAreaView,ScrollView, View,Text,Image,TouchableOpacity, Dimensions, TextInput, StyleSheet,Modal} from 'react-native';
 import {Formik} from 'formik';
 import Toast from 'react-native-toast-message';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-// import Api, {API_CALL} from '../Api';
+import Postcode from '@actbase/react-daum-postcode';
+import autoHypenPhone_2 from '../components/utils';
 
 
 import {DefaultPicker} from '../components/Select';
@@ -26,15 +27,29 @@ const RegisterFailed =()=>{
     }, [])
 }
 
+const Width = Dimensions.get('window').width;
+const Height = Dimensions.get('window').height;
+const Boxwidth = Width - 40;
+const Boxheight = Height - 100;
+
+
 
 
 const Register = ({navigation}) => {
 
+    useEffect(() => {
+        const parent = navigation.dangerouslyGetParent();
+        parent?.setOptions({ tabBarVisible: false });
+        return () => parent?.setOptions({ tabBarVisible: true });
+      }, []);
+
     const [check, setCheck] = useState(false);
     const [response, setResponse] = useState(null);
 
+    const [postcode,setPostcode] = useState(false);
+
     // JSON 데이터 상태값
-    const [mt_login_type,setLogin_type] = useState(1);
+    const [mt_login_type,setLogin_type] = useState("1");
     const [mt_seller, setSeller] = useState(false);
     const [mt_id, setId] = useState('');
     const [mt_name, setName] = useState('');
@@ -133,6 +148,28 @@ const Register = ({navigation}) => {
         }
     }
 
+    // 주소검색 API
+    const handleComplete = (data) => {
+        let zipcode = data.zonecode;
+        let fullAddress = data.address;
+        let extraAddress = '';
+
+        if (data.addressType === 'R') {
+            if (data.bname !== '') {
+                extraAddress += data.bname;
+            }
+            if (data.buildingName !=='') {
+                extraAddress += (extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName);
+            }
+            fullAddress += (extraAddress !== '' ? ` (${extraAddress})` : '');
+        }
+
+        console.log(fullAddress)
+        setZip(zipcode)
+        setAdd1(fullAddress)
+        setPostcode(false)
+    }
+
     
 
     return(
@@ -215,22 +252,24 @@ const Register = ({navigation}) => {
                         
                     </View>
                     <View style={styles.contbox}>
-                        <Text style={styles.contitle}>주소</Text>
+                        <Text style={styles.contitle}>주소 <Text style={styles.seltext}>(필수)</Text></Text>
                         <View style={{flexDirection: 'row',}}>
                         <TextInput
-                            style={[styles.inputstyle, {flex:1}]}
+                            style={[styles.inputstyle, {flex:1,color:'#222'}]}
                             placeholder="주소를 입력해주세요."
                             placeholderTextColor="#C9C9C9"
                             editable={false}
                             value={mt_zip}
                             onChangeText={text => setZip(text)}
                         />
-                        <TouchableOpacity style={{height:35,width:100,backgroundColor: '#477DD1',borderRadius:8,justifyContent: 'center',alignItems: 'center',marginLeft:5,}}>
+                        <TouchableOpacity 
+                        onPress={() => setPostcode(!postcode)}
+                        style={{height:35,width:100,backgroundColor:'#477DD1',borderRadius:8,justifyContent:'center',alignItems: 'center',marginLeft:5,}}>
                             <Text style={{color:'#fff',fontSize:13,lineHeight:20,fontFamily:'NotoSansKR-Medium',}}>주소 찾기</Text>
                         </TouchableOpacity>
                         </View>
                         <TextInput
-                        style={styles.inputstyle}
+                        style={[styles.inputstyle, {color:'#222'}]}
                         editable={false}
                         value={mt_add1}
                         onChangeText={text => setAdd1(text)}
@@ -242,6 +281,24 @@ const Register = ({navigation}) => {
                         value={mt_add2}
                         onChangeText={text => setAdd2(text)}
                         />
+                        <Modal
+                         transparent={true}
+                         animationType="fade"
+                         visible={postcode}
+                         onRequestClose={() =>  setPostcode(false)}
+                        >
+                            <View style={{position:'absolute',top:0,left:0,right:0,bottom:0,backgroundColor:'rgba(0,0,0,0.7)'}}>
+                                <View style={{width:Width,height:Height,justifyContent:'center',alignItems:'center'}}>
+                                    <Postcode
+                                        style={{ width:Boxwidth, height:Boxheight, marginBottom:10, }}
+                                        jsOptions={{ animated: true }}
+                                        // onSelected={data => alert(JSON.stringify(data))}
+                                        onSelected={handleComplete}
+                                        
+                                    />
+                                </View>
+                            </View>
+                        </Modal>
                     </View>
                     <View style={styles.contbox}>
                         <Text style={styles.contitle}>휴대폰 번호 <Text style={styles.seltext}>(필수)</Text></Text>
@@ -526,6 +583,8 @@ const styles = StyleSheet.create({
         paddingVertical:0,
         marginBottom:5,
         flex:1,
+        fontFamily:'NotoSansKR-Regular',
+        lineHeight:20,
     },
     graybox: {
         backgroundColor: '#EBEBEB',
