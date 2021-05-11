@@ -49,12 +49,12 @@ const Header = () => {
 
   const [tab, setTab] = useState('buyer');
   const {member} = useSelector(state => state.login)
-  console.log('before', member)
-  const [mb_type,setMb_type] = useState('B')
+  // console.log('before', member)
+  const [mb_type,setMb_type] = useState('')
 
-  useEffect(()=>{
+  // useEffect(()=>{
    
-  },[])
+  // },[])
   
 
 
@@ -67,7 +67,7 @@ const Header = () => {
     const form = new FormData
     form.append('method','proc_seller_change')
     form.append('mt_idx',member.mt_idx)
-    form.append('mb_type','B')
+    form.append('mb_type',mb_type)
     const url = 'http://dmonster1566.cafe24.com'
     const params = '/json/proc_json.php'
     try{
@@ -78,15 +78,19 @@ const Header = () => {
       if(result === '0') return Alert.alert("제목","전환 실패")
       if(result === '1') {
         console.log("item", item[0])
-        // const memberConvert = Object.assign( member , {})
-        // dispatch({
-        //   type:'LOGIN',
-        //   payload: item[0]
-        // })
+        const memberConvert = Object.assign({} ,member)
+        console.log(JSON.stringify(memberConvert))
+        dispatch({
+          type:'LOGIN',
+          payload: item[0]
+        })
 
-        const saveType = {mathod: 'proc_seller_change', mt_idx: member.mt_idx , mb_type }
-        await AsyncStorage.setItem('saveType', JSON.stringify(saveType))
+        // const saveType = {mathod: 'proc_seller_change', mt_idx: member.mt_idx , mb_type }
+        // await AsyncStorage.setItem('saveType', JSON.stringify(saveType))
+        const saveLogin = {mb_type}
+        await AsyncStorage.setItem('saveLogin',JSON.stringify(saveLogin))
         setMb_type(mb_type)
+        Alert.alert("제목","전환 성공")
       }
     }
     catch(e){
@@ -113,14 +117,14 @@ const Header = () => {
             </TouchableOpacity>
             <View style={{flexDirection:'row',backgroundColor:'#DEDEDE',borderRadius:8,width:120,height:40,justifyContent:'space-between',alignItems:'center'}}>
                 <TouchableOpacity
-                onPress ={ () => setMemType('b')}
-                style={{backgroundColor: mb_type === 'b' ? '#477DD1' : '#DEDEDE',width:60,height:40,borderRadius:8,justifyContent:'center',alignItems:'center',}}>
-                    <Text style={{color: mb_type === 'b' ? '#fff' : '#999' ,fontFamily:'NotoSansKR-Medium',}}>구매자</Text>
+                onPress ={ () => setMemType('B')}
+                style={{backgroundColor: mb_type === 'B' ? '#477DD1' : '#DEDEDE',width:60,height:40,borderRadius:8,justifyContent:'center',alignItems:'center',}}>
+                    <Text style={{color: mb_type === 'B' ? '#fff' : '#999' ,fontFamily:'NotoSansKR-Medium',}}>구매자</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                onPress ={ () => setMemType('s')}
-                style={{backgroundColor: mb_type === 's' ? '#477DD1' : '#DEDEDE',width:60,height:40,borderRadius:8,justifyContent:'center',alignItems:'center',}}>
-                    <Text style={{color: mb_type === 's' ? '#fff' : '#999' ,fontFamily:'NotoSansKR-Medium',}}>판매자</Text>
+                onPress ={ () => setMemType('S')}
+                style={{backgroundColor: mb_type === 'S' ? '#477DD1' : '#DEDEDE',width:60,height:40,borderRadius:8,justifyContent:'center',alignItems:'center',}}>
+                    <Text style={{color: mb_type === 'S' ? '#fff' : '#999' ,fontFamily:'NotoSansKR-Medium',}}>판매자</Text>
                 </TouchableOpacity>
             </View>
         </View>

@@ -36,6 +36,7 @@ const MainScreen = ({navigation}) => {
   
   const {user} = useSelector(state => state.users)
   const {isLoggedin} = useSelector(state => state.users)
+  const {member} = useSelector(state => state.login)
 
   console.log(user)
   
@@ -96,8 +97,20 @@ const MainScreen = ({navigation}) => {
     <View style={styles.container}>
         <Header/>
         <ScrollView style={styles.content}>
-        <MainSlide/>
-        <TouchableOpacity 
+          {member.mb_type === "B" 
+          ? <MainSlide/> 
+          : <TouchableOpacity 
+          onPress={() => navigation.navigate('ProductRegistCaution')}
+          style={{marginBottom:10,}}>
+              <View style={{width:(Width - 20),height:254}}>
+                <Image
+                  source={require('../images/slide_seller01.png')}
+                  style={{width:'100%',height:'100%',resizeMode:'cover'}}
+                />
+              </View>
+            </TouchableOpacity>}
+          {member.mb_type === "B" 
+          ? <TouchableOpacity 
           style={{backgroundColor:'#EBEBEB',borderRadius:10,marginHorizontal:20,flexDirection:'row',justifyContent:'space-between',alignItems:'center',padding:15,}}
           onPress={() => isLoggedin === false 
           ? navigation.navigate('Login') 
@@ -107,7 +120,8 @@ const MainScreen = ({navigation}) => {
            style={{}}
            source={require('../images/ar_right.png')}
           />
-        </TouchableOpacity>
+        </TouchableOpacity> : null}
+        
         <TouchableOpacity 
         onPress={() => isLoggedin === false 
           ? navigation.navigate('Login')
