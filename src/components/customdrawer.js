@@ -10,7 +10,7 @@ import { memberInitial } from '../redux/reducer/loginReducer';
 const CustomDrawer = (props) => {
     
     const {member} = useSelector(state => state.login)
-    console.log("afsdfsdf", member)
+    // console.log("afsdfsdf", member)
     const dispatch = useDispatch()
     const {isLoggedin} = useSelector(state => state.users)
     const [ct_id, setId] = useState('')

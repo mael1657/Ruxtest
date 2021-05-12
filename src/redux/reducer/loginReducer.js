@@ -67,7 +67,8 @@ const initialstate = {
         mt_manage_menu:'',
         mt_idx:'',
         mb_type:'B',
-    }
+    },
+   
 }
 
 function loginReducer (state = initialstate, action){
@@ -75,7 +76,7 @@ function loginReducer (state = initialstate, action){
         case 'LOGIN' :
             return{
                 ...state,
-                member :  action.payload
+                member :    action.payload
             }
         default:
             return{

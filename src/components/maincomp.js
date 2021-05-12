@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react';
 import {View, Text, TouchableOpacity, Image, FlatList, Dimensions,ActivityIndicator} from 'react-native';
 import axios from "axios";
 import API_CALL from '../ApiCall';
-
+import {useSelector,useDispatch} from 'react-redux';
 import styles from '../style/style';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
@@ -56,12 +56,13 @@ export const NewPrd = () => {
     const [idx, setIdx] = useState('')
 
     const [item, setItem] = useState([]);
-
+    const {member} = useSelector(state => state.login)
     useEffect(()=>{
         getNewItem()
-    },[])
+    },[member.mb_type])
 
     const getNewItem = async () =>{
+      
         const form = new FormData();
         form.append('method', 'proc_main_new_list')
         form.append('pt_title',pt_title)
@@ -95,103 +96,6 @@ export const NewPrd = () => {
     );
 };
 
-// function NewItem({item : newItems}){
-//     const navigation = useNavigation(); 
-//     return(
-//         <TouchableOpacity 
-//            style={styles.prdRow} 
-//            onPress={()=> navigation.navigate('PrdDetail')}>
-//               <View style={{width:155,height:155,borderColor:'#e3e3e3',borderWidth:1,borderRadius:15,justifyContent:'center',alignItems:'center',marginBottom:10,overflow:'hidden'}}>
-//                  <Image style={{resizeMode:'contain',width:'80%'}}
-//                     source={newItems.image}
-//                  />
-//               </View>
-//               <View>
-//                   <Text style={{fontSize:17,fontFamily:'NotoSansKR-Bold',lineHeight:25,}}>{newItems.name}</Text>
-//                   <Text style={{fontFamily:'NotoSansKR-Medium',fontSize:13,lineHeight:18}}>입찰기간</Text>
-//                   <View style={{flexDirection:'row',justifyContent:'space-between',}}>
-//                       <Text style={{fontFamily:'NotoSansKR-Regular',fontSize:13,lineHeight:18}}>{newItems.datea}</Text>
-//                       <Text style={{justifyContent:'center',alignItems:'center',borderRadius:10,paddingLeft:8,paddingRight:8,backgroundColor:'#477DD1',fontSize:12,color:'#fff',fontFamily:'NotoSansKR-Regular',lineHeight:18,}}>{newItems.dateb}</Text>
-//                   </View>
-//               </View>
-//            </TouchableOpacity>
-//     );
-// };
-
-
-// export const NewPrd = () => {
-
-
-//     const newItems= [
-//         {
-//             id:1,
-//             image:require('../images/item01.jpg'),
-//             name:'MAISON MARGIEA',
-//             datea:'~ 2021. 01. 30',
-//             dateb:'-10',
-//         },
-//         {
-//             id:2,
-//             image:require('../images/item02.jpg'),
-//             name:'MAISON MARGIEA',
-//             datea:'~ 2021. 01. 30',
-//             dateb:'-10',
-//         },
-//         {
-//             id:3,
-//             image:require('../images/item04.jpg'),
-//             name:'MAISON MARGIEA',
-//             datea:'~ 2021. 01. 30',
-//             dateb:'-10',
-//         },
-//         {
-//             id:4,
-//             image:require('../images/item03.jpg'),
-//             name:'MAISON MARGIEA',
-//             datea:'~ 2021. 01. 30',
-//             dateb:'-10',
-//         },
-//         {
-//             id:5,
-//             image:require('../images/item01.jpg'),
-//             name:'MAISON MARGIEA',
-//             datea:'~ 2021. 01. 30',
-//             dateb:'-10',
-//         },
-//         {
-//             id:6,
-//             image:require('../images/item02.jpg'),
-//             name:'MAISON MARGIEA',
-//             datea:'~ 2021. 01. 30',
-//             dateb:'-10',
-//         },
-//         {
-//             id:7,
-//             image:require('../images/item04.jpg'),
-//             name:'MAISON MARGIEA',
-//             datea:'~ 2021. 01. 30',
-//             dateb:'-10',
-//         },
-//         {
-//             id:8,
-//             image:require('../images/item03.jpg'),
-//             name:'MAISON MARGIEA',
-//             datea:'~ 2021. 01. 30',
-//             dateb:'-10',
-//         },
-//     ]
-    
-//     return(
-//         <FlatList
-//             data={newItems}
-//             style={{flex:1,}}
-//             renderItem={({item, index} ) => <NewItem item={item}/>}
-//             keyExtractor={(item) => `${item.id}`}
-//             horizontal={true}
-//             showsHorizontalScrollIndicator={false}
-//         />
-//     );
-// };
 
 function RvItem({rvItem}){
     const navigation = useNavigation(); 

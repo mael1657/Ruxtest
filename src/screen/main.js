@@ -18,8 +18,7 @@ import Header from '../components/header';
 import MainSlide from '../components/main_slide';
 import {NewPrd, MainReview} from '../components/maincomp';
 import API_CALL from '../ApiCall'
-
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Toast from 'react-native-toast-message'
 
 import AsyncStorage from "@react-native-community/async-storage"
 
@@ -29,7 +28,15 @@ export const Boxheight = Boxwidth * 1.4;
 
 const MainScreen = ({navigation}) => {
 
-
+  const typeAlert = () => {
+      Toast.show({
+        type:'my_custom_type',
+        text1: '판매자 승인 후 이용가능합니다.',
+        visibilityTime:2000,
+      })
+  }
+  
+  
 
   const dispatch = useDispatch()
 
@@ -58,10 +65,10 @@ const MainScreen = ({navigation}) => {
           form.append('mt_pwd', dataLogin.mt_pwd)
           form.append('mt_app_token', '2')
           const url = 'http://dmonster1566.cafe24.com'
-          const params = '/json/proc_json.php'
+          const path = '/json/proc_json.php'
           try{
           
-              const api = await API_CALL(url+params, form, false)
+              const api = await API_CALL(url+path, form, false)
               console.log(api)
               const { data } = api;
               const { item, result } = data;
@@ -109,18 +116,22 @@ const MainScreen = ({navigation}) => {
                 />
               </View>
             </TouchableOpacity>}
-          {member.mb_type === "B" 
-          ? <TouchableOpacity 
-          style={{backgroundColor:'#EBEBEB',borderRadius:10,marginHorizontal:20,flexDirection:'row',justifyContent:'space-between',alignItems:'center',padding:15,}}
-          onPress={() => isLoggedin === false 
-          ? navigation.navigate('Login') 
-          : navigation.navigate('ProductRegistCaution')}>
-          <Text style={{color:'#333',fontSize:17,fontFamily:'NotoSansKR-Medium',lineHeight:20,}}>내 상품 등록하기</Text>
-          <Image
-           style={{}}
-           source={require('../images/ar_right.png')}
-          />
-        </TouchableOpacity> : null}
+          {member.mb_type === "B" && 
+
+          <TouchableOpacity 
+            style={{backgroundColor:'#EBEBEB',borderRadius:10,marginHorizontal:20,flexDirection:'row',justifyContent:'space-between',alignItems:'center',padding:15,}}
+            onPress={() => isLoggedin === false 
+            ? navigation.navigate('Login') 
+            : member.mt_seller === "N" ? typeAlert() : navigation.navigate('ProductRegistCaution')
+            }>
+            <Text style={{color:'#333',fontSize:17,fontFamily:'NotoSansKR-Medium',lineHeight:20,}}>내 상품 등록하기</Text>
+            <Image
+            style={{}}
+            source={require('../images/ar_right.png')}
+            />
+          </TouchableOpacity>
+          
+          }
         
         <TouchableOpacity 
         onPress={() => isLoggedin === false 
@@ -146,7 +157,8 @@ const MainScreen = ({navigation}) => {
             </TouchableOpacity>
           </View>
           <View style={{paddingLeft:20,}}>
-           <NewPrd/>
+          {member.mb_type === "S" && <NewPrd/> }
+          {member.mb_type === "B" && <NewPrd/> }
           </View>
         </View>
         <View style={{paddingBottom:30,}}>
