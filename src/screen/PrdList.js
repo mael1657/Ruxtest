@@ -49,6 +49,8 @@ function PrdListItems() {
   const [newitem,setNewitem] = useState([])
 
 
+
+
   useEffect(() => {
     getNewItem();
   },[])
@@ -112,6 +114,7 @@ function PrdItem({item}){
 
   const [fav ,setFav] = useState('off');
   const navigation = useNavigation();
+  
 
   return(
     <TouchableOpacity
@@ -140,10 +143,9 @@ function PrdItem({item}){
           </TouchableWithoutFeedback>
         </View>
         <Text style={{fontFamily:'NotoSansKR-Medium',color:'#333',fontSize:13,lineHeight:15,paddingBottom:5,}}>즉시구매 <Text style={{fontFamily:'NotoSansKR-Regular',color:'#555'}}>{item.pt_selling_price}원</Text></Text>
-        <Text style={{fontFamily:'NotoSansKR-Medium',color:'#333',fontSize:13,lineHeight:15}}>견적 마감 <Text style={{fontFamily:'NotoSansKR-Regular',color:'#555'}}>{item.pt_selling_edate}일 전</Text></Text>
+        <Text style={{fontFamily:'NotoSansKR-Medium',color:'#333',fontSize:13,lineHeight:15}}>견적 마감 <Text style={{fontFamily:'NotoSansKR-Regular',color:'#555'}}>{item.dday}일 전</Text></Text>
         <View style={{flexDirection: 'row',flexWrap:'wrap',marginTop:10,width:HashWidth}}>
-            {item.pt_tag_list.map((arr, idx) => 
-            (
+            {(pt_tag_list).map((arr, idx) => (
               <View key={idx}>
                 <Text style={styles.hashtag}>{arr.tag}</Text>
               </View>
