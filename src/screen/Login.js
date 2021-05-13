@@ -62,7 +62,7 @@ const Login = ({navigation}) => {
                 const saveLogin = { method : 'proc_login_member', mt_id, mt_pwd, mt_app_token : 1 }
                 autocheck === false 
                 ? null
-                : await AsyncStorage.setItem('saveUser', JSON.stringify(saveLogin))
+                : await AsyncStorage.setItem('saveLogin', JSON.stringify(saveLogin))
                 Alert.alert('제목', "로그인되었습니다")
                 navigation.navigate('Home')    
 

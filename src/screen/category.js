@@ -90,7 +90,7 @@ const Category = (props) => {
                         <View>
                             {arr.ct_name2 ?
                             arr.ct3_list.map((arr2, i2) => 
-                            (arr2.ct_name3 ? <TouchableOpacity key={i2} style={styles.depth2} onPress={() => navigation.navigate('PrdList', {ct_id: arr.ct_id, ct_id2: arr.ct_id2, ct_id3: arr.ct_id3})}>
+                            (arr2.ct_name3 ? <TouchableOpacity key={i2} style={styles.depth2} onPress={() => navigation.navigate('PrdList', {ct_id: ct_id, ct_id2:arr.ct_id2, ct_id3: arr2.ct_id3})}>
                                 <Text style={styles.depth2_txt}>{arr2.ct_name3}</Text>
                                 <Icon name="ios-chevron-forward" size={20} color="#aaa"/>
                             </TouchableOpacity>: null )) : null }

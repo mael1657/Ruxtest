@@ -145,6 +145,8 @@ const Header = () => {
 export const HeaderA = () => {
   const[modalOpen, setModalOpen] = useState(false);
 
+  
+
   return(
     <>
       <View style={styles.header,{zIndex:999}}>
