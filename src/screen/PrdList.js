@@ -24,12 +24,15 @@ const PrdList = (props) => {
 
   const[modalOpen, setModalOpen] = useState(false);
 
+  const dispatch = useDispatch()
+
   const {route} = props
   const {navigation} = props
   const {params} = route
   const {member} = useSelector(state => state.login)
   console.log('params',params)
 
+  // 상품 리스트
   const [mt_idx, setMt_idx] = useState(member.mt_idx)
   const [ct_pid, setCt_pid] = useState(params.ct_id)
   const [ct_id, setCt_id] = useState(params.ct_id2)
@@ -51,12 +54,14 @@ const PrdList = (props) => {
 
 
 
+
   useEffect(() => {
     getNewItem();
   },[])
 
+  
+
   const getNewItem = async() => {
-    console.log(pt_tag_list)
 
     const form = new FormData()
     form.append('method','proc_product_list')
@@ -106,7 +111,6 @@ const PrdList = (props) => {
           zzim_yn,
         }
         await AsyncStorage.setItem('savePrd', JSON.stringify(savePrd))
-        console.log("asdfgqwer", savePrd)
         setNewitem(item)
       }
     }catch(e){
@@ -124,7 +128,71 @@ const PrdList = (props) => {
     // console.log("a",itemConvert)
     
   }
-  console.log("asd", newitem)
+  console.log("newItem", newitem)
+
+  useEffect(() => {
+    getFilter();
+    console.log("cates",category2)
+  },[])
+
+  const [filterItem, setFilterItem] = useState([])
+  const {category1, category2} = useSelector(state => state.categorys)
+
+    //필터
+    const [bidx, setBidx] = useState('-')
+    const [fct_id,setFct_id] = useState('')
+    const [fct_id2,setFct_id2] = useState('')
+    const [fct_id3,setFct_id3] = useState('')
+    const [pt_deal_type, setPt_deal_type] = useState('-')
+    const [pt_deal_price, setPt_deal_price] = useState('-')
+
+    console.log('fct_id', fct_id)
+
+  console.log("Cate1", category1)
+  console.log("Cate2", category2)
+  const getFilter = async() => {
+    const form = new FormData()
+    form.append('method','proc_filter')
+    form.append('mt_idx',mt_idx)
+    bidx !== '-'  && form.append('bidx',bidx)
+    pt_deal_type !== '-' &&  form.append('pt_deal_type',pt_deal_type)
+    pt_deal_price !== '-' &&  form.append('pt_deal_price',pt_deal_price)
+    form.append('ct_pid',fct_id)
+    form.append('ct_id',fct_id2)
+    form.append('ct_id2',fct_id3)
+    form.append('idx',idx)
+    form.append('pt_title',pt_title)
+    form.append('pt_image1',pt_image1)
+    form.append('pt_selling_price',pt_selling_price)
+    form.append('pt_selling_edate',pt_selling_edate)
+    form.append('dday',dday)
+    form.append('pt_tag_list',pt_tag_list)
+    form.append('zzim_yn',zzim_yn)
+
+    const url = 'http://dmonster1566.cafe24.com'
+    const path = '/json/proc_json.php'
+
+    try{
+      const api = await API_CALL(url+path, form, true)
+      console.log(api)
+      const { data } = api;
+      const {item,result} = data;
+      if(result === "0") return Alert.alert("","no result")
+      if(result === "1") {
+        console.log(item)
+        dispatch({
+          type: 'FILTER_SELECT',
+          payload: item[0]
+        })
+        setFilterItem(item)
+        Alert.alert("성공")
+      }
+    }catch(e){
+      console.log(e)
+      Alert.alert("", "오류")
+    }
+  }
+  console.log("filter", filterItem)
 
   const prdPicker= [
     {label:'전체' , value:""},
@@ -197,7 +265,6 @@ const PrdList = (props) => {
                           <Text style={{fontSize:12,color:'#B7B7B7'}}>  (선택1)</Text></Text>
                           <View style={{flexDirection:'row',flexWrap:'wrap',}}>
                               <FtrBrand/>
-
                           </View>
                       </View>
                       <View style={{paddingBottom:30,}}>
@@ -205,11 +272,40 @@ const PrdList = (props) => {
                             fontFamily:'NotoSansKR-Medium',
                             color:'#999999',
                             fontSize:14,
-                          }}>카테고리 
+                          }}>카테고리 1
+                          <Text style={{fontSize:12,color:'#B7B7B7'}}>  (선택1)</Text></Text>
+                          <View style={{flexDirection:'row',flexWrap:'wrap',}}>
+                             {category1 && category1.map((item1,i) => (
+                                <TouchableOpacity key={i}>
+                                  <Text style={{color:'#222'}}>{item1.ct_name}</Text>
+                                </TouchableOpacity>
+                              ))}
+                          </View>
+                      </View>
+                      <View style={{paddingBottom:30,}}>
+                          <Text style={{
+                            fontFamily:'NotoSansKR-Medium',
+                            color:'#999999',
+                            fontSize:14,
+                          }}>카테고리 2
+                          <Text style={{fontSize:12,color:'#B7B7B7'}}>  (선택1)</Text></Text>
+                          <View style={{flexDirection:'row',flexWrap:'wrap',}}>
+                              {category2 && category2.map((item2,i) => (
+                                <TouchableOpacity key={i}>
+                                  <Text>{item2.ct_name2}</Text>
+                                </TouchableOpacity>
+                              ))}
+                          </View>
+                      </View>
+                      <View style={{paddingBottom:30,}}>
+                          <Text style={{
+                            fontFamily:'NotoSansKR-Medium',
+                            color:'#999999',
+                            fontSize:14,
+                          }}>카테고리 3
                           <Text style={{fontSize:12,color:'#B7B7B7'}}>  (선택1)</Text></Text>
                           <View style={{flexDirection:'row',flexWrap:'wrap',}}>
                               <FtrCategory/>
-
                           </View>
                       </View>
                       <View style={{paddingBottom:30,}}>
@@ -319,7 +415,7 @@ function PrdItem({item}){
         <Text style={{fontFamily:'NotoSansKR-Medium',color:'#333',fontSize:13,lineHeight:15,paddingBottom:5,}}>즉시구매 <Text style={{fontFamily:'NotoSansKR-Regular',color:'#555'}}>{item.pt_selling_price}원</Text></Text>
         <Text style={{fontFamily:'NotoSansKR-Medium',color:'#333',fontSize:13,lineHeight:15}}>견적 마감 <Text style={{fontFamily:'NotoSansKR-Regular',color:'#555'}}>{item.dday}일 전</Text></Text>
         <View style={{flexDirection: 'row',flexWrap:'wrap',marginTop:10,width:HashWidth}}>
-            {(pt_tag_list).map((arr, idx) => (
+            {item.pt_tag_list.map((arr, idx) => (
               <View key={idx}>
                 <Text style={styles.hashtag}>{arr.tag}</Text>
               </View>

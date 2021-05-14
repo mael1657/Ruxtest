@@ -1,7 +1,9 @@
 import React, {useState,useEffect} from 'react';
 import {ScrollView, SafeAreaView, View, Text, TouchableOpacity, StyleSheet,} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useDispatch } from 'react-redux';
 import API_CALL from '../ApiCall';
+
 
 
 const defaultIsVisible = {
@@ -12,10 +14,13 @@ const defaultIsVisible = {
 }
 
 const Category = (props) => {
+
+    const dispatch = useDispatch();
+
+
     const {route} = props
     const {navigation} = props
     const {params} = route
-    const [isVisible, setIsVisible] = useState(defaultIsVisible); 
     console.log(params)
     const [ct_id, setId] = useState(params.ct_id)
     const [ct_name, setName] = useState(params.ct_name)
@@ -58,6 +63,11 @@ const Category = (props) => {
 
         setCategories(item)
         console.log(item)
+
+        dispatch({
+            type:'CATEGORY_TWO',
+            payload: item
+        })
     }
     console.log('item', categories)
 

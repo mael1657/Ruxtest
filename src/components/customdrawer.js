@@ -34,9 +34,13 @@ const CustomDrawer = (props) => {
         const api = await API_CALL(url+path, form, true)
         console.log(api)
         const { data : { method, result, message, count, item} } = api;
-
+        
         setItem(item)
-
+        
+        dispatch({
+            type:'CATEGORY_ONE',
+            payload:item
+        })
     }
     console.log('item', item)
 
@@ -69,6 +73,7 @@ const CustomDrawer = (props) => {
             Alert.alert("제목","로그아웃되었습니다.")
             navigation.navigate('Home')
             console.log(api)
+            
         }
         catch(e){
             console.log(e)
