@@ -140,7 +140,7 @@ const PrdList = (props) => {
 
     //필터
     const [bidx, setBidx] = useState('-')
-    const [fct_id,setFct_id] = useState('')
+    const [fct_id,setFct_id] = useState(params.ct_id)
     const [fct_id2,setFct_id2] = useState('')
     const [fct_id3,setFct_id3] = useState('')
     const [pt_deal_type, setPt_deal_type] = useState('-')
@@ -275,9 +275,29 @@ const PrdList = (props) => {
                           }}>카테고리 1
                           <Text style={{fontSize:12,color:'#B7B7B7'}}>  (선택1)</Text></Text>
                           <View style={{flexDirection:'row',flexWrap:'wrap',}}>
-                             {category1 && category1.map((item1,i) => (
-                                <TouchableOpacity key={i}>
-                                  <Text style={{color:'#222'}}>{item1.ct_name}</Text>
+                             {category1.map((item1,i) => (
+                                <TouchableOpacity 
+                                onPress={() => setFct_id(category1.map(data=>{
+                                  if(data.id === item1.id){
+                                      return {...data,state:true}
+                                  }else{
+                                      return {...data,state:false}
+                                  }
+                              }))}
+                              
+                                key={i}
+                                style={{
+                                    borderWidth:1,
+                                    borderColor: item1 === false ? '#eee' : '#447DD1',
+                                    backgroundColor: item1 === false ? '#fff' : '#447DD1',
+                                    borderRadius:8,
+                                    paddingHorizontal:20,
+                                    paddingVertical:10,
+                                    marginRight:5,
+                                    marginBottom:5,
+                                }}
+                                >
+                                    <Text style={{fontSize:13,fontFamily:'NotoSansKR-Medium',lineHeight:18,color:item1.state === false ? '#447DD1' : '#fff'}}>{item1.ct_name}</Text>
                                 </TouchableOpacity>
                               ))}
                           </View>
@@ -291,8 +311,19 @@ const PrdList = (props) => {
                           <Text style={{fontSize:12,color:'#B7B7B7'}}>  (선택1)</Text></Text>
                           <View style={{flexDirection:'row',flexWrap:'wrap',}}>
                               {category2 && category2.map((item2,i) => (
-                                <TouchableOpacity key={i}>
-                                  <Text>{item2.ct_name2}</Text>
+                                <TouchableOpacity 
+                                key={i}
+                                style={{
+                                    borderWidth:1,
+                                    borderColor:'#eee',
+                                    borderRadius:8,
+                                    paddingHorizontal:20,
+                                    paddingVertical:10,
+                                    marginRight:5,
+                                    marginBottom:5,
+                                }}
+                                >
+                                    <Text style={{fontSize:13,fontFamily:'NotoSansKR-Medium',lineHeight:18}}>{item2.ct_name2}</Text>
                                 </TouchableOpacity>
                               ))}
                           </View>
@@ -305,7 +336,11 @@ const PrdList = (props) => {
                           }}>카테고리 3
                           <Text style={{fontSize:12,color:'#B7B7B7'}}>  (선택1)</Text></Text>
                           <View style={{flexDirection:'row',flexWrap:'wrap',}}>
-                              <FtrCategory/>
+                              {category2.ct3_list && category2.ct3_list.map((item3,i) => (
+                                <TouchableOpacity key={i}>
+                                  <Text>{item3.ct_name3}</Text>
+                                </TouchableOpacity>
+                              ))}
                           </View>
                       </View>
                       <View style={{paddingBottom:30,}}>
