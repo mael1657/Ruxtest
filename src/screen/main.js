@@ -148,7 +148,7 @@ const MainScreen = ({navigation}) => {
             <Text style={{fontFamily:'NotoSansKR-Bold',fontSize:20,}}>새로운 상품</Text>
             <TouchableOpacity 
             style={{flexDirection:'row',alignItems:'center',}}
-            onPress={() => navigation.navigate('PrdList')}>
+            onPress={() => navigation.navigate('NewPrdList')}>
               <Text style={{fontSize:13,fontFamily:'NotoSansKR-Medium',}}>전체보기</Text>
               <Image
                style={{height:10,resizeMode:'contain',}}

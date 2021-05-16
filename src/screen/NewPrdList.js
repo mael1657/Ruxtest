@@ -20,23 +20,23 @@ const HashWidth = (Width - Box) - (PADDING * 2) - 10;
 
 
 
-const PrdList = (props) => {
+const NewPrdList = (props) => {
 
   const[modalOpen, setModalOpen] = useState(false);
 
   const dispatch = useDispatch()
 
-  const {route} = props
+//   const {route} = props
   const {navigation} = props
-  const {params} = route
+//   const {params} = route
   const {member} = useSelector(state => state.login)
-  console.log('params',params)
+//   console.log('params',params)
 
   // 상품 리스트
   const [mt_idx, setMt_idx] = useState(member.mt_idx)
-  const [ct_pid, setCt_pid] = useState(params.ct_id)
-  const [ct_id, setCt_id] = useState(params.ct_id2)
-  const [ct_id2, setCt_id2] = useState(params.ct_id3)
+  const [ct_pid, setCt_pid] = useState([])
+  const [ct_id, setCt_id] = useState('')
+  const [ct_id2, setCt_id2] = useState('')
   const [pt_order_by, setPt_order_by] = useState('')
   const [idx, setIdx] = useState('')
   const [search, setSearch] = useState('')
@@ -137,13 +137,12 @@ const PrdList = (props) => {
 
   const [filterItem, setFilterItem] = useState([])
   const {category1, category2} = useSelector(state => state.categorys)
-  const [isClicked,setIsClicked] = useState(false)
 
     //필터
     const [bidx, setBidx] = useState('-')
-    const [fct_id,setFct_id] = useState(params.ct_id)
-    const [fct_id2,setFct_id2] = useState(params.ct_id2)
-    const [fct_id3,setFct_id3] = useState(params.ct_id3)
+    const [fct_id,setFct_id] = useState('')
+    const [fct_id2,setFct_id2] = useState('')
+    const [fct_id3,setFct_id3] = useState('')
     const [pt_deal_type, setPt_deal_type] = useState('-')
     const [pt_deal_price, setPt_deal_price] = useState('-')
 
@@ -276,29 +275,29 @@ const PrdList = (props) => {
                           }}>카테고리 1
                           <Text style={{fontSize:12,color:'#B7B7B7'}}>  (선택1)</Text></Text>
                           <View style={{flexDirection:'row',flexWrap:'wrap',}}>
-                             {category1.map((element,i) => (
+                             {category1.map((item1,i) => (
                                 <TouchableOpacity 
-                                onPress={() => setFct_id(category1.map(category1=>{
-                                  if(category1.id === element.id){
-                                      return {...category1,state:true}
+                                onPress={() => setFct_id(category1.map(data=>{
+                                  if(data.id === item1.id){
+                                      return {...data,state:true}
                                   }else{
-                                      return {...category1,state:false}
+                                      return {...data,state:false}
                                   }
                               }))}
                               
                                 key={i}
                                 style={{
                                     borderWidth:1,
-                                    borderColor: element.state === false ? '#eee' : '#447DD1',
-                                    backgroundColor: element.state === false ? '#fff' : '#447DD1',
+                                    borderColor: item1.state === false ? '#eee' : '#447DD1',
+                                    backgroundColor: item1.state=== false ? '#fff' : '#447DD1',
                                     borderRadius:8,
                                     paddingHorizontal:20,
                                     paddingVertical:10,
                                     marginRight:5,
                                     marginBottom:5,
-                                }}>
-
-                                    <Text style={{fontSize:13,fontFamily:'NotoSansKR-Medium',lineHeight:18,color:element.state === false ? '#447DD1' : '#fff'}}>{element.ct_name}</Text>
+                                }}
+                                >
+                                    <Text style={{fontSize:13,fontFamily:'NotoSansKR-Medium',lineHeight:18,color:item1.state === false ? '#447DD1' : '#fff'}}>{item1.ct_name}</Text>
                                 </TouchableOpacity>
                               ))}
                           </View>
@@ -479,4 +478,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default PrdList;
+export default NewPrdList;

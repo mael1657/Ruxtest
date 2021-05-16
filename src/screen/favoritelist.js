@@ -69,7 +69,7 @@ const FavoriteList = ({navigation}) => {
         },
     ]);
 
-    const [fav ,setFav] = useState('false');
+    const [fav ,setFav] = useState(false);
     
     function handleOnPress(){
         setFav(!fav);
@@ -119,7 +119,7 @@ const FavoriteList = ({navigation}) => {
                         <View style={{alignSelf:'flex-end'}}>
                             <TouchableWithoutFeedback onPress={handleOnPress} key={item.index}>
                                 {/* <Image source={fav === 'false' ? require('../images/heart_no.png') : require('../images/heart.png') } /> */}
-                                {fav === 'false'
+                                {fav === false
                                 ? <Icon name="heart-outline" size={30} color="#ccc"/>
                                 : <Icon name="heart" size={30} color="#477DD1"/>}
                             </TouchableWithoutFeedback> 

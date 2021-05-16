@@ -10,6 +10,7 @@ import EstimateScreen from '../screen/estimate';
 import ChatScreen from '../screen/chat';
 import MypageScreen from '../screen/mypage';
 import PrdList from '../screen/PrdList';
+import NewPrdList from '../screen/NewPrdList';
 import PrdDetail from '../screen/PrdDetail';
 import Bidding from '../screen/bidding';
 import BidFinish from '../screen/BidFinish';
@@ -66,6 +67,7 @@ export const MainStack = () => {
             <Stack.Screen name="Main" component={MainScreen}/>
             <Stack.Screen name="CustomDrawer" component={CustomDrawer}/>
             <Stack.Screen name="PrdList" component={PrdList}/>
+            <Stack.Screen name="NewPrdList" component={NewPrdList}/>
             <Stack.Screen name="PrdDetail" component={PrdDetail}/>
             <Stack.Screen name="Bidding" component={Bidding}/>
             <Stack.Screen name="BidFinish" component={BidFinish}/>
