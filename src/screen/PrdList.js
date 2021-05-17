@@ -118,14 +118,14 @@ const PrdList = (props) => {
       Alert.alert('제목','상품을 불러오지 못했습니다')
     }
   
-    // const itemConvert = item.map((v, _) => {
-    //   return {
+    const itemConvert = item.map((v, _) => {
+      return {
        
-    //     ...v,
-    //     pt_tag_list : v.pt_tag_list === '' ? [] : v.pt_tag_list,
-    //   }
-    // })
-    // console.log("a",itemConvert)
+        ...v,
+        pt_tag_list : v.pt_tag_list === '' ? [] : v.pt_tag_list,
+      }
+    })
+    console.log("a",itemConvert)
     
   }
   console.log("newItem", newitem)
@@ -183,7 +183,7 @@ const PrdList = (props) => {
         console.log(item)
         dispatch({
           type: 'FILTER_SELECT',
-          payload: item[0]
+          payload: item
         })
         setFilterItem(item)
         Alert.alert("성공")
@@ -434,7 +434,7 @@ function PrdItem({item}){
         paddingBottom:10,
         paddingTop:15,
       }}
-      onPress={() => navigation.navigate('PrdDetail')}
+      onPress={() => navigation.navigate('PrdDetail',{idx:item.idx})}
       >
       <View style={{width:Box,height:Box,borderWidth: 1,borderColor: '#e3e3e3',borderRadius: 8,marginRight:10,padding:10,}}>
         <Image

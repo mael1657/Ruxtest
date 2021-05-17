@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {SafeAreaView,ScrollView,View,Text,TouchableOpacity,StyleSheet,TextInput} from 'react-native';
+import {useSelector} from 'react-redux';
 
 import Header, {DetailHead} from '../components/header';
 import Footer from '../components/footer';
 import Product from '../components/product';
 import Selector, {DefaultPicker} from '../components/Select';
+import API_CALL from '../ApiCall';
 
 const location =[
   {label:'배송지 선택' ,  value:'배송지 선택'},
@@ -18,13 +20,80 @@ const payment =[
   {label:'신용카드' ,  value:'신용카드'},
 ]
 
-const PurchaseOrder = (props, {navigation}) => {
+const PurchaseOrder = (props) => {
+
+  const {route} = props
+  const {navigation} = props
+  const {params} = route
+  console.log("params",params)
+
+  const {member} = useSelector(state => state.login)
+
+  const [orderItem, setOrderItem] = useState({})
+
+  const [mt_idx, setMt_idx] = useState(member.mt_idx)
+  const [idx, setIdx] = useState(params.idx)
+  const [ot_code, setOt_code] = useState('')
+  const [pt_title, setPt_title] = useState('')
+  const [pt_image1, setPt_image1] = useState('')
+  const [pt_price, setPt_price] = useState('')
+  const [ct_delivery_default_price, setCt_delivery_default_price] = useState('')
+  const [commission, setCommission] = useState('')
+  const [total_price, setTotal_price] = useState('')
+  const [ct_delivery_type, setCt_delivery_type] = useState('')
+  const [mt_sms_certify, setMt_sms_certify] = useState('')
+  const [ot_rname, setOt_rname] = useState('')
+  const [ot_rtel, setOt_rtel] = useState('')
+  const [ot_rhp, setOt_rhp] = useState('')
+  const [ot_rzip, setOt_rzip] = useState('')
+  const [ot_radd1, setOt_radd1] = useState('')
+  const [ot_radd2, setOt_radd2] = useState('')
+
+  useEffect(() => {
+    getOrderItem()
+  },[])
+
+
+
+  const getOrderItem = async() => {
+    const form = new FormData()
+    
+    form.append('method','product_d_buy')
+    form.append('mt_idx', mt_idx)
+    form.append('idx',idx)
+    form.append('ot_code',ot_code)
+    form.append('pt_title',pt_title)
+    form.append('pt_image1',pt_image1)
+    form.append('pt_price',pt_price)
+    form.append('ct_delivery_default_price',ct_delivery_default_price)
+    form.append('commission',commission)
+    form.append('total_price',total_price)
+    form.append('ct_delivery_type',ct_delivery_type)
+    form.append('mt_sms_certify',mt_sms_certify)
+    form.append('ot_rname',ot_rname)
+    form.append('ot_rtel',ot_rtel)
+    form.append('ot_rhp',ot_rhp)
+    form.append('ot_rzip',ot_rzip)
+    form.append('ot_radd1',ot_radd1)
+    form.append('ot_radd2',ot_radd2)
+
+    const url = 'http://dmonster1566.cafe24.com'
+    const path = '/json/proc_json.php'
+
+    const api = await API_CALL(url+path, form, false)
+    const {data :{method, result, message, count, item}} = api;
+
+    setOrderItem(item[0])
+  }
+  console.log("orderItem" , orderItem)
+
+
   return(
     <SafeAreaView style={{flex:1,backgroundColor:'#fff',}}>
       <DetailHead title="주문서 작성"/>
       <ScrollView style={{flex:1}}>
         <View style={{paddingHorizontal:20,paddingVertical:10}}>
-          <Product/>
+          <Product {...props}/>
         </View>
         <View style={{width:'100%',height:8,backgroundColor: '#eee',borderTopWidth:1,borderTopColor:'#d9d9d9'}}>
         </View>

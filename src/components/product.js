@@ -3,7 +3,12 @@ import {View, Text, Image, Dimensions} from 'react-native';
 
 export const Width = Dimensions.get('window').width / 4;
 
-const Product = () => {
+const Product = (props) => {
+
+  const {route} = props
+  const {params} = route
+  console.log("Prd Params", params)
+
   return(
     <View style={{flexDirection: 'row',alignItems:'center'}}>
       <View style={{borderWidth:1,borderColor:"#eee",borderRadius:6,width:Width,height:Width,overflow: 'hidden',alignItems:'center',justifyContent:'center',marginRight:20,}}>

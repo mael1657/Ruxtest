@@ -55,7 +55,7 @@ const MainScreen = ({navigation}) => {
 
     const setLogin = async () => {
 
-      const saveLogin = await AsyncStorage.getItem('saveUser')
+      const saveLogin = await AsyncStorage.getItem('saveLogin')
       if(saveLogin){
           const dataLogin = JSON.parse(saveLogin);
           const form = new FormData()
@@ -85,7 +85,7 @@ const MainScreen = ({navigation}) => {
                   })
                   
                   const saveLogin = { method : 'proc_login_member', mt_id : dataLogin.mt_id, mt_pwd : dataLogin.mt_pwd, mt_app_token : 1 }
-                  await AsyncStorage.setItem('saveUser', JSON.stringify(saveLogin))
+                  await AsyncStorage.setItem('saveLogin', JSON.stringify(saveLogin))
                 
                   navigation.navigate('Home')    
   

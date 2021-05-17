@@ -28,7 +28,7 @@ function NewItem({item}){
     return(
         <TouchableOpacity 
            style={styles.prdRow} 
-           onPress={()=> navigation.navigate('PrdDetail')}>
+           onPress={()=> navigation.navigate('PrdDetail', {idx:item.idx})}>
               <View style={{width:155,height:155,borderColor:'#e3e3e3',borderWidth:1,borderRadius:15,justifyContent:'center',alignItems:'center',marginBottom:10,overflow:'hidden'}}>
                  <Image style={{resizeMode:'cover',width:'100%',height:'100%'}}
                     source = {{uri:item.pt_image1}}

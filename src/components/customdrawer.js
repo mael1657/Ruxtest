@@ -61,7 +61,7 @@ const CustomDrawer = (props) => {
             const { data } = api;
             const { result } = data;
             if(result === "1"){
-                await AsyncStorage.removeItem('saveUser')
+                await AsyncStorage.removeItem('saveLogin')
                 dispatch({
                     type : 'logout'
                 })
