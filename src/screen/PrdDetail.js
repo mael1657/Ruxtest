@@ -272,7 +272,7 @@ const PrdDetail = (props) => {
       </ScrollView>
       <View style={{flex:1,backgroundColor: '#F8F8F8', flexDirection:'row',position:'absolute',bottom:0,left:0,elevation:0,}}>
           <TouchableOpacity
-              onPress={() => navigation.navigate('PurchaseOrder',{idx})}
+              onPress={() => navigation.navigate('PurchaseOrder',{idx,pt_title: detailItem.pt_title,pt_selling_edate:detailItem.pt_selling_edate,dday:detailItem.dday,pt_image1:detailItem.pt_image1})}
               style={{width:Width,height:57,justifyContent: 'center',alignItems: 'center',borderRightWidth:1, borderRightColor:'#ddd'}}>
               <Text style={{fontSize:18,fontFamily:'NotoSansKR-Bold'}}>즉시 구매</Text>
           </TouchableOpacity>

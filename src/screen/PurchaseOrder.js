@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {SafeAreaView,ScrollView,View,Text,TouchableOpacity,StyleSheet,TextInput} from 'react-native';
+import {SafeAreaView,ScrollView,View,Text,TouchableOpacity,StyleSheet,TextInput, Alert} from 'react-native';
 import {useSelector} from 'react-redux';
 
 import Header, {DetailHead} from '../components/header';
@@ -9,9 +9,9 @@ import Selector, {DefaultPicker} from '../components/Select';
 import API_CALL from '../ApiCall';
 
 const location =[
-  {label:'배송지 선택' ,  value:'배송지 선택'},
-  {label:'배송지 선택' ,  value:'배송지 선택'},
-  {label:'배송지 선택' ,  value:'배송지 선택'},
+  {label:'주문자와 동일' ,  value:'1'},
+  {label:'최근배송지' ,  value:'2'},
+  {label:'신규배송지' ,  value:'3'},
 ]
 
 const payment =[
@@ -31,6 +31,9 @@ const PurchaseOrder = (props) => {
 
   const [orderItem, setOrderItem] = useState({})
 
+  const [orderAdd, setOrderAdd] = useState({})
+
+  // 즉시구매
   const [mt_idx, setMt_idx] = useState(member.mt_idx)
   const [idx, setIdx] = useState(params.idx)
   const [ot_code, setOt_code] = useState('')
@@ -48,6 +51,14 @@ const PurchaseOrder = (props) => {
   const [ot_rzip, setOt_rzip] = useState('')
   const [ot_radd1, setOt_radd1] = useState('')
   const [ot_radd2, setOt_radd2] = useState('')
+
+  //주문 폼
+  const [mdi_type, setMdi_type] = useState(location)
+  const [ot_rmemo, setOt_rmemo] = useState('')
+  const [ot_pay_type, setOt_pay_type] = useState('')
+  const [ot_price, setOt_price] = useState('')
+  const [ot_delivery_charge, setOt_delivery_charge] = useState('')
+
 
   useEffect(() => {
     getOrderItem()
@@ -87,13 +98,60 @@ const PurchaseOrder = (props) => {
   }
   console.log("orderItem" , orderItem)
 
+  ///////////////////////////////////////////////////////////////////////////
+
+  //주문하기 폼 
+
+  
+
+  useEffect(() =>{
+    getOrderAdd()
+  },[])
+
+  const getOrderAdd = async() => {
+    const form = new FormData()
+
+    form.append('method','proc_order_add')
+    form.append('mt_idx',mt_idx)
+    form.append('ot_code',ot_code)
+    form.append('mdi_type',mdi_type)
+    form.append('ot_rname',ot_rname)
+    form.append('ot_rtel',ot_rtel)
+    form.append('ot_rhp',ot_rhp)
+    form.append('ot_rzip',ot_rzip)
+    form.append('ot_radd1',ot_radd1)
+    form.append('ot_radd2',ot_radd2)
+    form.append('ot_rmemo',ot_rmemo)
+    form.append('ot_pay_type',ot_pay_type)
+    form.append('ot_price',ot_price)
+    form.append('ot_delivery_charge',ot_delivery_charge)
+
+    const url = 'http://dmonster1566.cafe24.com'
+    const path = '/json/proc_json.php'
+    try{
+      if(result === "0") return Alert.alert("no result")
+      if(result === "1"){
+        const api = await API_CALL(url+path, form, false)
+        const {data :{method, result, message, count, item}} = api;
+    
+        setOrderAdd(item[0])
+        console.log('AddItem',item)
+        Alert.alert("Got it")
+      }
+    }catch(e){
+      console.log(e)
+      Alert.alert("Catch!")
+    }
+  }
+  console.log('orderAdd', orderAdd)
+
 
   return(
     <SafeAreaView style={{flex:1,backgroundColor:'#fff',}}>
       <DetailHead title="주문서 작성"/>
       <ScrollView style={{flex:1}}>
         <View style={{paddingHorizontal:20,paddingVertical:10}}>
-          <Product {...props}/>
+          <Product {...props} />
         </View>
         <View style={{width:'100%',height:8,backgroundColor: '#eee',borderTopWidth:1,borderTopColor:'#d9d9d9'}}>
         </View>
