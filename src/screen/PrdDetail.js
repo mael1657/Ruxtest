@@ -225,45 +225,37 @@ const PrdDetail = (props) => {
         </View>
         <View style={{paddingHorizontal: PADDING,marginBottom:60,}}>
           <View style={{borderColor: '#eee',borderWidth:1,marginBottom:10,flex:1,height:250,}}>
-            <Lightbox springConfig={{tension:50, friction:7}}>
               <Image
                 style={{resizeMode:'contain',width:'100%',height:'100%'}}
                 source={{uri:detailItem.pt_image2}}
               />
-            </Lightbox>
             <View style={{position: 'absolute',top:0,left:0,backgroundColor:'#eee',width:80,height:30,justifyContent: 'center',alignItems: 'center',}}>
               <Text style={{color:'#333',fontSize:13,lineHeight:16,fontFamily:'NotoSansKR-Medium'}}>대표이미지</Text>
             </View>
           </View>
           <View style={{borderColor: '#eee',borderWidth:1,marginBottom:10,flex:1,height:250,}}>
-          <Lightbox springConfig={{tension:50, friction:7}}>
               <Image
                 style={{resizeMode:'contain',width:'100%',height:'100%'}}
                 source={{uri:detailItem.pt_image3}}
               />
-            </Lightbox>
             <View style={{position: 'absolute',top:0,left:0,backgroundColor:'#eee',width:80,height:30,justifyContent: 'center',alignItems: 'center',}}>
               <Text style={{color:'#333',fontSize:13,lineHeight:16,fontFamily:'NotoSansKR-Medium'}}>전면</Text>
             </View>
           </View>
           <View style={{borderColor: '#eee',borderWidth:1,marginBottom:10,flex:1,height:250,}}>
-          <Lightbox springConfig={{tension:50, friction:7}}>
               <Image
                 style={{resizeMode:'contain',width:'100%',height:'100%'}}
                 source={{uri:detailItem.pt_image4}}
               />
-            </Lightbox>
             <View style={{position: 'absolute',top:0,left:0,backgroundColor:'#eee',width:80,height:30,justifyContent: 'center',alignItems: 'center',}}>
               <Text style={{color:'#333',fontSize:13,lineHeight:16,fontFamily:'NotoSansKR-Medium'}}>후면</Text>
             </View>
           </View>
           <View style={{borderColor: '#eee',borderWidth:1,marginBottom:10,flex:1,height:250,}}>
-          <Lightbox springConfig={{tension:50, friction:7}}>
               <Image
                 style={{resizeMode:'contain',width:'100%',height:'100%'}}
                 source={{uri:detailItem.pt_image5}}
               />
-            </Lightbox>
             <View style={{position: 'absolute',top:0,left:0,backgroundColor:'#eee',width:80,height:30,justifyContent: 'center',alignItems: 'center',}}>
               <Text style={{color:'#333',fontSize:13,lineHeight:16,fontFamily:'NotoSansKR-Medium'}}>사용감, 하자</Text>
             </View>
